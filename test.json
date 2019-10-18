@@ -1,0 +1,136 @@
+[
+    {
+      "name": "Max",
+      "hobbies": ["Sports", "Cooking"],
+      "age": 29,
+      "Session Start" : ISODate("2018-02-07T20:30:00Z"),
+      "examScores": [
+        { "difficulty": 4, "score": 57.9 },
+        { "difficulty": 6, "score": 62.1 }
+      ]
+    },
+    {
+      "name": "习大锤",
+      "hobbies": ["吃饭", "נᕼᛕⓤ  😎🐤."],
+      "age": 29,
+      "Session Start" : ("2018-02-07T20:17:00Z"),
+      "examScores": [
+        { "difficulty": 6, "score": 61.5 }
+      ]
+    },
+    {
+        "name": "k̵̝͒̑́̓̾͗̎͘ư̸̖͕͉̔̽̃̈́͊͠",
+        "hobbies": ["", "Making Money"],
+        "age": 29,
+        "Session Start" : Date("2018-02-07T20:42:00Z"),
+        "examScores": [
+        ]
+    },
+    {
+        "name": "Jack Ma",
+        "hobbies": ["Cooking", "ベげ尉"],
+        "age": 29,
+        "Session Start" : ISODate("2018-02-07T20:26:00Z"),
+        "":""
+    }
+ ]
+
+
+ //output
+ {"name":"Max","hobbies":"[\"Sports\",\"Cooking\"]","age":29,"Session Start":"2018-02-07T20:30:00.000Z","examScores":"{\"examScores1\":{\"difficulty\":4,\"score\":57.9},\"examScores2\":{\"difficulty\":6,\"score\":62.1}}"}
+{"name":"习大锤","hobbies":"[\"吃饭\",\"נᕼᛕⓤ  😎🐤.\"]","age":29,"Session Start":"2018-02-07T20:17:00Z","examScores":"{\"examScores1\":{\"difficulty\":6,\"score\":61.5}}"}
+{"name":"k̵̝͒̑́̓̾͗̎͘ư̸̖͕̔̽̃̈́͊͠","hobbies":"[\"\",\"Making Money\"]","age":29,"Session Start":"Thu Oct 03 2019 09:53:01 GMT-0700 (PDT)","examScores":"[]"}
+{"name":"Jack Ma","hobbies":"[\"Cooking\",\"ベげ尉\"]","age":29,"Session Start":"2018-02-07T20:26:00.000Z"}
+
+
+[
+    {
+      "name": "Max",
+      "favorite": {
+          "food": "ice cream",
+          "city": ""
+      }
+    }
+ ]
+
+
+
+ //下面正式是测试
+ {
+     "Time": ISODate("2018-02-07T20:30:00Z")
+ }
+
+{
+    "Number small": 35,
+    "Number big": 999999999999999999,
+    "Number with op": 1 + 1 * 2,
+    "Number negative": -200,
+    "Number with digits": 3.1415
+}
+
+{
+    "String": "This is a string, blah blah, nihao, 下面正式是测试"
+}
+
+{
+    "a": [
+        {
+            "Time1": ISODate("2018-02-07T20:30:00Z")
+        },
+        {
+            "Time2": ISODate("2018-02-32T20:30:00Z")
+        }
+    ]
+}
+
+{
+    "a": [
+        {
+            "b": 1,
+            "c": 2
+        },
+        {
+            "d": "e",
+            "f": true
+        },
+        1000
+    ]
+}
+
+
+{
+    "a":{
+        "a1": 1,
+        "a2": {
+            "a21": true,
+            "a22": false
+        }
+    }
+}
+
+[
+    {
+        "Name": "William Brown",
+        "Age": 31,
+        "Register Time": ISODate("2018-02-07T20:30:00Z"),
+        "Notes": {
+            "Hobbies": [
+                {
+                    "Football": true
+                },
+                {
+                    "Gaming": false
+                }
+            ]
+        }
+    },
+
+    {
+        "Name": "习大锤",
+        "Age": "45.5687456",
+        "Register Time": Date("2019-01-01"),
+        "Notes":{
+            "Warning": "Unable to read.Невозможно прочитать.Không thể đọc.읽을 수 없습니다."
+        }
+    }
+]
