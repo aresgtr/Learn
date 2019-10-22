@@ -1,6 +1,5 @@
-Web URL for the repo: https://github.com/aresgtr/Learn.git
-
-This is the repo that keep tracks of my coding practice.
+This is the repo that stores my coding practice.
+这个repo是用来存放我的编程练习的。
 
 [JAVA](JAVA/) is for storing all my Java practice from Udemy Java Course.
 
