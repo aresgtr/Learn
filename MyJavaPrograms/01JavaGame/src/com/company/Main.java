@@ -6,6 +6,7 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static String name;
     private static WeaponStore weaponStore = new WeaponStore();
+    private static ShieldStore shieldStore = new ShieldStore();
     private static Player player = new Player("");
 
     public static void main(String[] args) {
@@ -36,16 +37,18 @@ public class Main {
 
     private static void printStatus() {
         System.out.println( "Health: " + player.getHealth() +
-                            " Armor: " + player.getCurrentArmor() +
-                            " Money: " + player.getMoney() +
-                            " Weapon: " + player.getWeapon() +
-                            " Attack: " + player.getCurrentAttack() +
-                            " Shield: " + player.getCurrentShield());
+                            " | Armor: " + player.getCurrentArmor() +
+                            " | Money: " + player.getMoney() +
+                            "\nWeapon: " + player.getWeapon() +
+                            " | Attack: " + player.getCurrentAttack() +
+                            " | Shield: " + player.getShield() +
+                            " | Resistance: " + player.getCurrentShield() + "\n");
     }
 
 
     private static void gameInitialization() {
-        weaponStore.initializeWeaponStore();
+        weaponStore.initializeStore();
+        shieldStore.initializeStore();
     }
 
     private static void playGame() {
@@ -90,7 +93,7 @@ public class Main {
      * This section contains functions for Weapon Store
      */
     private static void visitWeaponStore() {
-        printWeaponStoreOptions();
+        weaponStore.printOptions();
         boolean quit = false;
         while (!quit) {
             int action = scanner.nextInt();
@@ -98,12 +101,12 @@ public class Main {
             switch (action) {
                 case 1:
                     buyWeapon();
-                    printWeaponStoreOptions();
+                    weaponStore.printOptions();
                     break;
 
                 case 2:
                     sellWeapon();
-                    printWeaponStoreOptions();
+                    weaponStore.printOptions();
                     break;
 
                 case 3:
@@ -113,29 +116,22 @@ public class Main {
         }
     }
 
-    private static void printWeaponStoreOptions() {
-        System.out.println( "\nPlease input your option:\n" +
-                "1 - buy weapon\n" +
-                "2 - sell weapon\n" +
-                "3 - back to main menu\n");
-    }
-
     private static void buyWeapon() {
-        weaponStore.printWeaponList();
+        weaponStore.printItemList();
         System.out.println("Please indicate which weapon to buy:\n");
         int weaponToBuy = scanner.nextInt();
         scanner.nextLine();
-        if (weaponToBuy > weaponStore.getWeaponList().size() + 1) {
+        if (weaponToBuy > WeaponStore.getWeaponList().size() + 1) {
             System.out.println("Invalid input.");
         } else {
             //  main job
-            if (player.getMoney() < weaponStore.getWeaponPrice(weaponToBuy)) {
+            if (player.getMoney() < weaponStore.getItemPrice(weaponToBuy)) {
                 System.out.println("Insufficient funds");
             } else {
                 //  Buy!
-                player.setMoney(player.getMoney() - weaponStore.getWeaponPrice(weaponToBuy));
-                player.setWeapon(weaponStore.getWeaponName(weaponToBuy));
-                player.setCurrentAttack(weaponStore.getWeaponAttack(weaponToBuy));
+                player.setMoney(player.getMoney() - weaponStore.getItemPrice(weaponToBuy));
+                player.setWeapon(weaponStore.getItemName(weaponToBuy));
+                player.setCurrentAttack(weaponStore.getItemCharacteristics(weaponToBuy));
                 printStatus();
             }
         }
@@ -153,9 +149,53 @@ public class Main {
     /*
      * This section contains function for shield store
      */
-
     private static void visitShieldStore() {
-        System.out.println("Welcome to the shield store!");
+        shieldStore.printOptions();
+        boolean quit = false;
+        while (!quit) {
+            int action = scanner.nextInt();
+            scanner.nextLine();
+            switch (action) {
+                case 1:
+                    buyShield();
+                    shieldStore.printOptions();
+                    break;
+
+                case 2:
+                    sellShield();
+                    shieldStore.printOptions();
+                    break;
+
+                case 3:
+                    quit = true;
+                    break;
+            }
+        }
+    }
+
+    private static void buyShield() {
+        shieldStore.printItemList();
+        System.out.println("Please indicate which shield to buy:\n");
+        int shieldToBuy = scanner.nextInt();
+        scanner.nextLine();
+        if (shieldToBuy > shieldStore.getShieldList().size() + 1) {
+            System.out.println("Invalid input.");
+        } else {
+            //  main job
+            if (player.getMoney() < shieldStore.getItemPrice(shieldToBuy)) {
+                System.out.println("Insufficient funds");
+            } else {
+                //  Buy!
+                player.setMoney(player.getMoney() - shieldStore.getItemPrice(shieldToBuy));
+                player.setShield(shieldStore.getItemName(shieldToBuy));
+                player.setCurrentShield(shieldStore.getItemCharacteristics(shieldToBuy));
+                printStatus();
+            }
+        }
+    }
+
+    private static void sellShield() {
+        System.out.println("Sell shield");
     }
 
     private static void visitArmorStore() {

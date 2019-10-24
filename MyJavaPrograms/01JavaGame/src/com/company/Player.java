@@ -6,6 +6,7 @@ public class Player {
     private int health;
     private int money;
     private String weapon;
+    private String shield;
     private int currentAttack;
     private int currentShield;
     private int currentArmor;
@@ -16,6 +17,7 @@ public class Player {
         this.health = 100;
         this.money = 100;
         this.weapon = "Fist";
+        this.shield = "None";
         this.currentAttack = 1;
         this.currentShield = 0;
         this.currentArmor = 0;
@@ -39,6 +41,10 @@ public class Player {
 
     public String getWeapon() {
         return weapon;
+    }
+
+    public String getShield() {
+        return shield;
     }
 
     public int getCurrentAttack() {
@@ -71,6 +77,10 @@ public class Player {
 
     public void setWeapon(String weapon) {
         this.weapon = weapon;
+    }
+
+    public void setShield(String shield) {
+        this.shield = shield;
     }
 
     public void setCurrentAttack(int currentAttack) {
