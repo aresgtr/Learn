@@ -1,23 +1,21 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class WeaponStore {
 
-    private static List<Weapon> weaponList = new LinkedList<>();
+    private static ArrayList<Weapon> weaponList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
-    public WeaponStore(List<Weapon> weaponList) {
-        this.weaponList = weaponList;
-    }
 
     public WeaponStore() {
 
     }
 
-    public List<Weapon> getWeaponList() {
+    public List<Weapon> printWeaponList() {
         System.out.println("Welcome to the weapon store! We currently selling:");
 
         for (int i = 0; i < weaponList.size(); i++) {
@@ -28,32 +26,28 @@ public class WeaponStore {
         return weaponList;
     }
 
+    public static ArrayList<Weapon> getWeaponList() {
+        return weaponList;
+    }
+
+    public int getWeaponPrice(int i) {
+        return weaponList.get(i).getPrice();
+    }
+
+    public String getWeaponName(int i) {
+        return weaponList.get(i).getName();
+    }
+
+    public int getWeaponAttack(int i) {
+        return weaponList.get(i).getDamage();
+    }
+
     public void inputOptions() {
         System.out.println( "\nOptions:\n" +
                             "1 - Buy weapon\n" +
                             "2 - Sell weapon\n" +
                             "3 - Go back to main menu\n" +
                             "Please indicate your options:");
-        boolean quit = false;
-        while (!quit) {
-            int action = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (action) {
-                case 1:
-                    buyWeapon();
-                    break;
-
-                case 2:
-                    sellWeapon();
-                    break;
-
-                case 3:
-                    quit = true;
-                    break;
-            }
-        }
-
     }
 
     private void buyWeapon() {
