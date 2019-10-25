@@ -13,16 +13,15 @@ public class WeaponStore implements IStore {
 
     @Override
     public void initializeStore() {
-        this.weaponList.add(new Weapon("Stick", 2, 10, 1));
-        this.weaponList.add(new Weapon("Baseball Bat", 5, 20, 1));
-        this.weaponList.add(new Weapon("Knife", 10, 50, 1));
-        this.weaponList.add(new Weapon("Sword", 30, 100, 1));
-        this.weaponList.add(new Weapon("Pistol", 50, 200, 1));
+        this.weaponList.add(new Weapon("Baseball Bat", 20, 20, 1));
+        this.weaponList.add(new Weapon("Knife", 60, 50, 1));
+        this.weaponList.add(new Weapon("Sword", 100, 80, 1));
+        this.weaponList.add(new Weapon("Pistol", 150, 120, 1));
     }
 
     @Override
     public void printItemList() {
-        System.out.println("Welcome to the weapon store! We currently selling:");
+        System.out.println("\nWelcome to the weapon store! We currently selling:");
 
         for (int i = 0; i < weaponList.size(); i++) {
             Weapon currentWeapon = weaponList.get(i);
@@ -83,8 +82,5 @@ public class WeaponStore implements IStore {
             return price;
         }
 
-        public int getLevel() {
-            return level;
-        }
     }
 }

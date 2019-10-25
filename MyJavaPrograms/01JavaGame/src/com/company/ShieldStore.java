@@ -14,15 +14,15 @@ public class ShieldStore implements IStore{
     @Override
     public void initializeStore() {
         this.shieldList.add(new Shield("Pot Lid", 10, 5));
-        this.shieldList.add(new Shield("Toy Shield", 20, 10));
-        this.shieldList.add(new Shield("Cavalry Shield", 50, 30));
-        this.shieldList.add(new Shield("Elite Shield", 100, 50));
-        this.shieldList.add(new Shield("Police Riot Shield", 200, 80));
+        this.shieldList.add(new Shield("Toy Shield", 30, 25));
+        this.shieldList.add(new Shield("Cavalry Shield", 50, 50));
+        this.shieldList.add(new Shield("Elite Shield", 80, 100));
+        this.shieldList.add(new Shield("Police Riot Shield", 120, 180));
     }
 
     @Override
     public void printItemList() {
-        System.out.println("Welcome to the shield store! We currently selling:");
+        System.out.println("\nWelcome to the shield store! We currently selling:");
 
         for (int i = 0; i < shieldList.size(); i++) {
             Shield currentShield = shieldList.get(i);

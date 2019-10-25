@@ -2,7 +2,6 @@ package com.company;
 
 public class Player {
     private String name;
-    private int level; //   From 1 to 5, 5 as maximum
     private int health;
     private int money;
     private String weapon;
@@ -13,9 +12,8 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        this.level = 1;
         this.health = 100;
-        this.money = 100;
+        this.money = 50;
         this.weapon = "Fist";
         this.shield = "None";
         this.currentAttack = 1;
@@ -25,10 +23,6 @@ public class Player {
 
     public String getName() {
         return name;
-    }
-
-    public int getLevel() {
-        return level;
     }
 
     public int getHealth() {
@@ -63,10 +57,6 @@ public class Player {
         this.name = name;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
     public void setHealth(int health) {
         this.health = health;
     }
@@ -93,5 +83,15 @@ public class Player {
 
     public void setCurrentArmor(int currentArmor) {
         this.currentArmor = currentArmor;
+    }
+
+    public void resetPlayer() {
+        this.health = 100;
+        this.money = 50;
+        this.weapon = "Fist";
+        this.shield = "None";
+        this.currentAttack = 1;
+        this.currentShield = 0;
+        this.currentArmor = 0;
     }
 }
