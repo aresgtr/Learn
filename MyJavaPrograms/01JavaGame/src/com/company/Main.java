@@ -10,6 +10,7 @@ public class Main {
     private static Player player = new Player("");
     private static Levels levels = new Levels();
     private static int currentLevel = 0;
+    private static boolean quitGame = false;
 
     public static void main(String[] args) {
 	    //  This is my first personal Java practice project. The project is a Java game with multiple text based interfaces.
@@ -30,21 +31,21 @@ public class Main {
     private static void printMenu() {
         printStatus();
         System.out.println( "Please select following:\n" +
-                            "1 - visit weapon store\n" +
-                            "2 - visit shield store\n" +
-                            "3 - visit armor store\n" +
-                            "4 - attack next enemy!\n" +
+                            "1 - buy weapon\n" +
+                            "2 - buy shield\n" +
+                            "3 - buy armor\n" +
+                            "4 - attack enemy!\n" +
                             "0 - quit game");
     }
 
     private static void printStatus() {
-        System.out.println( "\nHealth: " + player.getHealth() +
-                            " | Armor: " + player.getCurrentArmor() +
-                            " | Money: " + player.getMoney() +
-                            "\nWeapon: " + player.getWeapon() +
-                            " | Attack: " + player.getCurrentAttack() +
-                            " | Shield: " + player.getShield() +
-                            " | Resistance: " + player.getCurrentShield() + "\n");
+        System.out.println( "\n" + player.getName() +
+                            "   |   Level: " + String.valueOf(currentLevel + 1) +
+                            "   |  Money: " + player.getMoney() +
+                            "\nArmor: " + player.getCurrentArmor() +
+                            "   |   Health: " + player.getHealth() +
+                            "   |   Attack: " + player.getCurrentAttack() +
+                            "   |   Shield: " + player.getCurrentShield() + "\n");
     }
 
 
@@ -56,16 +57,15 @@ public class Main {
     }
 
     private static void playGame() {
-        boolean quit = false;
 
-        while (!quit){
+        while (!quitGame){
             int action = scanner.nextInt();
             scanner.nextLine();
 
             switch (action) {
                 case 0:
                     System.out.println("Game quiting...");
-                    quit = true;
+                    quitGame = true;
                     break;
 
                 case 1:
@@ -241,7 +241,11 @@ public class Main {
                         if (currentLevel < 9) {
                             currentLevel++;
                         } else {
-                            System.out.println("Game Complete!");
+                            System.out.println( "Congratulations! You have completed all levels!\n" +
+                                                "You have proved yourself as a true warrior!\n" +
+                                                "There will be no missions and the game will be closing\n" +
+                                                "Thank you for playing");
+                            quitGame = true;
                         }
                         return;
                     }
