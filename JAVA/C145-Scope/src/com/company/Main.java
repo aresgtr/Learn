@@ -4,10 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        String privateVar = "this is private to main()";
+        String varFour = "this is private to main()";
 
         ScopeCheck scopeInstance = new ScopeCheck();
-        System.out.println("scopeInstance privateVar is " + scopeInstance.getPrivateVar());
+        System.out.println("scopeInstance varOne is " + scopeInstance.getVarOne());
 
         scopeInstance.timesTwo();
         System.out.println("***********************8");
