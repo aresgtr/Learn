@@ -33,6 +33,7 @@ public class Main {
         executorService.execute(consumer1);
         executorService.execute(consumer2); //  does not shutdown automatically
 
+        //  Callable Class
         Future<String> future = executorService.submit(new Callable<String>() {
             @Override
             public String call() throws Exception {
@@ -42,7 +43,7 @@ public class Main {
         });
 
         try {
-            System.out.println(future.get());
+            System.out.println(ThreadColor.ANSI_WHITE + future.get());
         } catch (InterruptedException e) {
             System.out.println("Thread running the task was interrupted");
         } catch (ExecutionException e) {
