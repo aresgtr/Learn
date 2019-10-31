@@ -10,7 +10,7 @@ public class MyConsumer implements Runnable {
     private String color;
     private ReentrantLock bufferLock;
 
-    public MyConsumer(List<String> buffer, String color, ReentrantLock bufferLock) {
+    MyConsumer(List<String> buffer, String color, ReentrantLock bufferLock) {
         this.buffer = buffer;
         this.color = color;
         this.bufferLock = bufferLock;

@@ -9,7 +9,7 @@ public class MyProducer implements Runnable {
     private String color;
     private ReentrantLock bufferLock;
 
-    public MyProducer(List<String> buffer, String color, ReentrantLock bufferlock) {
+    MyProducer(List<String> buffer, String color, ReentrantLock bufferlock) {
         this.buffer = buffer;
         this.color = color;
         this.bufferLock = bufferlock;

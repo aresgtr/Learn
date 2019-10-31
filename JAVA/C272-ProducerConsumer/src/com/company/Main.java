@@ -6,11 +6,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
 
-    public static final String EOF = "EOF";
+    static final String EOF = "EOF";
 
     public static void main(String[] args) {
 	// write your code here
-        List<String> buffer = new ArrayList<String>();
+        List<String> buffer = new ArrayList<>();
         ReentrantLock bufferLock = new ReentrantLock();
 
         MyProducer producer = new MyProducer(buffer, ThreadColor.ANSI_YELLOW, bufferLock);
