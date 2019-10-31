@@ -1,8 +1,10 @@
 package com.company;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Main {
 
-    private static Object lock = new Object();
+    private static ReentrantLock lock = new ReentrantLock(true);    //  true means fair lock, first come first serve
 
     public static void main(String[] args) {
 	// write your code here
