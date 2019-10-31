@@ -12,6 +12,7 @@ public class Main {
 	// write your code here
         List<String> buffer = new ArrayList<String>();
         ReentrantLock bufferLock = new ReentrantLock();
+
         MyProducer producer = new MyProducer(buffer, ThreadColor.ANSI_YELLOW, bufferLock);
         MyConsumer consumer1 = new MyConsumer(buffer, ThreadColor.ANSI_PURPLE, bufferLock);
         MyConsumer consumer2 = new MyConsumer(buffer, ThreadColor.ANSI_CYAN, bufferLock);

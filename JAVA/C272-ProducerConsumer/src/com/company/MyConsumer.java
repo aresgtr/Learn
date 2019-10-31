@@ -17,20 +17,29 @@ public class MyConsumer implements Runnable {
     }
 
     public void run() {
+
+        int counter = 0;
         while (true) {
-            bufferLock.lock();
-            if (buffer.isEmpty()) {
-                bufferLock.unlock();
-                continue;
-            }
-            if (buffer.get(0).equals(EOF)) {
-                System.out.println(color + "Exiting");
-                bufferLock.unlock();
-                break;
+            if (bufferLock.tryLock()) {
+                try {
+                    if (buffer.isEmpty()) {
+                        continue;
+                    }
+                    System.out.println(color + "The counter = " + counter);
+                    counter = 0;
+
+                    if (buffer.get(0).equals(EOF)) {
+                        System.out.println(color + "Exiting");
+                        break;
+                    } else {
+                        System.out.println(color + "Removed " + buffer.remove(0));
+                    }
+                } finally {
+                    bufferLock.unlock();
+                }
             } else {
-                System.out.println(color + "Removed " + buffer.remove(0));
+                counter++;
             }
-            bufferLock.unlock();
         }
     }
 }
