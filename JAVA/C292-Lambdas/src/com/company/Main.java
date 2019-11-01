@@ -8,10 +8,10 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        new Thread(()-> {
-            System.out.println("Printing from the Runnable");
-            System.out.println("Line 2");
-        }).start();
+//        new Thread(()-> {
+//            System.out.println("Printing from the Runnable");
+//            System.out.println("Line 2");
+//        }).start();
 
 
         Employee john = new Employee("John Doe", 30);
@@ -48,6 +48,8 @@ public class Main {
             System.out.println(employee.getName());
         }
 
+        System.out.println("==================");
+
 //        String sillyString = doStringStuff(new UpperConcat() {
 //            @Override
 //            public String upperAndConcat(String s1, String s2) {
@@ -57,16 +59,46 @@ public class Main {
 //                employees.get(0).getName(), employees.get(1).getName());
 //        System.out.println(sillyString);
 
-
+        //  This is how Functional Interface works
         UpperConcat uc = (s1, s2) -> s1.toUpperCase() + s2.toUpperCase();
         String sillyString = doStringStuff(uc, employees.get(0).getName(), employees.get(1).getName());
+        System.out.println(sillyString);
 
+        System.out.println("===================");
+
+        AnotherClass anotherClass = new AnotherClass();
+        String s = anotherClass.doSomething();
+        System.out.println(s);
+
+        System.out.println();
+        System.out.println("Improved by Lambda:");
+
+        AnotherClassLambda anotherClassLambda = new AnotherClassLambda();
+        s = anotherClassLambda.doSomething();
+        System.out.println(s);
     }
 
     public final static String doStringStuff(UpperConcat uc, String s1, String s2) {
         return uc.upperAndConcat(s1, s2);
     }
 }
+
+
+@FunctionalInterface
+interface UpperConcat {
+    public String upperAndConcat(String s1, String s2);
+
+    default String upperAndConcat3(String s1, String s2) {
+        return "";
+    }
+}
+
+
+
+
+
+
+
 
 
 
@@ -96,6 +128,31 @@ class Employee {
     }
 }
 
-interface UpperConcat {
-    public String upperAndConcat(String s1, String s2);
+
+
+class AnotherClass {
+    public String doSomething() {
+        System.out.println("The AnotherClass class's name is: " + getClass().getSimpleName());
+        return Main.doStringStuff(new UpperConcat() {
+            @Override
+            public String upperAndConcat(String s1, String s2) {
+                System.out.println("The anonymous class's name is: " + getClass().getSimpleName());
+                return s1.toUpperCase() + s2.toUpperCase();
+            }
+        }, "String1", "String2");
+    }
+}
+
+//  Improved by Lambda
+class AnotherClassLambda {
+    public String doSomething() {
+        UpperConcat uc = (s1, s2) -> {
+            System.out.println("The lambda expression's class is: " + getClass().getSimpleName());
+            String result = s1.toUpperCase() + s2.toUpperCase();
+            return result;
+        };
+
+        System.out.println("The AnotherClass class's name is: " + getClass().getSimpleName());
+        return  Main.doStringStuff(uc, "String1", "String2");
+    }
 }
