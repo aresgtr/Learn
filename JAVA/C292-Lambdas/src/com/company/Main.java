@@ -76,6 +76,19 @@ public class Main {
         AnotherClassLambda anotherClassLambda = new AnotherClassLambda();
         s = anotherClassLambda.doSomething();
         System.out.println(s);
+
+        System.out.println("====================");
+
+        Unknown unknown = new Unknown();
+        s = unknown.doSomething();
+        System.out.println(s);
+
+        System.out.println();
+        System.out.println("Improved by Lambda");
+
+        LambdaUnknow lambdaUnknow = new LambdaUnknow();
+        s = lambdaUnknow.doSomething();
+        System.out.println(s);
     }
 
     public final static String doStringStuff(UpperConcat uc, String s1, String s2) {
@@ -154,5 +167,41 @@ class AnotherClassLambda {
 
         System.out.println("The AnotherClass class's name is: " + getClass().getSimpleName());
         return  Main.doStringStuff(uc, "String1", "String2");
+    }
+}
+
+//  I don't know what is this
+class Unknown {
+    public String doSomething() {
+        final int i = 0;
+        {
+            UpperConcat uc = new UpperConcat() {
+                @Override
+                public String upperAndConcat(String s1, String s2) {
+                    System.out.println("i (within anonymous class) = " + i);
+                    return s1.toUpperCase() + s2.toUpperCase();
+                }
+            };
+            System.out.println("The AnotherClass class's name is " + getClass().getSimpleName());
+
+            System.out.println("i = " + i);
+            return  Main.doStringStuff(uc, "String1", "String2");
+        }
+    }
+}
+
+class LambdaUnknow {
+
+    public String doSomething() {
+        int i = 0;
+
+        UpperConcat uc = (s1, s2) -> {
+            System.out.println("The lambda expression's class is: " +getClass().getSimpleName());
+            String result = s1.toUpperCase() + s2.toUpperCase();
+            return result;
+        };
+
+        System.out.println("The AnotherClass class's name is " + getClass().getSimpleName());
+        return Main.doStringStuff(uc, "String1", "String2");
     }
 }
