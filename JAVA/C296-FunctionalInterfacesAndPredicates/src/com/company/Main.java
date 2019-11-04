@@ -2,9 +2,10 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
-
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+import java.util.function.Supplier;
 
 public class Main {
 
@@ -52,6 +53,45 @@ public class Main {
 
         printEmployeesByAge(employees, "Employees over 30", employee -> employee.getAge() > 30);
         printEmployeesByAge(employees, "\nEmployees 30 and under", employee -> employee.getAge() <= 30);
+
+        //  With anonymous class
+        printEmployeesByAge(employees, "\nEmployees younger than 25", new Predicate<Employee>() {
+            @Override
+            public boolean test(Employee employee) {
+                return employee.getAge() < 25;
+            }
+        });
+
+        System.out.println("\n\n\n");
+
+
+
+        //IntPredicate
+        IntPredicate greatherThan15 = i -> i > 15;
+        IntPredicate lessThan100 = i -> i < 100;
+
+
+        System.out.println(greatherThan15.test(10));
+        int a = 20;
+        System.out.println(greatherThan15.test(a + 5));
+
+        System.out.println(greatherThan15.and(lessThan100).test(50));
+
+        System.out.println(greatherThan15.and(lessThan100).test(15));
+
+        System.out.println("\n\n\n");
+
+
+        Random random = new Random();
+        for (int i = 0; i < 10; i++) {
+            System.out.println(random.nextInt(1000));
+        }
+
+        System.out.println("Now use lambda");
+        Supplier<Integer> randomSupplier = () -> random.nextInt(1000);
+        for (int i = 0; i < 10; i++) {
+            System.out.println(randomSupplier.get());
+        }
     }
 
 
