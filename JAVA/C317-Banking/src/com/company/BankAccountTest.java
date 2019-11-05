@@ -1,11 +1,8 @@
 package com.company;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
-
-import org.junit.jupiter.api.Assertions;
 
 class BankAccountTest {
 
@@ -35,12 +32,22 @@ class BankAccountTest {
         assertEquals(800.00, balance, 0);
     }
 
+//    @org.junit.jupiter.api.Test
+//    void withdraw_notBranch() {
+//        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+//            double balance = account.withdraw(600.00, false);
+//        });
+//    }
+
+    //  Try another way
     @org.junit.jupiter.api.Test
     void withdraw_notBranch() {
-//        assertEquals(400.00, balance, 0);
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            double balance = account.withdraw(600.00, false);
-        });
+        try {
+            account.withdraw(600.00, false);
+            fail("Should have thrown an IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+
+        }
     }
 
     @org.junit.jupiter.api.Test
