@@ -33,6 +33,6 @@ public class BankAccountTestParameterized {
     @MethodSource("testConditions")
     void deposit(double amount, boolean branch, double expected) {
         account.deposit(amount, branch);
-        assertEquals(expected, account.getBalance(), 0);
+        assertEquals(expected, account.getBalance(), 0.1);
     }
 }
