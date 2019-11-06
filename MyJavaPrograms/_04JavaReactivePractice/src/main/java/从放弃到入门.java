@@ -1,4 +1,4 @@
-/*
+/**
  * This is my RxJava practice
  * Source: https://www.jianshu.com/p/cd3557b1a474
  * Github Source: https://github.com/kaka10xiaobang/RxJavaDemo.git
@@ -9,8 +9,6 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-import sun.rmi.runtime.Log;
 
 public class 从放弃到入门 {
 
