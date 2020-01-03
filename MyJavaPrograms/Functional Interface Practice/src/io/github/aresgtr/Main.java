@@ -1,4 +1,4 @@
-package io.github.aresgtr.tankwargame;
+package io.github.aresgtr;
 
 public class Main {
 
@@ -15,7 +15,7 @@ public class Main {
         TheFunction substract = (a, b) -> (Integer) a - (Integer) b;
 
 
-        //  We cannot call the functional interface. We can only call the defined empty function. 
+        //  We cannot call the functional interface. We can only call the defined empty function.
         System.out.println(doStuff(upperConcat, "Hello ", "World"));
         doStuff(print, "good", "bad");
         System.out.println(doStuff(add, 1, 2));
