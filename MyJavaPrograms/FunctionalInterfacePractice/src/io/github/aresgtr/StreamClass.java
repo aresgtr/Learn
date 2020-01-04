@@ -2,6 +2,7 @@ package io.github.aresgtr;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +19,7 @@ public class StreamClass {
                 "Parisian Restaurant",
                 "Detective Office",
                 "Brick Bank",
-                "Town Square",
+                "Assembly Square",
                 "Downtown Diner"
         );
 
@@ -43,5 +44,16 @@ public class StreamClass {
                 .sorted()
                 .findFirst()
                 .ifPresent(System.out::println);
+
+
+        System.out.println(">>>>>>>>>Collect");
+        //  Collect
+        List<String> transLegoSets = legoSets
+                .stream()
+                .map(String::toUpperCase)
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println(transLegoSets);
     }
 }
