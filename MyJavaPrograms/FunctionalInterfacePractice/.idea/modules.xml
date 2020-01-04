@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Functional Interface Practice.iml" filepath="$PROJECT_DIR$/Functional Interface Practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FunctionalInterfacePractice.iml" filepath="$PROJECT_DIR$/FunctionalInterfacePractice.iml" />
     </modules>
   </component>
 </project>
