@@ -1,5 +1,6 @@
 package io.github.aresgtr;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,5 +56,37 @@ public class StreamClass {
                 .collect(Collectors.toList());
 
         System.out.println(transLegoSets);
+
+
+        System.out.println(">>>>>>>>>>FlatMap");
+        //  FlatMap
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("Audi"));
+        cars.add(new Car("BMW"));
+
+        cars.stream()
+                .flatMap(c -> c.parts.stream())
+                .forEach(p -> System.out.println(p.name));
+    }
+}
+
+
+class Car {
+    String name;
+    List<CarParts> parts = new ArrayList<>();
+
+    public Car(String name) {
+        this.name = name;
+        this.parts.add(new CarParts(name + " engine"));
+        this.parts.add(new CarParts(name + " doors"));
+        this.parts.add(new CarParts(name + " wheels"));
+    }
+}
+
+class CarParts {
+    String name;
+
+    public CarParts(String name) {
+        this.name = name;
     }
 }
