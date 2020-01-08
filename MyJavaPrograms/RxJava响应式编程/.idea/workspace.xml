@@ -37,7 +37,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
-  <component name="RunManager" selected="Application.Chapter2">
+  <component name="RunManager" selected="Application.Chapter3">
     <configuration name="Chapter1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Chapter1" />
       <module name="RxJava响应式编程" />
@@ -52,8 +52,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Chapter2Continue1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Chapter2Continue1" />
+      <module name="RxJava响应式编程" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Chapter3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Chapter3" />
+      <module name="RxJava响应式编程" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Chapter3" />
+        <item itemvalue="Application.Chapter2Continue1" />
         <item itemvalue="Application.Chapter2" />
         <item itemvalue="Application.Chapter1" />
       </list>
@@ -89,26 +105,26 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2514" y="215" width="800" height="684" key="#Project_Structure/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578441645351" />
-    <state x="2727" y="264" width="374" height="586" key="#com.intellij.ide.util.MemberChooser" timestamp="1578514634613">
+    <state x="2727" y="264" width="374" height="586" key="#com.intellij.ide.util.MemberChooser" timestamp="1578527293428">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2727" y="264" width="374" height="586" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578514634613" />
-    <state width="1794" height="199" key="GridCell.Tab.0.bottom" timestamp="1578522462709">
+    <state x="2727" y="264" width="374" height="586" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578527293428" />
+    <state width="1794" height="199" key="GridCell.Tab.0.bottom" timestamp="1578527737804">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="199" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578522462709" />
-    <state width="1794" height="199" key="GridCell.Tab.0.center" timestamp="1578522462709">
+    <state width="1794" height="199" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578527737804" />
+    <state width="1794" height="199" key="GridCell.Tab.0.center" timestamp="1578527737804">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="199" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578522462709" />
-    <state width="1794" height="199" key="GridCell.Tab.0.left" timestamp="1578522462709">
+    <state width="1794" height="199" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578527737804" />
+    <state width="1794" height="199" key="GridCell.Tab.0.left" timestamp="1578527737804">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="199" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578522462709" />
-    <state width="1794" height="199" key="GridCell.Tab.0.right" timestamp="1578522462709">
+    <state width="1794" height="199" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578527737804" />
+    <state width="1794" height="199" key="GridCell.Tab.0.right" timestamp="1578527737804">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="199" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578522462709" />
+    <state width="1794" height="199" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578527737804" />
     <state x="2585" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1578519979348">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
