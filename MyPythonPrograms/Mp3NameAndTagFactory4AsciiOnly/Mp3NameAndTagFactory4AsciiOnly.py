@@ -15,10 +15,16 @@ def main():
     img = drawBlackEmpty()
 
     # text = u"你好 - ひらがな - 히라가나"
-    text = u"你好你好你好你好你好你好你好"
+    text = u"你好 - 你好你好你好你好你好你好你好"
 
     num_of_lines = findNumberOfLines(text)
     print(num_of_lines)
+    print(text.split(' - ')[1:])
+
+    if num_of_lines > 1:
+        artist = text.split(' - ')[:1]
+        song_name = text.split(' - ')[1:]
+
 
     writeTextOnImage(img, text, middle)
     saveImage(img, 'hello')
