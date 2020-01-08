@@ -6,7 +6,7 @@ inputPath = 'FactoryIn'
 
 def main():
     img = drawBlackEmpty()
-    text = u"编程方法论 - ひらがな - Hiragana, 히라가나"
+    text = u"编程 - ひらがな - 히라가나"
     writeTextOnImage(img, text)
     saveImage(img, 'hello')
 
@@ -20,7 +20,7 @@ def drawBlackEmpty():
 
 def writeTextOnImage(img, text):
     font_size = 35
-    unicode_font = ImageFont.truetype("DejaVuSans.ttf", font_size)
+    unicode_font = ImageFont.truetype("wqy-microhei.ttc", font_size)
     ImageDraw.Draw(img).text((100, 100), text, font=unicode_font)
 
 
