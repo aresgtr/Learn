@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.omg.PortableInterceptor.INACTIVE;
 
@@ -8,6 +9,7 @@ import rx.Observable;
 import rx.functions.Action1;
 import rx.functions.Func0;
 import rx.functions.Func1;
+import rx.functions.Func2;
 import rx.observables.GroupedObservable;
 
 public class Chapter2 {
@@ -125,6 +127,41 @@ public class Chapter2 {
                 System.out.println("cast: " + dog.getName());
             }
         });
+
+        //  scan
+        scanObserver().subscribe(new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                System.out.println("scan: " + integer);
+            }
+        });
+
+        //  window
+        windowCountObserver().subscribe(new Action1<Observable<Integer>>() {
+            @Override
+            public void call(Observable<Integer> i) {
+                System.out.println(i.getClass().getName());
+                i.subscribe(new Action1<Integer>() {
+                    @Override
+                    public void call(Integer integer) {
+                        System.out.println("window: " + integer);
+                    }
+                });
+            }
+        });
+
+        windowTimeObserver().subscribe(new Action1<Observable<Long>>() {
+            @Override
+            public void call(Observable<Long> i) {
+                System.out.println(System.currentTimeMillis() / 1000);
+                i.subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        System.out.println("windowTime: " + aLong);
+                    }
+                });
+            }
+        });
     }
 
     /**
@@ -199,6 +236,7 @@ public class Chapter2 {
                     }
                 });
     }
+
     //key 为 0 的 GroupedObservable 的所有数据都输出
     private static Observable<GroupedObservable<Integer, String>> groupByStringObserver() {
         return Observable.just(1, 2, 3, 4, 5, 6, 7, 8, 9)
@@ -227,9 +265,33 @@ public class Chapter2 {
 
     //  cast
     static Dog dog = new Dog();
+
     private static Observable<Dog> castObserver() {
         return Observable.just(dog.getAnimal())
                 .cast(Dog.class);
+    }
+
+    //  scan
+    static Integer[] array2 = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
+    static List<Integer> list2 = new ArrayList<>(Arrays.asList(array2));
+
+    private static Observable<Integer> scanObserver() {
+        return Observable.from(list2).scan(new Func2<Integer, Integer, Integer>() {
+            @Override
+            public Integer call(Integer x, Integer y) {
+                return x * y;
+            }
+        });
+    }
+
+    //  window need to be fixed
+    private static Observable<Observable<Integer>> windowCountObserver() {
+        return Observable.just(1, 2, 3, 4, 5, 6, 7, 8, 9).window(3);
+    }
+
+    private static Observable<Observable<Long>> windowTimeObserver() {
+        return Observable.interval(1000, TimeUnit.MILLISECONDS)
+                .window(3000, TimeUnit.MILLISECONDS);
     }
 }
 
