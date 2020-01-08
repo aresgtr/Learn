@@ -7,6 +7,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="RxJava响应式编程" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -33,6 +36,20 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Chapter1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Chapter1" />
+      <module name="RxJava响应式编程" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Chapter1" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -64,5 +81,25 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2514" y="215" width="800" height="684" key="#Project_Structure/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578441645351" />
+    <state x="2727" y="264" width="374" height="586" key="#com.intellij.ide.util.MemberChooser" timestamp="1578442882626">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2727" y="264" width="374" height="586" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578442882626" />
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom" timestamp="1578442949112">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578442949112" />
+    <state width="1794" height="274" key="GridCell.Tab.0.center" timestamp="1578442949112">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1794" height="274" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578442949112" />
+    <state width="1794" height="274" key="GridCell.Tab.0.left" timestamp="1578442949112">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1794" height="274" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578442949112" />
+    <state width="1794" height="274" key="GridCell.Tab.0.right" timestamp="1578442949112">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1794" height="274" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578442949112" />
   </component>
 </project>
