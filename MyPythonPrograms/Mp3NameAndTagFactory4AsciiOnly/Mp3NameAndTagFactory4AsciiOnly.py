@@ -7,33 +7,35 @@ from xpinyin import Pinyin
 
 # Global Variables
 p = Pinyin()
-input_path = 'FactoryIn'
+input_path = 'Factory'
 image_cache_path = 'ImageCache'
-middle = 225
-margin = 80
-max_char_len_per_line = 8
+pixel = 600
+middle = pixel / 2
+margin = 60
+max_char_len_per_line = 7
 font_size = 80
+line_space = 40
+
 
 def main():
 
-    img = drawBlackEmpty()
-
     # text = u"你好 - ひらがな - 히라가나"
-    text = u"你好 - 一二三四五六七八"
-
-    #num_of_lines = findNumberOfLines(text)
-
-    #writeTextOnImage(img, text, 2)
-    #saveImage(img, 'hello')
+    # text = u"你好 - 一二三四五六七八九十一二三四"
+    # writeTextOnImage(img, text, "你好", "一二三四五六七八九十一二三四")
+    # saveImage(img, "hello")
 
     file_names = readFileNames(input_path)
     for name in file_names:
-        pure_name = str(name.split('.')[:1])[2:-2]
-        artist = str(pure_name.split(' - ')[:1])[2:-2] + ' -'
+        img = drawBlackEmpty()
+        print(name)
+        pure_name = name[:-4]
+        print(pure_name)
+        artist = str(pure_name.split(' - ')[:1])[2:-2]
         song_title = str(pure_name.split(' - ')[1:])[2:-2]
 
-        writeTextOnImage(img, pure_name)
-        saveImage(img, pure_name)
+        if is_ascii(song_title) == False:
+            writeTextOnImage(img, pure_name, artist, song_title)
+            saveImage(img, pure_name)
 
         pinyin_artist = p.get_pinyin(artist)
         pinyin_artist = re.sub("-", " ", pinyin_artist).title()
@@ -43,32 +45,44 @@ def main():
         pinyin_title = remove_duplicate_space(pinyin_title)
 
         audiofile = eyed3.load(input_path + '\\' + name)
-        audiofile.tag.artist = pinyin_artist
-        # print(audiofile.tag.album)
-        audiofile.tag.title = pinyin_title
-        # print(audiofile.tag.track_num)
+        print(pinyin_artist)
+        print(pinyin_title)
+        try:
+            audiofile.tag.artist = pinyin_artist
+            if is_ascii(song_title) == False:
+                audiofile.tag.title = pinyin_title
+                imagedata = open(pure_name + ".jpg", "rb").read()
+                audiofile.tag.images.set(3, imagedata, "image/jpeg", u"you can put a description here")
+            audiofile.tag.save()
+        except AttributeError:
+            print(pure_name + ' caused attribute error')
 
-        imagedata = open(pure_name + ".jpg", "rb").read()
-        audiofile.tag.images.set(3, imagedata, "image/jpeg", u"you can put a description here")
-        audiofile.tag.save()
+
+def is_ascii(s):
+    return all(ord(c) < 128 for c in s)
 
 def remove_duplicate_space(string):
     string = ' '.join(string.split())
-
     return string
 
+
 def findNumberOfLines(text):
-    num_of_lines = int(len(text) / max_char_len_per_line)
-    if len(text) % max_char_len_per_line:
-        num_of_lines = num_of_lines + 1
-    return num_of_lines
+    song_title_len = len(str(text.split(' - ')[1:])[2:-2])
+
+    if (len(text) - 1) <= max_char_len_per_line:
+        return 1
+    else:
+        number_of_lines = song_title_len / (max_char_len_per_line - 1)
+        if song_title_len % (max_char_len_per_line - 1):
+            number_of_lines = number_of_lines + 1
+        return int(number_of_lines + 1)
 
 
 def drawBlackEmpty():
     return Image.new('RGB', (600, 600), color='black')
 
 
-def writeTextOnImage(img, text):
+def writeTextOnImage(img, text, artist, song_title):
     num_of_lines = findNumberOfLines(text)
 
     #   for linux
@@ -77,14 +91,43 @@ def writeTextOnImage(img, text):
     unicode_font = ImageFont.truetype("STKAITI.TTF", font_size)
 
     if num_of_lines == 1:
-        start_position = middle
+        start_position = middle - font_size / 2
         ImageDraw.Draw(img).text((margin, start_position), text, font=unicode_font)
     elif num_of_lines == 2:
-        artist = str(text.split(' - ')[:1])[2:-2] + ' -'
-        song_title = str(text.split(' - ')[1:])[2:-2]
-        start_position = middle - 50
-        ImageDraw.Draw(img).text((margin, start_position), artist, font=unicode_font)
-        ImageDraw.Draw(img).text((margin, start_position + 100), song_title, font=unicode_font)
+        start_position = middle - font_size - line_space / 2
+        ImageDraw.Draw(img).text((margin, start_position), artist + ' -', font=unicode_font)
+        ImageDraw.Draw(img).text((margin, start_position + font_size + line_space), song_title, font=unicode_font)
+    elif num_of_lines == 3:
+        start_position = middle - font_size / 2 - line_space - font_size
+        ImageDraw.Draw(img).text((margin, start_position), artist + ' -', font=unicode_font)
+        if len(song_title) == max_char_len_per_line:  # one char out
+            song_title_1 = song_title[:-2]
+            song_title_2 = song_title[-2:]
+        else:
+            song_title_1 = song_title[:max_char_len_per_line - 1]
+            song_title_2 = song_title[max_char_len_per_line - 1:]
+        ImageDraw.Draw(img).text((margin, start_position + font_size + line_space), song_title_1, font=unicode_font)
+        ImageDraw.Draw(img).text((margin, start_position + font_size + line_space + font_size + line_space),
+                                 song_title_2, font=unicode_font)
+
+    elif num_of_lines == 4:
+        start_position = middle - font_size - line_space / 2 - line_space - font_size
+        ImageDraw.Draw(img).text((margin, start_position), artist + ' -', font=unicode_font)
+
+        song_title_1 = song_title[:max_char_len_per_line - 1]
+        song_title_2 = song_title[max_char_len_per_line - 1:(2 * max_char_len_per_line - 2)]
+        song_title_3 = song_title[(2 * max_char_len_per_line - 2):]
+
+        ImageDraw.Draw(img).text((margin, start_position + font_size + line_space), song_title_1, font=unicode_font)
+        ImageDraw.Draw(img).text((margin, start_position + 2 * font_size + 2 * line_space), song_title_2,
+                                 font=unicode_font)
+        ImageDraw.Draw(img).text((margin, start_position + 3 * font_size + 3 * line_space), song_title_2,
+                                 font=unicode_font)
+
+        # print(song_title_1)
+        # print(song_title_2)
+        # print(song_title_3)
+
 
 def saveImage(img, filename):
     img.save(filename + '.jpg')
