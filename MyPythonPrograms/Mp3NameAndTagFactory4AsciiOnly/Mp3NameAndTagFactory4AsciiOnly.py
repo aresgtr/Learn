@@ -18,19 +18,23 @@ def main():
     text = u"你好 - 你好你好你好你好你好你好你好"
 
     num_of_lines = findNumberOfLines(text)
-    print(num_of_lines)
-    print(text.split(' - ')[1:])
 
     if num_of_lines > 1:
         artist = text.split(' - ')[:1]
         song_name = text.split(' - ')[1:]
 
 
-    writeTextOnImage(img, text, middle)
+    writeTextOnImage(img, text, 2)
     saveImage(img, 'hello')
 
     file_names = readFileNames(input_path)
     for name in file_names:
+
+        num_of_lines = findNumberOfLines(name)
+
+
+        writeTextOnImage(img, text, num_of_lines)
+
         audiofile = eyed3.load(input_path + '\\' + name)
         imagedata = open("hello.jpg", "rb").read()
         audiofile.tag.images.set(3, imagedata, "image/jpeg", u"you can put a description here")
@@ -48,13 +52,29 @@ def drawBlackEmpty():
     return Image.new('RGB', (600, 600), color='black')
 
 
-def writeTextOnImage(img, text, start_position):
-    font_size = 35
+def writeTextOnImage(img, text, num_of_lines):
+    font_size = 50
     #   for linux
     unicode_font = ImageFont.truetype("wqy-microhei.ttc", font_size)
     #   目前不支持韩文
     # unicode_font = ImageFont.truetype("STKAITI.TTF", font_size)
-    ImageDraw.Draw(img).text((100, start_position), text, font=unicode_font)
+
+
+
+
+    if num_of_lines == 1:
+        start_position = middle
+        ImageDraw.Draw(img).text((100, start_position), text, font=unicode_font)
+    elif num_of_lines == 2:
+        artist = str(text.split(' - ')[:1])[2:-2] + ' -'
+        song_title = str(text.split(' - ')[1:])[2:-2]
+        print(artist)
+        print(song_title)
+        start_position = middle - 50
+        ImageDraw.Draw(img).text((100, start_position), artist, font=unicode_font)
+        ImageDraw.Draw(img).text((100, start_position + 100), song_title, font=unicode_font)
+
+
 
 
 def saveImage(img, filename):
