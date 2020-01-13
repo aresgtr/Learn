@@ -1,14 +1,14 @@
 package com.company;
 
 import java.util.List;
-import static com.company.生产者.卖完了;
+import static com.company.Producer.卖完了;
 
-public class 消费者 implements Runnable {
+public class Consumer implements Runnable {
     private List<String> xiaoMis;
     private String outputColor;
     private String name;
 
-    public 消费者(List<String> xiaoMis, String outputColor, String name) {
+    public Consumer(List<String> xiaoMis, String outputColor, String name) {
         this.xiaoMis = xiaoMis;
         this.outputColor = outputColor;
         this.name = name;

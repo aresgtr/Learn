@@ -2,12 +2,12 @@ package com.company;
 
 import java.util.List;
 
-public class 生产者 implements Runnable {
+public class Producer implements Runnable {
     private List<String> xiaoMis;
     private String outputColor;
     public static final String 卖完了 = "卖完了";
 
-    public 生产者(List<String> xiaoMis, String outputColor) {
+    public Producer(List<String> xiaoMis, String outputColor) {
         this.xiaoMis = xiaoMis;
         this.outputColor = outputColor;
     }

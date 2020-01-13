@@ -8,12 +8,12 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        List<String> 涉事的一堆小米 = new ArrayList<>();
+        List<String> 一堆小米 = new ArrayList<>();
 
-        生产者 雷军 = new 生产者(涉事的一堆小米, ThreadColor.ANSI_WHITE);
-        消费者 米粉1 = new 消费者(涉事的一堆小米, ThreadColor.ANSI_RED, "米粉1");
-        消费者 米粉2 = new 消费者(涉事的一堆小米, ThreadColor.ANSI_GREEN, "米粉2");
-        消费者 米粉3 = new 消费者(涉事的一堆小米, ThreadColor.ANSI_YELLOW, "米粉3");
+        Producer 雷军 = new Producer(一堆小米, ThreadColor.ANSI_WHITE);
+        Consumer 米粉1 = new Consumer(一堆小米, ThreadColor.ANSI_RED, "米粉1");
+        Consumer 米粉2 = new Consumer(一堆小米, ThreadColor.ANSI_GREEN, "米粉2");
+        Consumer 米粉3 = new Consumer(一堆小米, ThreadColor.ANSI_YELLOW, "米粉3");
 
         new Thread(雷军).start();
         new Thread(米粉1).start();
