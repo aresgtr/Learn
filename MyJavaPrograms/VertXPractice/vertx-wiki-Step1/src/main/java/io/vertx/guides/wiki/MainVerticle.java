@@ -1,6 +1,7 @@
 package io.vertx.guides.wiki;
 
 import com.github.rjeschke.txtmark.Processor;
+
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.Promise;
@@ -13,6 +14,7 @@ import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.templ.freemarker.FreeMarkerTemplateEngine;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +24,6 @@ import java.util.stream.Collectors;
 
 public class MainVerticle extends AbstractVerticle {
 
-
   private static final String SQL_CREATE_PAGES_TABLE = "create table if not exists Pages (Id integer identity primary key, Name varchar(255) unique, Content clob)";
   private static final String SQL_GET_PAGE = "select Id, Content from Pages where Name = ?"; // ? are placeholders to pass data
   private static final String SQL_CREATE_PAGE = "insert into Pages values (NULL, ?, ?)";
@@ -31,11 +32,9 @@ public class MainVerticle extends AbstractVerticle {
   private static final String SQL_DELETE_PAGE = "delete from Pages where Id = ?";
 
 
-
   private JDBCClient dbClient;
 
   private static final Logger LOGGER = LoggerFactory.getLogger(MainVerticle.class);
-
 
 
   private Future<Void> prepareDatabase() {
@@ -69,7 +68,6 @@ public class MainVerticle extends AbstractVerticle {
 
     return promise.future();
   }
-
 
 
   private FreeMarkerTemplateEngine templateEngine;
@@ -109,7 +107,6 @@ public class MainVerticle extends AbstractVerticle {
   }
 
 
-
   private void pageDeletionHandler(RoutingContext context) {
     String id = context.request().getParam("id");
     dbClient.getConnection(car -> {
@@ -132,7 +129,6 @@ public class MainVerticle extends AbstractVerticle {
   }
 
 
-
   private void pageCreateHandler(RoutingContext context) {
     String pageName = context.request().getParam("name");
     String location = "/wiki/" + pageName;
@@ -143,7 +139,6 @@ public class MainVerticle extends AbstractVerticle {
     context.response().putHeader("Location", location);
     context.response().end();
   }
-
 
 
   private void indexHandler(RoutingContext context) {
@@ -220,7 +215,6 @@ public class MainVerticle extends AbstractVerticle {
   }
 
 
-
   private static final String EMPTY_PAGE_MARKDOWN =
     "# A new page\n" +
       "\n" +
@@ -269,7 +263,6 @@ public class MainVerticle extends AbstractVerticle {
       }
     });
   }
-
 
 
   @Override
