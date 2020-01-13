@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="RxJava响应式编程2.0" />
-        <module name="RxJava响应式编程" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="RxJava响应式编程2.0" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
