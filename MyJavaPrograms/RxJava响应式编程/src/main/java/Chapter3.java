@@ -33,7 +33,7 @@ public class Chapter3 {
                        return integer + 1;
                    }
                })
-               .subscribeOn(Schedulers.computation())
+               .subscribeOn(Schedulers.computation())   //  不起作用，因为上面已经有了subscribeOn
                .subscribe(new Action1<Integer>() {
                    @Override
                    public void call(Integer integer) {
