@@ -1,6 +1,8 @@
 package io.github.aresgtr;
 
+import java.util.FormatFlagsConversionMismatchException;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 
 public class MoreMultithreadingwithThreadPools {
@@ -29,5 +31,14 @@ public class MoreMultithreadingwithThreadPools {
         System.out.println(result1 + " and " + result2);
 
         squareCalculator.shutdown();
+
+
+        /**
+         * ForkJoinTask
+         */
+
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        FactorialSquareCalculator calculator = new FactorialSquareCalculator(10);
+        forkJoinPool.execute(calculator);
     }
 }

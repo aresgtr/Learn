@@ -10,6 +10,7 @@ public class SquareCalculator {
     private ExecutorService executor = Executors.newFixedThreadPool(2);
 
     public Future<Integer> calculate(Integer input) throws InterruptedException {
+        System.out.println("Calculating square for: " + input);
         Thread.sleep(1000);
         return executor.submit(() -> input * input);
 
