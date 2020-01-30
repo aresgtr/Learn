@@ -7,6 +7,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -18,9 +25,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.RecursionPractice">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.company.ConstructorPractice" />
       <module name="SketchPad" />
@@ -31,8 +40,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RecursionPractice" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.RecursionPractice" />
+      <module name="SketchPad" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RecursionPractice" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -68,25 +91,34 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="2366" y="250" key="#com.intellij.ide.util.MemberChooser" timestamp="1577081139702">
-      <screen x="1920" y="173" width="1280" height="688" />
+    <state x="2589" y="121" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1580162748029">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2589" y="121" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1580162748029" />
     <state x="2366" y="250" key="#com.intellij.ide.util.MemberChooser/1920.173.1280.688/0.0.1920.1040@1920.173.1280.688" timestamp="1577081139702" />
-    <state width="1237" height="152" key="GridCell.Tab.0.bottom" timestamp="1577081614603">
-      <screen x="1920" y="173" width="1280" height="688" />
+    <state x="2763" y="445" width="301" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1580161343575">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2763" y="445" width="301" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1580161343575" />
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom" timestamp="1580345515270">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1580345515270" />
     <state width="1237" height="152" key="GridCell.Tab.0.bottom/1920.173.1280.688/0.0.1920.1040@1920.173.1280.688" timestamp="1577081614603" />
-    <state width="1237" height="152" key="GridCell.Tab.0.center" timestamp="1577081614603">
-      <screen x="1920" y="173" width="1280" height="688" />
+    <state width="1794" height="274" key="GridCell.Tab.0.center" timestamp="1580345515270">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1794" height="274" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1580345515270" />
     <state width="1237" height="152" key="GridCell.Tab.0.center/1920.173.1280.688/0.0.1920.1040@1920.173.1280.688" timestamp="1577081614603" />
-    <state width="1237" height="152" key="GridCell.Tab.0.left" timestamp="1577081614602">
-      <screen x="1920" y="173" width="1280" height="688" />
+    <state width="1794" height="274" key="GridCell.Tab.0.left" timestamp="1580345515270">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1794" height="274" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1580345515270" />
     <state width="1237" height="152" key="GridCell.Tab.0.left/1920.173.1280.688/0.0.1920.1040@1920.173.1280.688" timestamp="1577081614602" />
-    <state width="1237" height="152" key="GridCell.Tab.0.right" timestamp="1577081614603">
-      <screen x="1920" y="173" width="1280" height="688" />
+    <state width="1794" height="274" key="GridCell.Tab.0.right" timestamp="1580345515270">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1794" height="274" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1580345515270" />
     <state width="1237" height="152" key="GridCell.Tab.0.right/1920.173.1280.688/0.0.1920.1040@1920.173.1280.688" timestamp="1577081614603" />
     <state x="2062" y="173" key="SettingsEditor" timestamp="1577081052680">
       <screen x="1920" y="173" width="1280" height="688" />
