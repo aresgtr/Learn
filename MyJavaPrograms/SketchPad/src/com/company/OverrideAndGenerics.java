@@ -22,6 +22,7 @@ public class OverrideAndGenerics {
         sedanClub.addEntry(jack, bmw330);
 
         System.out.println(sedanClub.toString());
+
     }
 }
 
