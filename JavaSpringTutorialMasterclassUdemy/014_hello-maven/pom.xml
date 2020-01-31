@@ -7,6 +7,5 @@
     <groupId>aresgtr.github.io</groupId>
     <artifactId>hello-maven</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-
+    
 </project>
