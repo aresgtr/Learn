@@ -1,23 +1,27 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OverrideAndGenerics {
     public static void main(String[] args) {
-        CollectionOfVehicles<Sedan> sedanClub = new CollectionOfVehicles<>("The Sedan Club");
+        CollectionOfVehicles<Sedan, Male> sedanClub = new CollectionOfVehicles<>("The Sedan Club");
         Sedan vwPassat = new Sedan("VW Passat");
         Sedan volvoS50 = new Sedan("Volvo S60");
         Sedan bmw330 = new Sedan("BMW 330");
         Pickup f150 = new Pickup("Ford F-150");
 
-        sedanClub.addVehicle(vwPassat, volvoS50, bmw330);
+        Male mike = new Male("Mike", 30);
+        Male joe = new Male("Joe", 40);
+        Male jack = new Male("Jack", 25);
+
+        sedanClub.addEntry(mike, vwPassat);
+        sedanClub.addEntry(joe, volvoS50);
+        sedanClub.addEntry(jack, bmw330);
 
         System.out.println(sedanClub.toString());
-
-        CollectionOfVehicles<Vehicle> vehicleClub = new CollectionOfVehicles<>("The Vehicle Club");
-        vehicleClub.addVehicle(vwPassat, f150);
-        System.out.println(vehicleClub.toString());
     }
 }
 
@@ -51,19 +55,18 @@ class Vehicle {
     }
 }
 
-class CollectionOfVehicles<T extends Vehicle> {
+class CollectionOfVehicles<T extends Vehicle, H extends Human> {
     private String name;
-    private List<T> vehicles;
+    private Map<H, T> vehicles;
+
 
     public CollectionOfVehicles(String name) {
         this.name = name;
-        this.vehicles = new ArrayList<>();
+        this.vehicles = new HashMap();
     }
 
-    public void addVehicle(T...vehicle) {
-        for (T whatever: vehicle) {
-            vehicles.add(whatever);
-        }
+    public void addEntry(H owner, T vehicle) {
+        vehicles.put(owner, vehicle);
     }
 
     public String getName() {
@@ -73,8 +76,8 @@ class CollectionOfVehicles<T extends Vehicle> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append(this.getName() + ":\n");
-        vehicles.forEach(a -> result.append(a.getName() + "\n"));
+        result.append(getName() + ":\n");
+        vehicles.forEach((owner, vehicle) -> result.append(owner.toString() + "  " + vehicle.getName() + "\n"));
         return result.toString();
     }
 }
@@ -110,5 +113,37 @@ class Sedan extends Vehicle {
     @Override
     public String getName() {
         return super.getName();
+    }
+}
+
+class Human {
+    private String name;
+    private int age;
+
+    public Human(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+class Male extends Human {
+
+    private final String gender = "Male";
+
+    public Male(String name, int age) {
+        super(name, age);
+    }
+
+    @Override
+    public String toString() {
+        return getName() + ", Age: " + getAge() + ", Gender: " + gender;
     }
 }
