@@ -6,8 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hello-maven" />
-        <module name="014_hello-maven" />
+        <module name="core" />
       </profile>
     </annotationProcessing>
   </component>
