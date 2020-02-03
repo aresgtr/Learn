@@ -7,3 +7,5 @@ This is the repo that stores my coding practice.
 [JavaSpringTutorialMasterclassUdemy](JavaSpringTutorialMasterclassUdemy/) Udemy: Java Spring Tutorial Masterclass
 
 [MyJavaPrograms](MyJavaPrograms/) is for storing my personal Java projects.
+
+[MyPythonPrograms](MyPythonPrograms/) is for storing my personal Python projects.
