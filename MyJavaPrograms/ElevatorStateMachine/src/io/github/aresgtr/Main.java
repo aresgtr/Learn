@@ -9,8 +9,9 @@ public class Main {
 
         ElevatorStateHandler elevatorStateHandler = new ElevatorStateHandler();
 
-        elevatorStateHandler.setUpOrDown(false);    //  state machine controller
+        elevatorStateHandler.setTargetFloor(10);    //  state machine controller
 
-        elevatorStateHandler.changeState();
+        elevatorStateHandler.setTargetFloor(-5);
+
     }
 }
