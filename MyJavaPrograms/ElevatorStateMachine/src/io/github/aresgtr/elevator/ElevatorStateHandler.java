@@ -1,5 +1,12 @@
 package io.github.aresgtr.elevator;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+
 public class ElevatorStateHandler {
 
     private ElevatorState currentState;
@@ -9,10 +16,14 @@ public class ElevatorStateHandler {
 
     private char upOrDown;
 
+    private List<Integer> jobStack;
+
     public ElevatorStateHandler() {
         this.currentState = new Idle();
         this.currentFloor = 1;
+        jobStack = new LinkedList<>();
     }
+
 
     /**
      * Getter and Setter
@@ -22,7 +33,20 @@ public class ElevatorStateHandler {
         return upOrDown;
     }
 
-    public void setTargetFloor(int targetFloorNumber) throws InterruptedException {
+    public void pressFloorButton(int button) throws InterruptedException {
+        jobStack.add(button);
+        Collections.sort(jobStack);
+    }
+
+    public void runElevator() throws InterruptedException {
+        while (!jobStack.isEmpty()) {
+            System.out.println(jobStack.get(0));
+            setTargetFloor(jobStack.get(0));
+            jobStack.remove(0);
+        }
+    }
+
+    private void setTargetFloor(int targetFloorNumber) throws InterruptedException {
         this.targetFloor = targetFloorNumber;
         if (targetFloorNumber > this.currentFloor) {
             this.upOrDown = 'U';
@@ -32,16 +56,15 @@ public class ElevatorStateHandler {
             this.upOrDown = 'N';
         }
 
-        if (this.currentFloor != this.targetFloor) {
-            changeState();
-        }
+        System.out.println("Start from floor: " + this.currentFloor);
+        changeState();
     }
 
     public int getCurrentFloor() {
         return currentFloor;
     }
 
-    public void setCurrentFloor(int currentFloor){
+    public void setCurrentFloor(int currentFloor) {
         this.currentFloor = currentFloor;
     }
 

@@ -9,9 +9,8 @@ public class Main {
 
         ElevatorStateHandler elevatorStateHandler = new ElevatorStateHandler();
 
-        elevatorStateHandler.setTargetFloor(10);    //  state machine controller
-
-        elevatorStateHandler.setTargetFloor(-5);
-
+        elevatorStateHandler.pressFloorButton(3);   //  cannot be 0
+        elevatorStateHandler.pressFloorButton(5);
+        elevatorStateHandler.runElevator();
     }
 }

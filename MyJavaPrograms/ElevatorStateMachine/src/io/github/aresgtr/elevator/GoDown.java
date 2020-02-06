@@ -9,6 +9,6 @@ public class GoDown implements ElevatorState {
             handler.setCurrentFloor(-1);
         }
         handler.setState(new Idle());
-        System.out.println("go idle, now at floor: " + handler.getCurrentFloor());
+        System.out.println("Now at floor: " + handler.getCurrentFloor());
     }
 }
