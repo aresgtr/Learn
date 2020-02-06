@@ -5,9 +5,9 @@ public class Idle implements ElevatorState {
     @Override
     public void changeState(ElevatorStateHandler handler) {
 
-        if (handler.getUpOrDown() == 'U') {
+        if (handler.getUpOrDownStatus() == 'U') {
             handler.setState(new GoUp());
-        } else if (handler.getUpOrDown() == 'D') {
+        } else if (handler.getUpOrDownStatus() == 'D') {
             handler.setState(new GoDown());
         } else {
             handler.setState(this);

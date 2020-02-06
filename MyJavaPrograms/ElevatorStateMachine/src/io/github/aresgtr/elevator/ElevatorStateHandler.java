@@ -7,7 +7,7 @@ public class ElevatorStateHandler {
     private int currentFloor;
     private int targetFloor;
 
-    private char upOrDown;
+    private char upOrDownStatus;
 
 
     public ElevatorStateHandler() {
@@ -20,19 +20,19 @@ public class ElevatorStateHandler {
      * Getter and Setter
      */
 
-    public char getUpOrDown() {
-        return upOrDown;
+    public char getUpOrDownStatus() {
+        return upOrDownStatus;
     }
 
 
     public void setTargetFloor(int targetFloorNumber) throws InterruptedException {
         this.targetFloor = targetFloorNumber;
         if (targetFloorNumber > this.currentFloor) {
-            this.upOrDown = 'U';
+            this.upOrDownStatus = 'U';
         } else if (targetFloorNumber < this.currentFloor) {
-            this.upOrDown = 'D';
+            this.upOrDownStatus = 'D';
         } else {
-            this.upOrDown = 'N';
+            this.upOrDownStatus = 'N';
         }
 
         System.out.println("Start from floor: " + this.currentFloor);
