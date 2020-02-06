@@ -9,8 +9,7 @@ public class Main {
 
         ElevatorStateHandler elevatorStateHandler = new ElevatorStateHandler();
 
-        elevatorStateHandler.pressFloorButton(3);   //  cannot be 0
-        elevatorStateHandler.pressFloorButton(5);
+        elevatorStateHandler.pressFloorButton(3, 5, 8, -1, 10);   //  cannot be 0
         elevatorStateHandler.runElevator();
     }
 }

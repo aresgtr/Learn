@@ -4,9 +4,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
-
 public class ElevatorStateHandler {
 
     private ElevatorState currentState;
@@ -33,14 +30,16 @@ public class ElevatorStateHandler {
         return upOrDown;
     }
 
-    public void pressFloorButton(int button) throws InterruptedException {
-        jobStack.add(button);
+    public void pressFloorButton(int... buttons) throws InterruptedException {
+        for (int button : buttons) {
+            jobStack.add(button);
+        }
         Collections.sort(jobStack);
     }
 
     public void runElevator() throws InterruptedException {
         while (!jobStack.isEmpty()) {
-            System.out.println(jobStack.get(0));
+            System.out.println(">>>>>Target: " + jobStack.get(0));
             setTargetFloor(jobStack.get(0));
             jobStack.remove(0);
         }
