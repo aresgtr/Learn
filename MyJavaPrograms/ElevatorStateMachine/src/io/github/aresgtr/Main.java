@@ -7,7 +7,8 @@ public class Main {
 
         JobStackHandler handler = new JobStackHandler();
 
-        handler.pressFloorButton(3, 5, 8, -1, 10);   //  cannot be 0
+        handler.pressFloorButton(5, 10);   //  cannot be 0
+        handler.callElevatorFromFloor(3);
         handler.runElevator();
     }
 }

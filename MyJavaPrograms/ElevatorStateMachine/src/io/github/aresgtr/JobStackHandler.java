@@ -17,10 +17,16 @@ public class JobStackHandler {
         this.jobStack = new LinkedList<>();
     }
 
-    public void pressFloorButton(int... buttons) throws InterruptedException {
+    public void pressFloorButton(int... buttons){
         for (int button : buttons) {
             jobStack.add(button);
         }
+        Collections.sort(jobStack);
+    }
+
+    //  TODO: add up and down boolean buttons
+    public void callElevatorFromFloor(int floorNumber) {
+        jobStack.add(floorNumber);
         Collections.sort(jobStack);
     }
 
