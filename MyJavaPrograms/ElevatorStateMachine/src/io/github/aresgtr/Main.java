@@ -1,15 +1,13 @@
 package io.github.aresgtr;
 
-import io.github.aresgtr.elevator.ElevatorStateHandler;
-
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 	// write your code here
 
-        ElevatorStateHandler elevatorStateHandler = new ElevatorStateHandler();
+        JobStackHandler handler = new JobStackHandler();
 
-        elevatorStateHandler.pressFloorButton(3, 5, 8, -1, 10);   //  cannot be 0
-        elevatorStateHandler.runElevator();
+        handler.pressFloorButton(3, 5, 8, -1, 10);   //  cannot be 0
+        handler.runElevator();
     }
 }

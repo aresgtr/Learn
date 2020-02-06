@@ -1,9 +1,5 @@
 package io.github.aresgtr.elevator;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-
 public class ElevatorStateHandler {
 
     private ElevatorState currentState;
@@ -13,12 +9,10 @@ public class ElevatorStateHandler {
 
     private char upOrDown;
 
-    private List<Integer> jobStack;
 
     public ElevatorStateHandler() {
         this.currentState = new Idle();
         this.currentFloor = 1;
-        jobStack = new LinkedList<>();
     }
 
 
@@ -30,22 +24,8 @@ public class ElevatorStateHandler {
         return upOrDown;
     }
 
-    public void pressFloorButton(int... buttons) throws InterruptedException {
-        for (int button : buttons) {
-            jobStack.add(button);
-        }
-        Collections.sort(jobStack);
-    }
 
-    public void runElevator() throws InterruptedException {
-        while (!jobStack.isEmpty()) {
-            System.out.println(">>>>>Target: " + jobStack.get(0));
-            setTargetFloor(jobStack.get(0));
-            jobStack.remove(0);
-        }
-    }
-
-    private void setTargetFloor(int targetFloorNumber) throws InterruptedException {
+    public void setTargetFloor(int targetFloorNumber) throws InterruptedException {
         this.targetFloor = targetFloorNumber;
         if (targetFloorNumber > this.currentFloor) {
             this.upOrDown = 'U';
