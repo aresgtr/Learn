@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b6d3bf0-b33f-4aae-bde6-6b6cafd43ef0" name="Default Changelist" comment="" />
+    <list default="true" id="7b6d3bf0-b33f-4aae-bde6-6b6cafd43ef0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sharing/src/main/java/io/github/aresgtr/chapter2/Bank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharing/src/main/java/io/github/aresgtr/chapter2/TicketWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +19,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -22,6 +30,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1VquZN35fB4xUaGvfFxWT22Ssc8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -31,7 +42,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Bank">
+    <configuration name="Bank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.github.aresgtr.chapter2.Bank" />
+      <module name="sharing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.github.aresgtr.chapter2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TryConcurrency" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.qi.concurrency.chapter1.TryConcurrency" />
       <module name="sharing" />
@@ -47,6 +71,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Bank" />
         <item itemvalue="Application.TryConcurrency" />
       </list>
     </recent_temporary>
@@ -77,26 +102,26 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2727" y="264" width="527" height="593" key="#com.intellij.ide.util.MemberChooser" timestamp="1577994944957">
+    <state x="2727" y="264" width="527" height="600" key="#com.intellij.ide.util.MemberChooser" timestamp="1581116936050">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2727" y="264" width="527" height="593" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1577994944957" />
-    <state width="1794" height="274" key="GridCell.Tab.0.bottom" timestamp="1578001534509">
+    <state x="2727" y="264" width="527" height="600" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581116936050" />
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom" timestamp="1581117200250">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578001534509" />
-    <state width="1794" height="274" key="GridCell.Tab.0.center" timestamp="1578001534509">
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581117200250" />
+    <state width="1794" height="274" key="GridCell.Tab.0.center" timestamp="1581117200250">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578001534509" />
-    <state width="1794" height="274" key="GridCell.Tab.0.left" timestamp="1578001534509">
+    <state width="1794" height="274" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581117200250" />
+    <state width="1794" height="274" key="GridCell.Tab.0.left" timestamp="1581117200249">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578001534509" />
-    <state width="1794" height="274" key="GridCell.Tab.0.right" timestamp="1578001534509">
+    <state width="1794" height="274" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581117200249" />
+    <state width="1794" height="274" key="GridCell.Tab.0.right" timestamp="1581117200250">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1578001534509" />
+    <state width="1794" height="274" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581117200250" />
     <state x="2241" y="250" width="1345" height="614" key="new project wizard" timestamp="1577993247519">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
