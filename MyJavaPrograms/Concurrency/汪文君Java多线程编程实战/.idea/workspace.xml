@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b6d3bf0-b33f-4aae-bde6-6b6cafd43ef0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sharing/src/main/java/io/github/aresgtr/chapter2/Bank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sharing/src/main/java/io/github/aresgtr/chapter2/TicketWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharing/src/main/java/io/github/aresgtr/chapter2/BankVersion2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharing/src/main/java/io/github/aresgtr/chapter2/CalculatorStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharing/src/main/java/io/github/aresgtr/chapter2/TaxCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharing/src/main/java/io/github/aresgtr/chapter2/TaxCalculatorMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sharing/src/main/java/io/github/aresgtr/chapter2/TicktWindowRunnable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -42,9 +45,35 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
-  <component name="RunManager" selected="Application.Bank">
+  <component name="RunManager" selected="Application.TaxCalculatorMain">
     <configuration name="Bank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.aresgtr.chapter2.Bank" />
+      <module name="sharing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.github.aresgtr.chapter2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankVersion2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.github.aresgtr.chapter2.BankVersion2" />
+      <module name="sharing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.github.aresgtr.chapter2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaxCalculatorMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.github.aresgtr.chapter2.TaxCalculatorMain" />
       <module name="sharing" />
       <extension name="coverage">
         <pattern>
@@ -71,6 +100,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TaxCalculatorMain" />
+        <item itemvalue="Application.BankVersion2" />
         <item itemvalue="Application.Bank" />
         <item itemvalue="Application.TryConcurrency" />
       </list>
@@ -102,33 +133,33 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2727" y="264" width="527" height="600" key="#com.intellij.ide.util.MemberChooser" timestamp="1581116936050">
+    <state x="2727" y="264" width="527" height="600" key="#com.intellij.ide.util.MemberChooser" timestamp="1581119889539">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2727" y="264" width="527" height="600" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581116936050" />
-    <state width="1794" height="274" key="GridCell.Tab.0.bottom" timestamp="1581117200250">
+    <state x="2727" y="264" width="527" height="600" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581119889539" />
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom" timestamp="1581119662842">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581117200250" />
-    <state width="1794" height="274" key="GridCell.Tab.0.center" timestamp="1581117200250">
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581119662842" />
+    <state width="1794" height="274" key="GridCell.Tab.0.center" timestamp="1581119662842">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581117200250" />
-    <state width="1794" height="274" key="GridCell.Tab.0.left" timestamp="1581117200249">
+    <state width="1794" height="274" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581119662842" />
+    <state width="1794" height="274" key="GridCell.Tab.0.left" timestamp="1581119662842">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581117200249" />
-    <state width="1794" height="274" key="GridCell.Tab.0.right" timestamp="1581117200250">
+    <state width="1794" height="274" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581119662842" />
+    <state width="1794" height="274" key="GridCell.Tab.0.right" timestamp="1581119662842">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581117200250" />
+    <state width="1794" height="274" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581119662842" />
     <state x="2241" y="250" width="1345" height="614" key="new project wizard" timestamp="1577993247519">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2241" y="250" width="1345" height="614" key="new project wizard/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1577993247519" />
-    <state x="2582" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1577994833633">
+    <state x="2582" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1581117998931">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2582" y="259" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1577994833633" />
+    <state x="2582" y="259" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1581117998931" />
   </component>
 </project>
