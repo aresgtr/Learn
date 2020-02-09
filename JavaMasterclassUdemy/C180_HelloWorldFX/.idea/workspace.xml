@@ -67,16 +67,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="OverrideImplement.combined" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="recentsLimit" value="5" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -177,21 +179,25 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1581225389056">
+    <state width="1493" height="138" key="GridCell.Tab.0.bottom" timestamp="1581228113052">
       <screen x="1920" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1581225389056" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1581225389056">
+    <state width="1493" height="138" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1581228113052" />
+    <state width="1493" height="138" key="GridCell.Tab.0.center" timestamp="1581228113052">
       <screen x="1920" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1581225389056" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1581225389056">
+    <state width="1493" height="138" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1581228113052" />
+    <state width="1493" height="138" key="GridCell.Tab.0.left" timestamp="1581228113052">
       <screen x="1920" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1581225389056" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1581225389056">
+    <state width="1493" height="138" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1581228113052" />
+    <state width="1493" height="138" key="GridCell.Tab.0.right" timestamp="1581228113052">
       <screen x="1920" y="0" width="1536" height="832" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1581225389056" />
+    <state width="1493" height="138" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1581228113052" />
+    <state x="2351" y="153" width="672" height="678" key="search.everywhere.popup" timestamp="1581225645933">
+      <screen x="1920" y="0" width="1536" height="832" />
+    </state>
+    <state x="2351" y="153" width="672" height="678" key="search.everywhere.popup/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1581225645933" />
   </component>
 </project>
