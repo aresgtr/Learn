@@ -2,7 +2,6 @@ package com.company;
 
 public class Node extends ListItem {
 
-    //  Constructor
     public Node(Object value) {
         super(value);
     }
