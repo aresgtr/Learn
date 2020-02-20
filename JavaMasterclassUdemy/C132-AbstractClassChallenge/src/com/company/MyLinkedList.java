@@ -63,9 +63,11 @@ public class MyLinkedList implements NodeList {
 
         ListItem currentItem = this.root;
         while (currentItem != null) {
+
             int comparison = currentItem.compareTo(item);
-            if (comparison == 0) {
-                //  found the item to delete
+
+            if (comparison == 0) {  //  we found the item to delete!
+
                 if (currentItem == this.root) {
                     this.root = currentItem.next();
                 } else {
@@ -91,7 +93,7 @@ public class MyLinkedList implements NodeList {
     }
 
     @Override
-    public void traverse(ListItem root) {
+    public void traverse(ListItem root) {   //  遍历一遍
         if (root == null) {
             System.out.println("The list is empty");
         } else {

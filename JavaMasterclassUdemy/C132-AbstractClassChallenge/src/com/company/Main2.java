@@ -7,12 +7,12 @@ public class Main2 {
         MyLinkedList list = new MyLinkedList(null);
         list.traverse(list.getRoot());
 
-//        String stringData = "Darwin Brisbane Perth Melbourne Canberra Adelaide Canberra";
+
         String stringData = "5 7 3 9 8 2 1 0 4 6";
 
         String[] data = stringData.split(" ");
+
         for (String s : data) {
-            //  Create new item with value set to the string s
             list.addItem(new Node(s));
         }
 
