@@ -9,7 +9,9 @@ build.properties
 # Intellij IDEA
 *.iml
 *.idea
+.class
 
+# PyCharm
 venv
 .idea
 __pycache__
