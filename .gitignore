@@ -9,3 +9,8 @@ build.properties
 # Intellij IDEA
 *.iml
 *.idea
+
+venv
+.idea
+__pycache__
+*~
