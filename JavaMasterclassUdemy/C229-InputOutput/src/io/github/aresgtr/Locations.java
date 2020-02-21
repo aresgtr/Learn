@@ -1,5 +1,7 @@
 package io.github.aresgtr;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +10,15 @@ import java.util.Set;
 
 public class Locations implements Map<Integer, Location> {
     private static Map<Integer, Location> locations = new HashMap<>();
+
+    public static void main(String[] args) throws IOException {
+        FileWriter locFile = null;
+        locFile = new FileWriter("locations.txt");
+        for (Location location: locations.values()) {
+            locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
+        }
+        locFile.close();
+    }
 
     static {
         Map<String, Integer> tempExit;
