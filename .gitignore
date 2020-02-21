@@ -1,0 +1,11 @@
+ttened-pom.xml
+build.properties
+
+# Eclipse IDE
+.classpath
+.project
+.settings/
+
+# Intellij IDEA
+*.iml
+*.idea
