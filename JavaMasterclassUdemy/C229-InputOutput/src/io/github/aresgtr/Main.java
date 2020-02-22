@@ -9,7 +9,7 @@ public class Main {
     private static Locations locations = new Locations();
 
     public static void main(String[] args) {
-        // write your code here
+
         Scanner scanner = new Scanner(System.in);
 
         Map<String, String> vocabulary = new HashMap<String, String>();
@@ -27,7 +27,7 @@ public class Main {
             }
 
             Map<String, Integer> exits = locations.get(loc).getExits();
-            System.out.println("Available exits are ");
+            System.out.print("Available exits are ");
             for (String exit : exits.keySet()) {
                 System.out.print(exit + " , ");
             }
