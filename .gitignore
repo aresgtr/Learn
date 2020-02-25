@@ -8,7 +8,7 @@ build.properties
 
 # Intellij IDEA
 *.iml
-*.idea
+#*.idea
 *.class
 
 # PyCharm
