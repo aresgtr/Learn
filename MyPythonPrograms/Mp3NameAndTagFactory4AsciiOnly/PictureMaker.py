@@ -1,8 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 
 # Global Variables
-input_path = 'Factory'
-image_cache_path = 'ImageCache'
 pixel = 600
 middle = pixel / 2
 margin = 0
@@ -13,16 +11,23 @@ unicode_font = ImageFont.truetype("msyhbd.ttc", font_size)
 
 
 def main():
-    img = drawBlackEmpty()
 
-    #   TODO: for testing, will be removed
-    artist = '目前'
-    song_name = '目前不支持韩文目前不支持韩文'
-    text = '目前 - 目前不支持韩文目前不支持韩文'
+    # TODO: for testing, will be removed
+    # artist = '目前'
+    # song_name = '目前不支持韩文目前不支持韩文'
+    # text = '目前 - 目前不支持韩文目前不支持韩文'
 
-    if not is_ascii(song_name):
-        writeTextOnImage(img, text, artist, song_name)
-        saveImage(img, song_name)
+    file = open('input.txt', 'r', encoding='utf-8')
+    Lines = file.readlines()
+
+    for text in Lines:
+        artist = text.split(' - ')[0].rstrip()
+        song_name = text.split(' - ')[1].rstrip()
+
+        if not is_ascii(song_name):
+            img = drawBlackEmpty()
+            writeTextOnImage(img, text, artist, song_name)
+            saveImage(img, song_name)
 
 
 def drawBlackEmpty():
