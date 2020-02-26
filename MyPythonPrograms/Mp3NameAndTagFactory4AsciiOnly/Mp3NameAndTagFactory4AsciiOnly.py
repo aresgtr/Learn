@@ -22,8 +22,8 @@ unicode_font = ImageFont.truetype("msyhbd.ttc", font_size)
 
 
 def main():
-    # text = u"你好 - ひらがな - 히라가나"
-    # text = u"你好 - 一二你好你好"
+    # text = u"你好1 - ひらがな - 히라가나"
+    # text = u"你好1 - 一二你好你好"
     # img = drawBlackEmpty()
     # writeTextOnImage(img, text, "你好", "一二你好你好")
     # saveImage(img, "hello")
