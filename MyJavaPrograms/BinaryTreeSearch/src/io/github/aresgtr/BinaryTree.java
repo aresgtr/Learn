@@ -56,4 +56,44 @@ public class BinaryTree {
     public boolean containsNode(int value) {
         return containsNodeRecursive(root, value);
     }
+
+    private Node deleteRecursive(Node current, int value) {
+        if (current == null) {
+            return null;
+        }
+
+        if (value == current.value) {
+
+            //  分几种情况去remove
+            if (current.left == null && current.right == null) {
+                return null;
+            }
+            if (current.right == null) {
+                return current.left;
+            }
+            if (current.left == null) {
+                return current.right;
+            }
+
+        }
+
+        if (value < current.value) {
+            current.left = deleteRecursive(current.left, value);
+            return current;
+        }
+
+        current.right = deleteRecursive(current.right, value);
+        return current;
+    }
+
+    private int findSmallestValue(Node root) {
+        if (root.left == null) {
+            return root.value;
+        }
+        return findSmallestValue(root.left);
+    }
+
+    public void delete(int value) {
+        root = deleteRecursive(root, value);
+    }
 }
