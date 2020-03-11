@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5eb91f73-559f-4237-b598-3e0d2847b316" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/io/github/aresgtr/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/github/aresgtr/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/directions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/directions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/io/github/aresgtr/Locations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/github/aresgtr/Locations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,20 +20,23 @@
     <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
   </component>
   <component name="ProjectId" id="1YxWyBGPvriqhLmFsJRsN9bhfOU" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Locations">
     <configuration name="Locations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.aresgtr.Locations" />
       <module name="C234-UpdatedInputOutputV1.0" />
@@ -62,8 +65,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Locations" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -79,33 +82,41 @@
       <updated>1583884977161</updated>
       <workItem from="1583884978740" duration="463000" />
       <workItem from="1583885464034" duration="420000" />
-      <workItem from="1583945247091" duration="517000" />
+      <workItem from="1583945247091" duration="647000" />
+      <workItem from="1583959039566" duration="3837000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="2377" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583885169009">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2377" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583885169009" />
-    <state width="1794" height="274" key="GridCell.Tab.0.bottom" timestamp="1583945764794">
+    <state x="2623" y="356" width="581" height="401" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583961886862">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583945764794" />
-    <state width="1794" height="274" key="GridCell.Tab.0.center" timestamp="1583945764794">
+    <state x="2623" y="356" width="581" height="401" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583961886862" />
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom" timestamp="1583963421984">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583945764794" />
-    <state width="1794" height="274" key="GridCell.Tab.0.left" timestamp="1583945764794">
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583963421984" />
+    <state width="1794" height="274" key="GridCell.Tab.0.center" timestamp="1583963421984">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583945764794" />
-    <state width="1794" height="274" key="GridCell.Tab.0.right" timestamp="1583945764794">
+    <state width="1794" height="274" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583963421984" />
+    <state width="1794" height="274" key="GridCell.Tab.0.left" timestamp="1583963421984">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1794" height="274" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583945764794" />
+    <state width="1794" height="274" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583963421984" />
+    <state width="1794" height="274" key="GridCell.Tab.0.right" timestamp="1583963421984">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1794" height="274" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583963421984" />
   </component>
 </project>
