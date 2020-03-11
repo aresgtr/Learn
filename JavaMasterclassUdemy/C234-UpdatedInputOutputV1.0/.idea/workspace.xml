@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80e074cd-b21b-45f4-9451-df7b9d28e402" name="Default Changelist" comment="" />
+    <list default="true" id="5eb91f73-559f-4237-b598-3e0d2847b316" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../C232-UpdatedInputOutput/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../C232-UpdatedInputOutput/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/github/aresgtr/Locations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/github/aresgtr/Locations.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="1YHutx4p8av0iKn87Cm8KHHSaz6" />
+  <component name="Git.Settings">
+    <option name="ADD_SUFFIX_TO_CHERRY_PICKS_OF_PUBLISHED_COMMITS" value="false" />
+    <option name="PREVIEW_PUSH_ON_COMMIT_AND_PUSH" value="false" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="WARN_ABOUT_CRLF" value="false" />
+    <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
+  </component>
+  <component name="ProjectId" id="1YxWyBGPvriqhLmFsJRsN9bhfOU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -15,17 +31,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../../../../tobedeleted/Locations.java" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Locations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.aresgtr.Locations" />
-      <module name="C232-UpdatedInputOutput" />
+      <module name="C234-UpdatedInputOutputV1.0" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="io.github.aresgtr.*" />
@@ -38,7 +52,7 @@
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.aresgtr.Main" />
-      <module name="C232-UpdatedInputOutput" />
+      <module name="C234-UpdatedInputOutputV1.0" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="io.github.aresgtr.*" />
@@ -56,56 +70,44 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="80e074cd-b21b-45f4-9451-df7b9d28e402" name="Default Changelist" comment="" />
-      <created>1582612058733</created>
+      <changelist id="5eb91f73-559f-4237-b598-3e0d2847b316" name="Default Changelist" comment="" />
+      <created>1583884977161</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1582612058733</updated>
+      <updated>1583884977161</updated>
+      <workItem from="1583884978740" duration="463000" />
+      <workItem from="1583885464034" duration="420000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="2281" y="91" key="#Project_Structure" timestamp="1582612473825">
-      <screen x="1920" y="0" width="1536" height="832" />
+    <state x="2377" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583885169009">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2281" y="91" key="#Project_Structure/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1582612473825" />
-    <state x="2534" y="322" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582612126250">
-      <screen x="1920" y="0" width="1536" height="832" />
+    <state x="2377" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583885169009" />
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom" timestamp="1583885883301">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2534" y="322" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1582612126250" />
-    <state x="533" y="105" width="1350" height="678" maximized="true" key="DiffContextDialog" timestamp="1582613742093">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1794" height="274" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583885883301" />
+    <state width="1794" height="274" key="GridCell.Tab.0.center" timestamp="1583885883301">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="533" y="105" width="1350" height="678" maximized="true" key="DiffContextDialog/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1582613742093" />
-    <state x="2329" y="145" key="FileChooserDialogImpl" timestamp="1582613736189">
-      <screen x="1920" y="0" width="1536" height="832" />
+    <state width="1794" height="274" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583885883301" />
+    <state width="1794" height="274" key="GridCell.Tab.0.left" timestamp="1583885883301">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2329" y="145" key="FileChooserDialogImpl/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1582613736189" />
-    <state width="1493" height="224" key="GridCell.Tab.0.bottom" timestamp="1583132483496">
-      <screen x="1920" y="0" width="1536" height="832" />
+    <state width="1794" height="274" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583885883301" />
+    <state width="1794" height="274" key="GridCell.Tab.0.right" timestamp="1583885883301">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1493" height="224" key="GridCell.Tab.0.bottom/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1583132483496" />
-    <state width="1493" height="224" key="GridCell.Tab.0.center" timestamp="1583132483496">
-      <screen x="1920" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="224" key="GridCell.Tab.0.center/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1583132483496" />
-    <state width="1493" height="224" key="GridCell.Tab.0.left" timestamp="1583132483496">
-      <screen x="1920" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="224" key="GridCell.Tab.0.left/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1583132483496" />
-    <state width="1493" height="224" key="GridCell.Tab.0.right" timestamp="1583132483496">
-      <screen x="1920" y="0" width="1536" height="832" />
-    </state>
-    <state width="1493" height="224" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1583132483496" />
-    <state x="2169" y="0" key="SettingsEditor" timestamp="1582613149533">
-      <screen x="1920" y="0" width="1536" height="832" />
-    </state>
-    <state x="2169" y="0" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1582613149533" />
-    <state x="2369" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1583132325112">
-      <screen x="1920" y="0" width="1536" height="832" />
-    </state>
-    <state x="2369" y="257" key="com.intellij.ide.util.TipDialog/1920.0.1536.832/0.0.1920.1040@1920.0.1536.832" timestamp="1583132325112" />
+    <state width="1794" height="274" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1583885883301" />
   </component>
 </project>

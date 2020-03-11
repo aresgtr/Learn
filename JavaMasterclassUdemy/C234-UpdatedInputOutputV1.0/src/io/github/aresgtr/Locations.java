@@ -25,9 +25,8 @@ public class Locations implements Map<Integer, Location> {
 
     static {
 
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new FileReader("locations_big.txt"));
+        try (Scanner scanner = new Scanner(new FileReader("locations_big.txt"))) {
+
             scanner.useDelimiter(",");
             while (scanner.hasNextLine()) {
                 int loc = scanner.nextInt();
@@ -40,18 +39,14 @@ public class Locations implements Map<Integer, Location> {
 
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (scanner != null) {
-                scanner.close();
-            }
         }
 
         // Now read the exits
-        try {
-            scanner = new Scanner(new BufferedReader(new FileReader("directions_big.txt")));
-            scanner.useDelimiter(",");
-            while (scanner.hasNextLine()) {
-                String input = scanner.nextLine();
+        try (BufferedReader dirFile = new BufferedReader(new FileReader("directions_big.txt"))) {
+
+            String input;
+            while ((input = dirFile.readLine()) != null) {
+
                 String[] data = input.split(",");
                 int loc = Integer.parseInt(data[0]);
                 String direction = data[1];
@@ -63,10 +58,6 @@ public class Locations implements Map<Integer, Location> {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (scanner != null) {
-                scanner.close();
-            }
         }
     }
 
