@@ -7,7 +7,7 @@ build.properties
 .settings/
 
 # Intellij IDEA
-*.iml
+#*.iml
 #*.idea
 *.class
 
