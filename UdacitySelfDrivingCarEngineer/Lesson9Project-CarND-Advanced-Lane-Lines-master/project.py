@@ -38,8 +38,7 @@ def main():
     image = cv2.imread('test_images_out_temp/test3.jpg')
     image = perspective_transform(image)
     image = fit_polynomial(image)
-    image = reverse_perspective_transform(image)
-    # plt.imshow(image)
+    plt.imshow(image)
 
 
 def process_images_for_calibration(images, inner_x, inner_y):
@@ -129,34 +128,7 @@ def perspective_transform(image):
     return warped
 
 
-def reverse_perspective_transform(image):
-    x_len = image.shape[1]
-    y_len = image.shape[0]
-
-    image_size = (image.shape[1], image.shape[0])
-
-    # Four source coordinates
-    src = np.float32(
-        [[150, y_len],
-         [30 + x_len - 150, y_len],
-         [150, 0],
-         [30 + x_len - 150, 0]])
-
-    # Four desired coordinates
-    dst = np.float32(
-        [[150, y_len],
-         [30 + x_len - 150, y_len],
-         [160 + 420, y_len * 63 / 100],  # Top left
-         [30 + x_len - 160 - 450, y_len * 63 / 100]])  # Top right
-
-    M = cv2.getPerspectiveTransform(src, dst)
-    warped = cv2.warpPerspective(image, M, image_size, flags=cv2.INTER_NEAREST)  # keep same size as input image
-
-    return warped
-
-
 def find_lane_pixels(image):
-
     gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     ret, binary_warped = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
 
@@ -254,40 +226,26 @@ def fit_polynomial(binary_warped):
     right_fit = np.polyfit(righty, rightx, 2)
 
     # Generate x and y values for plotting
-    ploty = np.linspace(0, binary_warped.shape[0]-1, binary_warped.shape[0] )
+    ploty = np.linspace(0, binary_warped.shape[0] - 1, binary_warped.shape[0])
     try:
-        left_fitx = left_fit[0]*ploty**2 + left_fit[1]*ploty + left_fit[2]
-        right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
+        left_fitx = left_fit[0] * ploty ** 2 + left_fit[1] * ploty + left_fit[2]
+        right_fitx = right_fit[0] * ploty ** 2 + right_fit[1] * ploty + right_fit[2]
     except TypeError:
         # Avoids an error if `left` and `right_fit` are still none or incorrect
         print('The function failed to fit a line!')
-        left_fitx = 1*ploty**2 + 1*ploty
-        right_fitx = 1*ploty**2 + 1*ploty
+        left_fitx = 1 * ploty ** 2 + 1 * ploty
+        right_fitx = 1 * ploty ** 2 + 1 * ploty
 
     ## Visualization ##
     # Colors in the left and right lane regions
-    # out_img[lefty, leftx] = [255, 0, 0]
-    # out_img[righty, rightx] = [0, 0, 255] # TODO delete
+    out_img[lefty, leftx] = [255, 0, 0]
+    out_img[righty, rightx] = [0, 0, 255]  # TODO delete
 
-    # plt.plot((right_fitx - left_fitx) / 2 + left_fitx , ploty, color = 'green', linewidth = 240, alpha = 0.5)  # TODO linewidth dynamically adjusted by width
-    # # Plots the left and right polynomials on the lane lines
-    # plt.plot(left_fitx, ploty, color='yellow')
-    # plt.plot(right_fitx, ploty, color='yellow')
-
-    out_img = create_new_path_img(out_img, left_fitx, right_fitx, ploty)
-
-    return out_img
-
-
-def create_new_path_img(out_img, left_fitx, right_fitx, ploty):
-    path_image = np.zeros((out_img.shape[0], out_img.shape[1]), np.uint8)
-
-    plt.plot((right_fitx - left_fitx) / 2 + left_fitx, ploty, color='green', linewidth=240,
-             alpha=0.5)  # TODO linewidth dynamically adjusted by width
     # Plots the left and right polynomials on the lane lines
     plt.plot(left_fitx, ploty, color='yellow')
     plt.plot(right_fitx, ploty, color='yellow')
-    return path_image
+
+    return out_img
 
 
 def save_image(fname, image, output_dir):
