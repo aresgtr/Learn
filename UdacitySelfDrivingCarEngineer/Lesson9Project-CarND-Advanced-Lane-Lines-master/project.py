@@ -35,9 +35,9 @@ def main():
     #     save_image(fname, image, 'test_images_out_temp/')
 
     # For Testing
-    image = cv2.imread('test_images_out_temp/test3.jpg')
+    image = cv2.imread('test_images_out_temp/straight_lines2.jpg')
     image = perspective_transform(image)
-    image = fit_polynomial(image)
+    image, left_curverad, right_curverad = fit_polynomial(image)
     plt.imshow(image)
 
 
@@ -110,17 +110,17 @@ def perspective_transform(image):
 
     # Four source coordinates
     src = np.float32(
-        [[150, y_len],
-         [30 + x_len - 150, y_len],
-         [160 + 420, y_len * 63 / 100],  # Top left
-         [30 + x_len - 160 - 450, y_len * 63 / 100]])  # Top right
+        [[0, y_len],
+         [x_len, y_len],
+         [566, y_len * 63 / 100],  # Top left
+         [x_len - 566, y_len * 63 / 100]])  # Top right
 
     # Four desired coordinates
     dst = np.float32(
-        [[150, y_len],
-         [30 + x_len - 150, y_len],
-         [150, 0],
-         [30 + x_len - 150, 0]])
+        [[0, y_len],
+         [x_len, y_len],
+         [0, 0],
+         [x_len, 0]])
 
     M = cv2.getPerspectiveTransform(src, dst)
     warped = cv2.warpPerspective(image, M, image_size, flags=cv2.INTER_NEAREST)  # keep same size as input image
@@ -250,7 +250,7 @@ def fit_polynomial(binary_warped):
     print(left_curverad, "m")
     print(right_curverad, "m")
 
-    return out_img
+    return out_img, left_curverad, right_curverad
 
 
 def measure_curvature_real(leftx, rightx, ploty, lefty, righty):
