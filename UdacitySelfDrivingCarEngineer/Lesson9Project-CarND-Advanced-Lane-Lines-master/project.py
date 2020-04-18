@@ -31,19 +31,24 @@ def main():
         undist_image = correct_image_distortion(fname, mtx, dist)
         thresholded_binary_image = create_thresholded_binary_image(undist_image)
         warped_image = perspective_transform(thresholded_binary_image)
-        warped_lane, left_curverad, right_curverad = fit_polynomial(warped_image)
+        warped_lane, curvature, position = fit_polynomial(warped_image)
         lane_image = perspective_transform(warped_lane, inverse=True)
         final_image = combine(lane_image, undist_image)
-        save_image(fname, final_image, 'output_images/')
-
+        texted_final_image = write_text_on_image(final_image, curvature, position)
+        save_image(fname, texted_final_image, 'output_images/')
+        # plt.imshow(texted_final_image)
+        # break
 
     # For Testing
-    # thresholded_binary_image = cv2.imread('test_images_out_temp/straight_lines1.jpg')
+    # fname = 'test_images/test1.jpg'
+    # undist_image = correct_image_distortion(fname, mtx, dist)
+    # thresholded_binary_image = create_thresholded_binary_image(undist_image)
     # warped_image = perspective_transform(thresholded_binary_image)
-    # warped_lane, left_curverad, right_curverad = fit_polynomial(warped_image)
+    # warped_lane, curvature, position = fit_polynomial(warped_image)
     # lane_image = perspective_transform(warped_lane, inverse=True)
-    # final_image = combine(lane_image, thresholded_binary_image)
-    # plt.imshow(final_image)
+    # final_image = combine(lane_image, undist_image)
+    # texted_final_image = write_text_on_image(final_image, curvature, position)
+    # plt.imshow(warped_lane)
 
 
 def process_images_for_calibration(images, inner_x, inner_y):
@@ -252,32 +257,21 @@ def fit_polynomial(binary_warped):
     # plt.plot(left_fitx, ploty, color='yellow')
     # plt.plot(right_fitx, ploty, color='yellow')
 
-    left_curverad, right_curverad = measure_curvature_real(leftx, rightx, ploty, lefty, righty)
+    curvature, position = measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty, righty)
 
-    print(left_curverad, "m")
-    print(right_curverad, "m")
     warped_lane = draw_lane(out_img, left_fitx, right_fitx, ploty)
 
-    return warped_lane, left_curverad, right_curverad
+    return warped_lane, curvature, position
 
 
-def draw_lane(warped, left_fitx, right_fitx, ploty):
-    # Create an image to draw the lines on
-    warp_zero = np.zeros_like(warped).astype(np.uint8)
-    color_warp = np.dstack((warp_zero, warp_zero, warp_zero))
-
-    # Recast the x and y points into usable format for cv2.fillPoly()
-    pts_left = np.array([np.transpose(np.vstack([left_fitx, ploty]))])
-    pts_right = np.array([np.flipud(np.transpose(np.vstack([right_fitx, ploty])))])
-    pts = np.hstack((pts_left, pts_right))
-
-    # Draw the lane onto the warped blank image
-    cv2.fillPoly(color_warp, np.int_([pts]), (0, 255, 0))
-
-    return color_warp
+def measure_position_to_center(leftx, rightx, binary_warped):
+    length = binary_warped.shape[1]
+    vehicle_pos = length / 2
+    lane_center_pos = (rightx[0] - leftx[0]) / 2 + leftx[0]
+    return vehicle_pos - lane_center_pos
 
 
-def measure_curvature_real(leftx, rightx, ploty, lefty, righty):
+def measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty, righty):
     """
     Calculates the curvature of polynomial functions in meters.
     """
@@ -301,11 +295,66 @@ def measure_curvature_real(leftx, rightx, ploty, lefty, righty):
     right_curverad = ((1 + (2 * right_fit_cr[0] * y_eval * ym_per_pix + right_fit_cr[1]) ** 2) ** 1.5) / np.absolute(
         2 * right_fit_cr[0])
 
-    return left_curverad, right_curverad
+    curvature = (left_curverad + right_curverad) / 2
+
+    position_to_center = measure_position_to_center(leftx, rightx, binary_warped)
+    real_position_to_center = position_to_center * xm_per_pix
+
+    return curvature, real_position_to_center
+
+
+def draw_lane(warped, left_fitx, right_fitx, ploty):
+    # Create an image to draw the lines on
+    warp_zero = np.zeros_like(warped).astype(np.uint8)
+    color_warp = np.dstack((warp_zero, warp_zero, warp_zero))
+
+    # Recast the x and y points into usable format for cv2.fillPoly()
+    pts_left = np.array([np.transpose(np.vstack([left_fitx, ploty]))])
+    pts_right = np.array([np.flipud(np.transpose(np.vstack([right_fitx, ploty])))])
+    pts = np.hstack((pts_left, pts_right))
+
+    # Draw the lane onto the warped blank image
+    cv2.fillPoly(color_warp, np.int_([pts]), (0, 255, 0))
+
+    return color_warp
 
 
 def combine(lane_image, image):
     return cv2.addWeighted(image, 1, lane_image, 0.3, 0)
+
+
+def write_text_on_image(image, curvature, position):
+    cur_text = 'Radius of Curvature = ' + str(int(curvature)) + '(m)'
+
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    topPosition = (100, 80)
+    fontScale = 2
+    fontColor = (255, 255, 255)
+    lineType = 2
+
+    cv2.putText(image, cur_text,
+                topPosition,
+                font,
+                fontScale,
+                fontColor,
+                lineType)
+
+    if position >= 0:
+        left_or_right = 'right'
+    else:
+        left_or_right = 'left'
+
+    pos_text = 'Vehicle is ' + "{:.2f}".format(abs(position)) + 'm ' + left_or_right + ' of center'
+    topPosition = (100, 150)
+
+    cv2.putText(image, pos_text,
+                topPosition,
+                font,
+                fontScale,
+                fontColor,
+                lineType)
+
+    return image
 
 
 def save_image(fname, image, output_dir):
