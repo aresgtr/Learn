@@ -3,39 +3,57 @@ import glob
 import logging
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+from moviepy.editor import VideoFileClip
 import ntpath
 import numpy as np
 import os
+import pickle
+
+
+# Define a class to receive the characteristics of each line detection
+class Line():
+    def __init__(self):
+        # was the line detected in the last iteration?
+        self.detected = False
+        # x values of the last n fits of the line
+        self.recent_xfitted = []
+        # average x values of the fitted line over the last n iterations
+        self.bestx = None
+        # polynomial coefficients averaged over the last n iterations
+        self.best_fit = None
+        # polynomial coefficients for the most recent fit
+        self.current_fit = [np.array([False])]
+        # radius of curvature of the line in some units
+        self.radius_of_curvature = None
+        # distance in meters of vehicle center from the line
+        self.line_base_pos = None
+        # difference in fit coefficients between last and new fits
+        self.diffs = np.array([0, 0, 0], dtype='float')
+        # x values for detected line pixels
+        self.allx = None
+        # y values for detected line pixels
+        self.ally = None
 
 
 def main():
-    # Make a list of calibration images
+    line1 = Line()
+
+    # Calibrate Camera
+    calibrate_camera('camera_cal/calibration*.jpg')
+
+    # Correct distortion for calibration images
     images = glob.glob('camera_cal/calibration*.jpg')
-    objpoints, imgpoints = process_images_for_calibration(images, 9, 6)
-
-    # Retrieve image size for calibration
-    img = cv2.imread('camera_cal/calibration1.jpg')
-    img_size = (img.shape[1], img.shape[0])
-
-    # Do camera calibration given object points and image points
-    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, img_size, None, None)
-
     for idx, fname in enumerate(images):
-        image = correct_image_distortion(fname, mtx, dist)
+        image = cv2.imread(fname)
+        image = correct_image_distortion(image)
         save_image(fname, image, 'camera_cal_out/')
 
-    # TODO: Below are after camera calibration
-
+    # Process test_images
     images = glob.glob('test_images/*')
     for idx, fname in enumerate(images):
-        undist_image = correct_image_distortion(fname, mtx, dist)
-        thresholded_binary_image = create_thresholded_binary_image(undist_image)
-        warped_image = perspective_transform(thresholded_binary_image)
-        warped_lane, curvature, position = fit_polynomial(warped_image)
-        lane_image = perspective_transform(warped_lane, inverse=True)
-        final_image = combine(lane_image, undist_image)
-        texted_final_image = write_text_on_image(final_image, curvature, position)
-        save_image(fname, texted_final_image, 'output_images/')
+        image = cv2.imread(fname)
+        result = process_image(image)
+        save_image(fname, result, 'output_images/')
         # plt.imshow(texted_final_image)
         # break
 
@@ -49,6 +67,38 @@ def main():
     # final_image = combine(lane_image, undist_image)
     # texted_final_image = write_text_on_image(final_image, curvature, position)
     # plt.imshow(warped_lane)
+
+    # Process video
+
+
+def process_image(image):
+    undist_image = correct_image_distortion(image)
+    thresholded_binary_image = create_thresholded_binary_image(undist_image)
+    warped_image = perspective_transform(thresholded_binary_image)
+    warped_lane, curvature, position = fit_polynomial(warped_image)
+    lane_image = perspective_transform(warped_lane, inverse=True)
+    final_image = combine(lane_image, undist_image)
+    texted_final_image = write_text_on_image(final_image, curvature, position)
+    return texted_final_image
+
+
+def calibrate_camera(source_path):
+    # Make a list of calibration images
+    images = glob.glob(source_path)
+    objpoints, imgpoints = process_images_for_calibration(images, 9, 6)
+
+    # Retrieve image size for calibration
+    img = cv2.imread(images[0])
+    img_size = (img.shape[1], img.shape[0])
+
+    # Do camera calibration given object points and image points
+    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, img_size, None, None)
+
+    # Save the camera calibration result for later use (we won't worry about rvecs / tvecs)
+    dist_pickle = {}
+    dist_pickle["mtx"] = mtx
+    dist_pickle["dist"] = dist
+    pickle.dump(dist_pickle, open("wide_dist_pickle.p", "wb"))
 
 
 def process_images_for_calibration(images, inner_x, inner_y):
@@ -68,17 +118,16 @@ def process_images_for_calibration(images, inner_x, inner_y):
             imgpoints.append(corners)
             objpoints.append(objp)
 
-            # draw and display the corners
-            # image = cv2.drawChessboardCorners(image, (inner_x, inner_y), corners, ret)  # TODO: remove
-            # plt.imshow(image)
-
     return objpoints, imgpoints
 
 
-def correct_image_distortion(fname, mtx, dist):
-    image = cv2.imread(fname)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert back to RGB
+def correct_image_distortion(image):
+    # Read in the saved calibration variables
+    dist_pickle = pickle.load(open("wide_dist_pickle.p", "rb"))
+    mtx = dist_pickle["mtx"]
+    dist = dist_pickle["dist"]
 
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert back to RGB
     dst = cv2.undistort(image, mtx, dist, None, mtx)
     return dst
 
