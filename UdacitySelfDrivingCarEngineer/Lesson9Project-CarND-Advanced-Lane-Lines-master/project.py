@@ -1,5 +1,6 @@
 import cv2
 import glob
+import logging
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import ntpath
@@ -8,37 +9,41 @@ import os
 
 
 def main():
-    # # Make a list of calibration images
-    # images = glob.glob('camera_cal/calibration*.jpg')
-    # objpoints, imgpoints = process_images_for_calibration(images, 9, 6)
-    #
-    # # Retrieve image size for calibration
-    # img = cv2.imread('camera_cal/calibration1.jpg')
-    # img_size = (img.shape[1], img.shape[0])
-    #
-    # # Do camera calibration given object points and image points
-    # ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, img_size, None, None)
-    #
-    # for idx, fname in enumerate(images):
-    #     image = correct_image_distortion(fname, mtx, dist)
-    #     save_image(fname, image, 'camera_cal_out/')
-    #
-    # # TODO: Below are after camera calibration
-    #
-    # images = glob.glob('test_images/*')
-    # for idx, fname in enumerate(images):
-    #     image = correct_image_distortion(fname, mtx, dist)
-    #     image = create_thresholded_binary_image(image)
-    #     # image = perspective_transform(image)
-    #
-    #     # plt.imshow(img, cmap='gray')
-    #     save_image(fname, image, 'test_images_out_temp/')
+    # Make a list of calibration images
+    images = glob.glob('camera_cal/calibration*.jpg')
+    objpoints, imgpoints = process_images_for_calibration(images, 9, 6)
+
+    # Retrieve image size for calibration
+    img = cv2.imread('camera_cal/calibration1.jpg')
+    img_size = (img.shape[1], img.shape[0])
+
+    # Do camera calibration given object points and image points
+    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, img_size, None, None)
+
+    for idx, fname in enumerate(images):
+        image = correct_image_distortion(fname, mtx, dist)
+        save_image(fname, image, 'camera_cal_out/')
+
+    # TODO: Below are after camera calibration
+
+    images = glob.glob('test_images/*')
+    for idx, fname in enumerate(images):
+        undist_image = correct_image_distortion(fname, mtx, dist)
+        thresholded_binary_image = create_thresholded_binary_image(undist_image)
+        warped_image = perspective_transform(thresholded_binary_image)
+        warped_lane, left_curverad, right_curverad = fit_polynomial(warped_image)
+        lane_image = perspective_transform(warped_lane, inverse=True)
+        final_image = combine(lane_image, undist_image)
+        save_image(fname, final_image, 'output_images/')
+
 
     # For Testing
-    image = cv2.imread('test_images_out_temp/straight_lines2.jpg')
-    image = perspective_transform(image)
-    image, left_curverad, right_curverad = fit_polynomial(image)
-    plt.imshow(image)
+    # thresholded_binary_image = cv2.imread('test_images_out_temp/straight_lines1.jpg')
+    # warped_image = perspective_transform(thresholded_binary_image)
+    # warped_lane, left_curverad, right_curverad = fit_polynomial(warped_image)
+    # lane_image = perspective_transform(warped_lane, inverse=True)
+    # final_image = combine(lane_image, thresholded_binary_image)
+    # plt.imshow(final_image)
 
 
 def process_images_for_calibration(images, inner_x, inner_y):
@@ -98,13 +103,9 @@ def create_thresholded_binary_image(image, s_thresh=(170, 255), sx_thresh=(45, 8
     return combined_binary
 
 
-def perspective_transform(image):
+def perspective_transform(image, inverse=False):
     x_len = image.shape[1]
     y_len = image.shape[0]
-    # plt.plot(150, y_len, 'x')  # bottom left                    # TODO: remove
-    # plt.plot(30 + x_len - 150, y_len, 'x')  # bottom right
-    # plt.plot(160 + 410, y_len * 63 / 100, 'x')  # top left
-    # plt.plot(30 + x_len - 160 - 410, y_len * 63 / 100, 'x')  # top right
 
     image_size = (image.shape[1], image.shape[0])
 
@@ -122,23 +123,29 @@ def perspective_transform(image):
          [0, 0],
          [x_len, 0]])
 
-    M = cv2.getPerspectiveTransform(src, dst)
-    warped = cv2.warpPerspective(image, M, image_size, flags=cv2.INTER_NEAREST)  # keep same size as input image
+    if not inverse:
+        M = cv2.getPerspectiveTransform(src, dst)
+        result = cv2.warpPerspective(image, M, image_size, flags=cv2.INTER_NEAREST)  # keep same size as input image
+    else:  # inverse transform
+        Minv = cv2.getPerspectiveTransform(dst, src)
+        result = cv2.warpPerspective(image, Minv, image_size, flags=cv2.INTER_NEAREST)
 
-    return warped
+    return result
 
 
 def find_lane_pixels(image):
-    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-    ret, binary_warped = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+    # gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    #
+    # ret, binary_warped = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
 
     # Normalize image from 0-1
-    binary_warped = binary_warped / 255
+    # binary_warped = binary_warped / 255   //  TODO revise
+    binary_warped = image
 
     histogram = np.sum(binary_warped[binary_warped.shape[0] // 2:, :], axis=0)
     # plt.plot(histogram)       #   TODO delete
     # Create an output image to draw on and visualize the result
-    out_img = np.dstack((binary_warped, binary_warped, binary_warped))
+    # out_img = np.dstack((binary_warped, binary_warped, binary_warped))  # TODO:warning
 
     # Find the peak of the left and right halves of the histogram
     # These will be the starting point for the left and right lines
@@ -214,7 +221,7 @@ def find_lane_pixels(image):
     rightx = nonzerox[right_lane_inds]
     righty = nonzeroy[right_lane_inds]
 
-    return leftx, lefty, rightx, righty, out_img
+    return leftx, lefty, rightx, righty, binary_warped
 
 
 def fit_polynomial(binary_warped):
@@ -238,19 +245,36 @@ def fit_polynomial(binary_warped):
 
     ## Visualization ##
     # Colors in the left and right lane regions
-    out_img[lefty, leftx] = [255, 0, 0]
-    out_img[righty, rightx] = [0, 0, 255]  # TODO delete
+    # out_img[lefty, leftx] = [255, 0, 0]
+    # out_img[righty, rightx] = [0, 0, 255]  # TODO delete
 
     # Plots the left and right polynomials on the lane lines
-    plt.plot(left_fitx, ploty, color='yellow')
-    plt.plot(right_fitx, ploty, color='yellow')
+    # plt.plot(left_fitx, ploty, color='yellow')
+    # plt.plot(right_fitx, ploty, color='yellow')
 
     left_curverad, right_curverad = measure_curvature_real(leftx, rightx, ploty, lefty, righty)
 
     print(left_curverad, "m")
     print(right_curverad, "m")
+    warped_lane = draw_lane(out_img, left_fitx, right_fitx, ploty)
 
-    return out_img, left_curverad, right_curverad
+    return warped_lane, left_curverad, right_curverad
+
+
+def draw_lane(warped, left_fitx, right_fitx, ploty):
+    # Create an image to draw the lines on
+    warp_zero = np.zeros_like(warped).astype(np.uint8)
+    color_warp = np.dstack((warp_zero, warp_zero, warp_zero))
+
+    # Recast the x and y points into usable format for cv2.fillPoly()
+    pts_left = np.array([np.transpose(np.vstack([left_fitx, ploty]))])
+    pts_right = np.array([np.flipud(np.transpose(np.vstack([right_fitx, ploty])))])
+    pts = np.hstack((pts_left, pts_right))
+
+    # Draw the lane onto the warped blank image
+    cv2.fillPoly(color_warp, np.int_([pts]), (0, 255, 0))
+
+    return color_warp
 
 
 def measure_curvature_real(leftx, rightx, ploty, lefty, righty):
@@ -278,6 +302,10 @@ def measure_curvature_real(leftx, rightx, ploty, lefty, righty):
         2 * right_fit_cr[0])
 
     return left_curverad, right_curverad
+
+
+def combine(lane_image, image):
+    return cv2.addWeighted(image, 1, lane_image, 0.3, 0)
 
 
 def save_image(fname, image, output_dir):
