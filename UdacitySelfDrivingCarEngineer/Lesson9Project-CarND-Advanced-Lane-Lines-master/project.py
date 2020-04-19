@@ -35,8 +35,11 @@ class Line():
         self.ally = None
 
 
+'''Global Variable'''
+line = Line()
+
+
 def main():
-    line1 = Line()
 
     # Calibrate Camera
     calibrate_camera('camera_cal/calibration*.jpg')
@@ -45,6 +48,7 @@ def main():
     images = glob.glob('camera_cal/calibration*.jpg')
     for idx, fname in enumerate(images):
         image = cv2.imread(fname)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert back to RGB (Only for images)
         image = correct_image_distortion(image)
         save_image(fname, image, 'camera_cal_out/')
 
@@ -52,30 +56,37 @@ def main():
     images = glob.glob('test_images/*')
     for idx, fname in enumerate(images):
         image = cv2.imread(fname)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert back to RGB (Only for images)
         result = process_image(image)
         save_image(fname, result, 'output_images/')
-        # plt.imshow(texted_final_image)
-        # break
-
-    # For Testing
-    # fname = 'test_images/test1.jpg'
-    # undist_image = correct_image_distortion(fname, mtx, dist)
-    # thresholded_binary_image = create_thresholded_binary_image(undist_image)
-    # warped_image = perspective_transform(thresholded_binary_image)
-    # warped_lane, curvature, position = fit_polynomial(warped_image)
-    # lane_image = perspective_transform(warped_lane, inverse=True)
-    # final_image = combine(lane_image, undist_image)
-    # texted_final_image = write_text_on_image(final_image, curvature, position)
-    # plt.imshow(warped_lane)
 
     # Process video
+    white_output = 'test_videos_output/project_video.mp4'
+
+    if not os.path.exists('test_videos_output/'):
+        os.makedirs('test_videos_output/')
+
+    # To speed up the testing process you may want to try your pipeline on a shorter subclip of the video
+    # To do so add .subclip(start_second,end_second) to the end of the line below
+    # Where start_second and end_second are integer values representing the start and end of the subclip
+    # You may also uncomment the following line for a subclip of the first 5 seconds
+    clip1 = VideoFileClip("project_video.mp4").subclip(0, 0.01)
+
+    # clip1 = VideoFileClip("project_video.mp4")
+    white_clip = clip1.fl_image(process_image)  # NOTE: this function expects color images!!
+    white_clip.write_videofile(white_output, audio=False)
 
 
 def process_image(image):
     undist_image = correct_image_distortion(image)
     thresholded_binary_image = create_thresholded_binary_image(undist_image)
     warped_image = perspective_transform(thresholded_binary_image)
-    warped_lane, curvature, position = fit_polynomial(warped_image)
+
+    if not line.detected:   # If last frame couldn't detect lines, new search is needed
+        warped_lane, curvature, position = fit_polynomial(warped_image)
+    else:                   # If last frame detected lines, search from last frame's parameters to save time
+        pass
+
     lane_image = perspective_transform(warped_lane, inverse=True)
     final_image = combine(lane_image, undist_image)
     texted_final_image = write_text_on_image(final_image, curvature, position)
@@ -127,7 +138,7 @@ def correct_image_distortion(image):
     mtx = dist_pickle["mtx"]
     dist = dist_pickle["dist"]
 
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert back to RGB
+
     dst = cv2.undistort(image, mtx, dist, None, mtx)
     return dst
 
