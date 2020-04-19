@@ -25,8 +25,8 @@ class Line:
         self.current_fit = [np.array([False])]
         # radius of curvature of the line in some units
         self.radius_of_curvature = None
-        # distance in meters of vehicle center from the line
-        self.line_base_pos = None
+        # distance in meters of vehicle center from the line center (only store in left lane)
+        self.vehicle_pos = None
         # difference in fit coefficients between last and new fits
         self.diffs = np.array([0, 0, 0], dtype='float')
         # x values for detected line pixels
@@ -34,14 +34,14 @@ class Line:
         # y values for detected line pixels
         self.ally = None
 
-
     def get_current_fit(self):
         return self.current_fit
 
 
-'''Global Variable'''
+'''Global Variables'''
 left_line = Line()
 right_line = Line()
+sanity_check_frame_counter = 0
 
 
 def main():
@@ -75,7 +75,7 @@ def main():
     # To do so add .subclip(start_second,end_second) to the end of the line below
     # Where start_second and end_second are integer values representing the start and end of the subclip
     # You may also uncomment the following line for a subclip of the first 5 seconds
-    clip1 = VideoFileClip("project_video.mp4").subclip(0, 1)
+    clip1 = VideoFileClip("project_video.mp4").subclip(0, 20)
 
     # clip1 = VideoFileClip("project_video.mp4")
     white_clip = clip1.fl_image(process_video_frame)  # NOTE: this function expects color images!!
@@ -86,7 +86,7 @@ def process_image(image):
     undist_image = correct_image_distortion(image)
     thresholded_binary_image = create_thresholded_binary_image(undist_image)
     warped_image = perspective_transform(thresholded_binary_image)
-    warped_lane, curvature, position = fit_polynomial(warped_image)
+    warped_lane, curvature, position = search_and_construct_lane(warped_image)
     lane_image = perspective_transform(warped_lane, inverse=True)
     final_image = combine(lane_image, undist_image)
     texted_final_image = write_text_on_image(final_image, curvature, position)
@@ -100,14 +100,9 @@ def process_video_frame(image):
 
     # If last frame couldn't detect lines, new search is needed
     if (left_line.detected == False) or (right_line.detected == False):
-        warped_lane, curvature, position = fit_polynomial(warped_image)
+        warped_lane, curvature, position = search_and_construct_lane(warped_image)
     else:  # If last frame detected lines, search from last frame's parameters to save time
-        warped_lane, curvature, position = search_around_poly(warped_image)
-
-    # TODO: sanity check
-    # check that they have similar curvature
-    # check that they are separated by approximately the right distance horizontally
-    # check that they are roughly parallel
+        warped_lane, curvature, position = search_and_construct_lane(warped_image, from_previous=True)
 
     lane_image = perspective_transform(warped_lane, inverse=True)
     final_image = combine(lane_image, undist_image)
@@ -219,14 +214,13 @@ def perspective_transform(image, inverse=False):
     return result
 
 
-def find_lane_pixels(image):
+def find_lane_pixels(binary_warped):
     # gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     #
     # ret, binary_warped = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
 
     # Normalize image from 0-1
     # binary_warped = binary_warped / 255   //  TODO revise
-    binary_warped = image
 
     histogram = np.sum(binary_warped[binary_warped.shape[0] // 2:, :], axis=0)
     # plt.plot(histogram)       #   TODO delete
@@ -307,64 +301,10 @@ def find_lane_pixels(image):
     rightx = nonzerox[right_lane_inds]
     righty = nonzeroy[right_lane_inds]
 
-    return leftx, lefty, rightx, righty, binary_warped
+    return leftx, lefty, rightx, righty
 
 
-def fit_polynomial(binary_warped):
-    # Find our lane pixels first
-    leftx, lefty, rightx, righty, out_img = find_lane_pixels(binary_warped)
-
-    # Fit a second order polynomial to each using `np.polyfit`
-    left_fit = np.polyfit(lefty, leftx, 2)
-    right_fit = np.polyfit(righty, rightx, 2)
-
-    left_line.current_fit = left_fit
-    right_line.current_fit = right_fit
-    left_line.detected = True
-    right_line.detected = True
-
-    # Generate x and y values for plotting
-    ploty = np.linspace(0, binary_warped.shape[0] - 1, binary_warped.shape[0])
-    try:
-        left_fitx = left_fit[0] * ploty ** 2 + left_fit[1] * ploty + left_fit[2]
-        right_fitx = right_fit[0] * ploty ** 2 + right_fit[1] * ploty + right_fit[2]
-    except TypeError:
-        # Avoids an error if `left` and `right_fit` are still none or incorrect
-        print('The function failed to fit a line!')
-        left_fitx = 1 * ploty ** 2 + 1 * ploty
-        right_fitx = 1 * ploty ** 2 + 1 * ploty
-
-    ## Visualization ##
-    # Colors in the left and right lane regions
-    # out_img[lefty, leftx] = [255, 0, 0]
-    # out_img[righty, rightx] = [0, 0, 255]  # TODO delete
-
-    # Plots the left and right polynomials on the lane lines
-    # plt.plot(left_fitx, ploty, color='yellow')
-    # plt.plot(right_fitx, ploty, color='yellow')
-
-    curvature, position = measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty, righty)
-
-    warped_lane = draw_lane(out_img, left_fitx, right_fitx, ploty)
-
-    return warped_lane, curvature, position
-
-
-def fit_poly(img_shape, leftx, lefty, rightx, righty):
-    ### TO-DO: Fit a second order polynomial to each with np.polyfit() ###
-    left_fit = np.polyfit(lefty, leftx, 2)
-    right_fit = np.polyfit(righty, rightx, 2)
-    # Generate x and y values for plotting
-    ploty = np.linspace(0, img_shape[0] - 1, img_shape[0])
-    ### TO-DO: Calc both polynomials using ploty, left_fit and right_fit ###
-    left_fitx = left_fit[0] * ploty ** 2 + left_fit[1] * ploty + left_fit[2]
-    right_fitx = right_fit[0] * ploty ** 2 + right_fit[1] * ploty + right_fit[2]
-
-    return left_fitx, right_fitx, ploty
-
-
-def search_around_poly(binary_warped):
-
+def find_lane_pixels_from_prior(binary_warped):
     left_fit = left_line.get_current_fit()
     right_fit = right_line.get_current_fit()
 
@@ -397,51 +337,84 @@ def search_around_poly(binary_warped):
     rightx = nonzerox[right_lane_inds]
     righty = nonzeroy[right_lane_inds]
 
-    # Fit new polynomials
-    left_fitx, right_fitx, ploty = fit_poly(binary_warped.shape, leftx, lefty, rightx, righty)
+    return leftx, lefty, rightx, righty
 
-    ## Visualization ##
-    # Create an image to draw on and an image to show the selection window
-    # out_img = np.dstack((binary_warped, binary_warped, binary_warped)) * 255
-    out_img = binary_warped
-    window_img = np.zeros_like(out_img)
-    # Color in left and right line pixels
-    # out_img[nonzeroy[left_lane_inds], nonzerox[left_lane_inds]] = [255, 0, 0]
-    # out_img[nonzeroy[right_lane_inds], nonzerox[right_lane_inds]] = [0, 0, 255]
 
-    # Generate a polygon to illustrate the search window area
-    # And recast the x and y points into usable format for cv2.fillPoly()
-    left_line_window1 = np.array([np.transpose(np.vstack([left_fitx - margin, ploty]))])
-    left_line_window2 = np.array([np.flipud(np.transpose(np.vstack([left_fitx + margin,
-                                                                    ploty])))])
-    left_line_pts = np.hstack((left_line_window1, left_line_window2))
-    right_line_window1 = np.array([np.transpose(np.vstack([right_fitx - margin, ploty]))])
-    right_line_window2 = np.array([np.flipud(np.transpose(np.vstack([right_fitx + margin,
-                                                                     ploty])))])
-    right_line_pts = np.hstack((right_line_window1, right_line_window2))
+def search_and_construct_lane(binary_warped, from_previous=False):
+    # Find our lane pixels first
+    if not from_previous:
+        leftx, lefty, rightx, righty = find_lane_pixels(binary_warped)
+    else:
+        leftx, lefty, rightx, righty = find_lane_pixels_from_prior(binary_warped)
 
-    # Draw the lane onto the warped blank image
-    cv2.fillPoly(window_img, np.int_([left_line_pts]), (0, 255, 0))
-    cv2.fillPoly(window_img, np.int_([right_line_pts]), (0, 255, 0))
-    # result = cv2.addWeighted(out_img, 1, window_img, 0.3, 0)
-    #
-    # # Plot the polynomial lines onto the image
-    # plt.plot(left_fitx, ploty, color='yellow')
-    # plt.plot(right_fitx, ploty, color='yellow')
-    # ## End visualization steps ##
-    #
-    # return result
+    # Fit a second order polynomial to each using `np.polyfit`
+    left_fit = np.polyfit(lefty, leftx, 2)
+    right_fit = np.polyfit(righty, rightx, 2)
 
-    # TODO change out_img to binary
+    # Generate x and y values for plotting
+    ploty = np.linspace(0, binary_warped.shape[0] - 1, binary_warped.shape[0])
+    try:
+        left_fitx = left_fit[0] * ploty ** 2 + left_fit[1] * ploty + left_fit[2]
+        right_fitx = right_fit[0] * ploty ** 2 + right_fit[1] * ploty + right_fit[2]
+    except TypeError:
+        # Avoids an error if `left` and `right_fit` are still none or incorrect
+        print('The function failed to fit a line!')
+        left_fitx = 1 * ploty ** 2 + 1 * ploty
+        right_fitx = 1 * ploty ** 2 + 1 * ploty
 
-    # plt.imshow(out_img)
-    # plt.show()
+    left_curverad, right_curverad, position = measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty,
+                                                                             righty)
+    curvature = (left_curverad + right_curverad) / 2
+    warped_lane = draw_lane(binary_warped, left_fitx, right_fitx, ploty)
 
-    curvature, position = measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty, righty)
+    # Sanity Check only if it is searching from previous
+    if from_previous:
+        perform_sanity_check(left_curverad, right_curverad, left_fitx, right_fitx)
+    else:
+        left_line.detected = True
+        right_line.detected = True
 
-    warped_lane = draw_lane(out_img, left_fitx, right_fitx, ploty)
+    # Deal with line objects
+    left_line.current_fit = left_fit
+    right_line.current_fit = right_fit
+
+    left_line.radius_of_curvature = left_curverad
+    right_line.radius_of_curvature = right_curverad
+
+    left_line.vehicle_pos = position
 
     return warped_lane, curvature, position
+
+
+def perform_sanity_check(left_curvature, right_curvature, left_fitx, right_fitx):
+    # TODO: sanity check
+    # check that they have similar curvature
+    # check that they are separated by approximately the right distance horizontally
+    # check that they are roughly parallel
+
+    threshold = 0.1  # 10% for now
+
+    if (left_curvature - left_line.radius_of_curvature) / left_line.radius_of_curvature > threshold:
+        sanity_check_pass = False
+    elif (right_curvature - right_line.radius_of_curvature) / right_line.radius_of_curvature > threshold:
+        sanity_check_pass = False
+    #  Need more conditions
+    else:
+        sanity_check_pass = True
+
+    global sanity_check_frame_counter
+
+    if sanity_check_pass:
+        sanity_check_frame_counter = 0
+        left_line.detected = True
+        right_line.detected = True
+    else:  # Not pass
+        sanity_check_frame_counter += 1
+
+    if sanity_check_frame_counter >= 3:  # Reset after three frames
+        sanity_check_frame_counter = 0
+        left_line.detected = False
+        right_line.detected = False
 
 
 def measure_position_to_center(leftx, rightx, binary_warped):
@@ -475,16 +448,13 @@ def measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty, r
     right_curverad = ((1 + (2 * right_fit_cr[0] * y_eval * ym_per_pix + right_fit_cr[1]) ** 2) ** 1.5) / np.absolute(
         2 * right_fit_cr[0])
 
-    curvature = (left_curverad + right_curverad) / 2
-
     position_to_center = measure_position_to_center(leftx, rightx, binary_warped)
     real_position_to_center = position_to_center * xm_per_pix
 
-    return curvature, real_position_to_center
+    return left_curverad, right_curverad, real_position_to_center
 
 
 def draw_lane(warped, left_fitx, right_fitx, ploty):
-
     # Create an image to draw the lines on
     warp_zero = np.zeros_like(warped).astype(np.uint8)
     color_warp = np.dstack((warp_zero, warp_zero, warp_zero))
@@ -548,4 +518,3 @@ def save_image(fname, image, output_dir):
 
 if __name__ == '__main__':
     main()
-    # plt.show()
