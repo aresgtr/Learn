@@ -6,6 +6,10 @@ An example of the output:
 
 ![alt text][image_example]
 
+Code for this project:
+
+[project.py](./project.py)
+
 The steps of this project are the following:
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
