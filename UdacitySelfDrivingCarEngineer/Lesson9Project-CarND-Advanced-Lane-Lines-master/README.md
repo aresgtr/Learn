@@ -2,6 +2,10 @@
 
 **Advanced Lane Finding Project**
 
+An example of the output:
+
+![alt text][image_example]
+
 The steps of this project are the following:
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
@@ -16,6 +20,7 @@ The steps of this project are the following:
 
 [//]: # (Image References)
 
+[image_example]: ./examples/example_output.jpg "Example Output"
 [image1]: ./examples/undistort_output.png "Undistorted"
 [image2]: ./test_images/test1.jpg "Road"
 [image2_undist]: ./test_images_undist/test1.jpg "Undistorted Road"
