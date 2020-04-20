@@ -50,24 +50,27 @@ def main():
     for idx, fname in enumerate(images):
         image = cv2.imread(fname)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert back to RGB (Only for images)
-        result = process_image(image)
+        undist, thresholded_binary, warped_image, result = process_image(image)
+        save_image(fname, undist, 'test_images_undist/')
+        save_image(fname, thresholded_binary, 'test_images_thresholded_binary/')
+        save_image(fname, warped_image, 'test_images_perspective_transform/')
         save_image(fname, result, 'output_images/')
 
-    # Process video
-    white_output = 'test_videos_output/project_video.mp4'
-
-    if not os.path.exists('test_videos_output/'):
-        os.makedirs('test_videos_output/')
-
-    # To speed up the testing process you may want to try your pipeline on a shorter subclip of the video
-    # To do so add .subclip(start_second,end_second) to the end of the line below
-    # Where start_second and end_second are integer values representing the start and end of the subclip
-    # You may also uncomment the following line for a subclip of the first 5 seconds
-    # clip1 = VideoFileClip("project_video.mp4").subclip(0, 5)
-
-    clip1 = VideoFileClip("project_video.mp4")
-    white_clip = clip1.fl_image(process_video_frame)  # NOTE: this function expects color images!!
-    white_clip.write_videofile(white_output, audio=False)
+    # # Process video
+    # white_output = 'test_videos_output/project_video.mp4'
+    #
+    # if not os.path.exists('test_videos_output/'):
+    #     os.makedirs('test_videos_output/')
+    #
+    # # To speed up the testing process you may want to try your pipeline on a shorter subclip of the video
+    # # To do so add .subclip(start_second,end_second) to the end of the line below
+    # # Where start_second and end_second are integer values representing the start and end of the subclip
+    # # You may also uncomment the following line for a subclip of the first 5 seconds
+    # # clip1 = VideoFileClip("project_video.mp4").subclip(0, 5)
+    #
+    # clip1 = VideoFileClip("project_video.mp4")
+    # white_clip = clip1.fl_image(process_video_frame)  # NOTE: this function expects color images!!
+    # white_clip.write_videofile(white_output, audio=False)
 
 
 def process_image(image):
@@ -78,7 +81,7 @@ def process_image(image):
     lane_image = perspective_transform(warped_lane, inverse=True)
     final_image = combine(lane_image, undist_image)
     texted_final_image = write_text_on_image(final_image, curvature, position)
-    return texted_final_image
+    return undist_image, thresholded_binary_image, warped_image, texted_final_image
 
 
 def process_video_frame(image):
