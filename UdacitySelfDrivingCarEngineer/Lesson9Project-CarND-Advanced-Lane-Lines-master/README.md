@@ -297,4 +297,4 @@ The pipeline appears to be rebust in ideal conditions, even when there is a chan
 From the image below, we can see the calculated lines are impacted by tree shades.
 ![alt text][image_fail]
 
-To improve for better robustness, algorithm for transforming the image to thresholded binary image need to be improved with better threshold values. Furthremore, neural network algorithms could be implemented for better lane calculations. The left lane from above picture is actually right, so we could have algorithms for computer to think which lane makes more sense.
+To improve for better robustness, algorithm for transforming the image to thresholded binary image need to be improved with better threshold values. Furthermore, neural network algorithms could be implemented for better lane calculations. The left lane from above picture is actually right, so we could have algorithms for computer to think which lane makes more sense.
