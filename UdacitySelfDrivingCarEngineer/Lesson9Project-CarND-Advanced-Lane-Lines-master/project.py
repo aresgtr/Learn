@@ -48,7 +48,6 @@ def main():
     # Process test_images
     images = glob.glob('test_images/*')
     for idx, fname in enumerate(images):
-        print(fname)
         image = cv2.imread(fname)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert back to RGB (Only for images)
         result = process_image(image)
@@ -64,7 +63,7 @@ def main():
     # To do so add .subclip(start_second,end_second) to the end of the line below
     # Where start_second and end_second are integer values representing the start and end of the subclip
     # You may also uncomment the following line for a subclip of the first 5 seconds
-    # clip1 = VideoFileClip("project_video.mp4").subclip(0, 10)
+    # clip1 = VideoFileClip("project_video.mp4").subclip(0, 5)
 
     clip1 = VideoFileClip("project_video.mp4")
     white_clip = clip1.fl_image(process_video_frame)  # NOTE: this function expects color images!!
@@ -206,7 +205,6 @@ def perspective_transform(image, inverse=False):
 
 
 def find_lane_pixels(binary_warped):
-
     # Use histogram to detect the position of lanes by looking at the bottom half of the image
     histogram = np.sum(binary_warped[binary_warped.shape[0] // 2:, :], axis=0)
 
@@ -336,7 +334,7 @@ def search_and_construct_lane(binary_warped, from_previous=False):
         right_fitx = 1 * ploty ** 2 + 1 * ploty
 
     left_curverad, right_curverad, position = measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty,
-                                                                             righty)
+                                                                             righty, left_fitx, right_fitx)
     curvature = (left_curverad + right_curverad) / 2
     warped_lane = draw_lane(binary_warped, left_fitx, right_fitx, ploty)
 
@@ -366,12 +364,13 @@ def search_and_construct_lane(binary_warped, from_previous=False):
 
 
 def perform_sanity_check(left_curvature, right_curvature, left_fitx, right_fitx, position):
-    threshold = 0.3  # 30% similarity
+    threshold = 0.2  # 20% similarity
 
-    road_width_pixel = right_fitx[0] - left_fitx[0]
-    road_width_pixel_from_last_frame = right_line.current_fitx[0] - left_line.current_fitx[0]
+    road_width_pixel = right_fitx[len(right_fitx) - 1] - left_fitx[len(left_fitx) - 1]
+    road_width_pixel_from_last_frame = right_line.current_fitx[len(right_line.current_fitx) - 1] - \
+                                       left_line.current_fitx[len(left_line.current_fitx) - 1]
 
-    road_far_width_pixel = right_fitx[len(right_fitx) - 1] - left_fitx[len(left_fitx) - 1]
+    road_far_width_pixel = right_fitx[0] - left_fitx[0]
 
     # Check if left lane have similar curvature as last frame
     if abs((left_curvature - left_line.radius_of_curvature) / left_line.radius_of_curvature) > threshold:
@@ -411,23 +410,23 @@ def perform_sanity_check(left_curvature, right_curvature, left_fitx, right_fitx,
     return sanity_check_pass
 
 
-def measure_position_to_center(leftx, rightx, binary_warped):
+def measure_position_to_center(left_fitx, right_fitx, binary_warped):
     length = binary_warped.shape[1]
     vehicle_pos = length / 2
-    lane_center_pos = (rightx[0] - leftx[0]) / 2 + leftx[0]
+    lane_center_pos = (right_fitx[len(right_fitx) - 1] - left_fitx[len(left_fitx) - 1]) / 2 + left_fitx[
+        len(left_fitx) - 1]
     return vehicle_pos - lane_center_pos
 
 
-def measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty, righty):
+def measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty, righty, left_fitx, right_fitx):
     """
     Calculates the curvature of polynomial functions in meters.
     """
 
     # Define conversions in x and y from pixels space to meters
-    ym_per_pix = 30 / 720  # meters per pixel in y dimension    # TODO need better tune
+    ym_per_pix = 30 / 720  # meters per pixel in y dimension
     xm_per_pix = 3.7 / 700  # meters per pixel in x dimension
 
-    # Fit a second order polynomial to pixel positions in each fake lane line
     # Fit new polynomials to x,y in world space
     left_fit_cr = np.polyfit(lefty * ym_per_pix, leftx * xm_per_pix, 2)
     right_fit_cr = np.polyfit(righty * ym_per_pix, rightx * xm_per_pix, 2)
@@ -442,7 +441,7 @@ def measure_curvature_and_position(binary_warped, leftx, rightx, ploty, lefty, r
     right_curverad = ((1 + (2 * right_fit_cr[0] * y_eval * ym_per_pix + right_fit_cr[1]) ** 2) ** 1.5) / np.absolute(
         2 * right_fit_cr[0])
 
-    position_to_center = measure_position_to_center(leftx, rightx, binary_warped)  # TODO 不大对
+    position_to_center = measure_position_to_center(left_fitx, right_fitx, binary_warped)
     real_position_to_center = position_to_center * xm_per_pix
 
     return left_curverad, right_curverad, real_position_to_center
