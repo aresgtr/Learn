@@ -35,6 +35,7 @@ def conv2d(input_array):
     out_width = np.ceil(float(in_width - filter_width + 1) / float(strides[2]))
     print(out_height)
     print(out_width)
+    """用上面这个反推filter width height"""
     # TODO: set the padding, either 'VALID' or 'SAME'.
     padding = 'VALID'
     # https://www.tensorflow.org/versions/r0.11/api_docs/python/nn.html#conv2d
