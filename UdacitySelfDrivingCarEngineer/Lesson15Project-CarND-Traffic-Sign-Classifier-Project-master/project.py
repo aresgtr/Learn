@@ -159,34 +159,44 @@ assert (len(X_test) == len(y_test))
 # Shuffle the training data
 X_train, y_train = shuffle(X_train, y_train)
 
-# # To gray scale
-# # https://stackoverflow.com/questions/56390917/convert-a-list-of-images-to-grayscale-using-opencv
-# X_train_grayscale = np.zeros(X_train.shape[:-1])
-# for i in range(X_train.shape[0]):
-#     X_train_grayscale[i] = cv2.cvtColor(X_train[i], cv2.COLOR_BGR2GRAY)
-#
-# # Add last dimension after grayscale
-# # https://stackoverflow.com/questions/51872412/tensorflow-numpy-image-reshape-grayscale-images
-# X_train_grayscale = np.expand_dims(X_train_grayscale, -1)
-#
-# X_train = X_train_grayscale
-#
-# """Change validation data to grayscale too"""
-# # To gray scale
-# # https://stackoverflow.com/questions/56390917/convert-a-list-of-images-to-grayscale-using-opencv
-# X_valid_grayscale = np.zeros(X_valid.shape[:-1])
-# for i in range(X_valid.shape[0]):
-#     X_valid_grayscale[i] = cv2.cvtColor(X_valid[i], cv2.COLOR_BGR2GRAY)
-#
-# # Add last dimension after grayscale
-# # https://stackoverflow.com/questions/51872412/tensorflow-numpy-image-reshape-grayscale-images
-# X_valid_grayscale = np.expand_dims(X_valid_grayscale, -1)
-#
-# X_valid = X_valid_grayscale
+# To gray scale
+X_train_grayscale = np.zeros(X_train.shape[:-1])
+X_valid_grayscale = np.zeros(X_valid.shape[:-1])
+X_test_grayscale = np.zeros(X_test.shape[:-1])
 
-X_train = np.sum(X_train / 3, axis=3, keepdims=True)
-X_test = np.sum(X_test / 3, axis=3, keepdims=True)
-X_valid = np.sum(X_valid / 3, axis=3, keepdims=True)
+for i in range(X_train.shape[0]):
+    X_train_grayscale[i] = cv2.cvtColor(X_train[i], cv2.COLOR_BGR2GRAY)
+
+for i in range(X_valid.shape[0]):
+    X_valid_grayscale[i] = cv2.cvtColor(X_valid[i], cv2.COLOR_BGR2GRAY)
+
+for i in range(X_test.shape[0]):
+    X_test_grayscale[i] = cv2.cvtColor(X_test[i], cv2.COLOR_BGR2GRAY)
+
+# Plot the result
+f, (ax1, ax2) = plt.subplots(1, 2, figsize=(24, 9))
+f.tight_layout()
+ax1.imshow(X_train[0])
+ax1.set_title('Original Image', fontsize=50)
+ax2.imshow(X_train_grayscale[0], cmap='gray')
+ax2.set_title('Grayscale Image', fontsize=50)
+plt.subplots_adjust(left=0., right=1, top=0.9, bottom=0.)
+
+plt.show()
+
+# Add last dimension after grayscale
+# https://stackoverflow.com/questions/51872412/tensorflow-numpy-image-reshape-grayscale-images
+X_train_grayscale = np.expand_dims(X_train_grayscale, -1)
+X_valid_grayscale = np.expand_dims(X_valid_grayscale, -1)
+X_test_grayscale = np.expand_dims(X_test_grayscale, -1)
+
+X_train = X_train_grayscale
+X_valid = X_valid_grayscale
+X_test = X_test_grayscale
+
+# X_train = np.sum(X_train / 3, axis=3, keepdims=True)
+# X_test = np.sum(X_test / 3, axis=3, keepdims=True)
+# X_valid = np.sum(X_valid / 3, axis=3, keepdims=True)
 
 # Normalize
 X_test = X_test / 127.5 - 1
