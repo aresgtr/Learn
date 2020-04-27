@@ -42,6 +42,10 @@ def generator(samples, batch_size=32):
                 center_angle = float(batch_sample[3])
                 images.append(center_image)
                 angles.append(center_angle)
+                image_flipped = np.fliplr(center_image)
+                angle_flipped = -center_angle
+                images.append(image_flipped)
+                angles.append(angle_flipped)
 
                 # Left
                 source_path = batch_sample[1]
