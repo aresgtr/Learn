@@ -22,7 +22,7 @@ with open(csv_location) as csvfile:
     for line in reader:
         lines.append(line)
 
-train_samples, validation_samples = train_test_split(lines, test_size=0.2)
+train_samples, validation_samples = train_test_split(lines, test_size=0.15)
 
 
 def generator(samples, batch_size=32):
@@ -42,6 +42,24 @@ def generator(samples, batch_size=32):
                 center_angle = float(batch_sample[3])
                 images.append(center_image)
                 angles.append(center_angle)
+
+                # Left
+                source_path = batch_sample[1]
+                filename = source_path.split('/')[-1]
+                current_path = image_dir + filename
+                left_image = cv2.imread(current_path)
+                left_angle = float(batch_sample[3]) + 0.2
+                images.append(left_image)
+                angles.append(left_angle)
+
+                # Right
+                source_path = batch_sample[2]
+                filename = source_path.split('/')[-1]
+                current_path = image_dir + filename
+                right_image = cv2.imread(current_path)
+                right_angle = float(batch_sample[3]) - 0.2
+                images.append(right_image)
+                angles.append(right_angle)
 
             # trim image to only see section with road
             X_train = np.array(images)
@@ -65,7 +83,7 @@ model = Sequential()
 model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160, 320, 3)))
 
 # Crop off unused
-model.add(Cropping2D(cropping=((70, 25), (10, 10))))
+model.add(Cropping2D(cropping=((70, 25), (0, 0))))
 
 model.add(Convolution2D(24, 5, 5, subsample=(2, 2), activation="relu"))
 
@@ -76,10 +94,11 @@ model.add(Convolution2D(48, 5, 5, subsample=(2, 2), activation="relu"))
 model.add(Convolution2D(64, 3, 3, activation="relu"))
 model.add(Convolution2D(64, 3, 3, activation="relu"))
 
-# Dropout layer
-model.add(Dropout(0.5, noise_shape=None, seed=None))
-
 model.add(Flatten())
+
+# Dropout layer
+model.add(Dropout(0.25, noise_shape=None, seed=None))
+
 model.add(Dense(100))
 model.add(Dense(50))
 model.add(Dense(10))
@@ -88,6 +107,6 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 
 model.fit_generator(train_generator, samples_per_epoch=len(train_samples), validation_data=validation_generator,
-                    nb_val_samples=len(validation_samples), nb_epoch=5, verbose=1)
+                    nb_val_samples=len(validation_samples), nb_epoch=4, verbose=1)
 
 model.save('model.h5')
