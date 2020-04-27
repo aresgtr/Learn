@@ -37,6 +37,7 @@ def generator(samples, batch_size=32):
             for batch_sample in batch_samples:
                 source_path = batch_sample[0]
                 filename = source_path.split('/')[-1]
+                filename = filename.split('\\')[-1]
                 current_path = image_dir + filename
                 center_image = cv2.imread(current_path)
                 center_angle = float(batch_sample[3])
@@ -50,6 +51,7 @@ def generator(samples, batch_size=32):
                 # Left
                 source_path = batch_sample[1]
                 filename = source_path.split('/')[-1]
+                filename = filename.split('\\')[-1]
                 current_path = image_dir + filename
                 left_image = cv2.imread(current_path)
                 left_angle = float(batch_sample[3]) + 0.2
@@ -59,6 +61,7 @@ def generator(samples, batch_size=32):
                 # Right
                 source_path = batch_sample[2]
                 filename = source_path.split('/')[-1]
+                filename = filename.split('\\')[-1]
                 current_path = image_dir + filename
                 right_image = cv2.imread(current_path)
                 right_angle = float(batch_sample[3]) - 0.2
@@ -111,6 +114,6 @@ model.add(Dense(1))
 model.compile(loss='mse', optimizer='adam')
 
 model.fit_generator(train_generator, samples_per_epoch=len(train_samples), validation_data=validation_generator,
-                    nb_val_samples=len(validation_samples), nb_epoch=4, verbose=1)
+                    nb_val_samples=len(validation_samples), nb_epoch=5, verbose=1)
 
 model.save('model.h5')
