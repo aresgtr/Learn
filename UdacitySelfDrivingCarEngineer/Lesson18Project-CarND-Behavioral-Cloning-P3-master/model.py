@@ -56,7 +56,6 @@ batch_size = 32
 train_generator = generator(train_samples, batch_size=batch_size)
 validation_generator = generator(validation_samples, batch_size=batch_size)
 
-# ch, row, col = 3, 160, 320  # Trimmed image format
 
 """
 Neural Network
