@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.0/bin" />
-    <content url="file://C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.1/bin" />
     <content url="file://$MODULE_DIR$" />
-    <content url="file://C:/tools/cuda/bin" />
     <orderEntry type="jdk" jdkName="Python 3.7 (UdacitySelfDrivingCarEngineer)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
