@@ -93,7 +93,7 @@ def optimum_policy2D(grid, init, goal, cost):
                             y2 = y + forward[o2][1]
 
                             if x2 >= 0 and x2 < len(grid) and y2 >= 0 and y2 < len(grid) and grid[x2][y2] == 0:
-                                v2 = value[o2][x2][y2] == 0;
+                                v2 = value[o2][x2][y2] + cost[i]
                                 if v2 < value[orientation][x][y]:
                                     value[orientation][x][y] = v2
                                     policy[orientation][x][y] = action_name[i]
