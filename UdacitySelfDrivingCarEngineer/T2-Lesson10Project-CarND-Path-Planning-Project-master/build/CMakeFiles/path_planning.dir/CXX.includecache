@@ -853,6 +853,18 @@ Eigen-3.3/Eigen/QR
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/Eigen-3.3/Eigen/QR
 helpers.h
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/helpers.h
+spline.h
+/mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/spline.h
 json.hpp
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/json.hpp
+
+/mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/spline.h
+cstdio
+-
+cassert
+-
+vector
+-
+algorithm
+-
 
