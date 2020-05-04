@@ -57,7 +57,7 @@ int main()
   int lane = 1;
 
   //  Have a reference velocity to target
-  double ref_vel = 49.5; //mph
+  double ref_vel = 0.0; //mph
 
   h.onMessage([&lane, &ref_vel, &map_waypoints_x, &map_waypoints_y, &map_waypoints_s,
                &map_waypoints_dx, &map_waypoints_dy](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
@@ -109,18 +109,44 @@ int main()
 
           int prev_size = previous_path_x.size();
 
-          // Starter code
-          // double dist_inc = 0.5; //  Constant speed, 50mph
-          // for (int i = 0; i < 50; ++i)
-          // {
-          //   //  New x y coordinates to keep in lane
-          //   double next_s = car_s + (i + 1) * dist_inc;
-          //   double next_d = 6.0;
-          //   vector<double> xy = getXY(next_s, next_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
+          // Sensor Fusion Start
+          if (prev_size > 0) {
+            car_s = end_path_s;
+          }
 
-          //   next_x_vals.push_back(xy[0]);
-          //   next_y_vals.push_back(xy[1]);
-          // }
+          bool too_close = false;
+
+          //  Find ref_v to use
+          for (int i = 0; i < sensor_fusion.size(); i++) {
+            //  Car is in my lane
+            float d = sensor_fusion[i][6];
+            if (d < (2 + 4 * lane + 2) && d > (2 + 4 * lane - 2)) { //  if the car is at 4-8 meters (left lane + our lane + right lane)
+              double vx = sensor_fusion[i][3];
+              double vy = sensor_fusion[i][4];
+              double check_speed = sqrt(vx * vx + vy * vy);
+              double check_car_s = sensor_fusion[i][5];
+
+              check_car_s += ((double) prev_size * .02 * check_speed);  //  if using previous points can project a value out
+
+              //  Check s values greater than mine and s gap
+              if ((check_car_s > car_s) && ((check_car_s - car_s) < 30)) {
+
+                //  Do some logic here, lower reference velocity, so we don't crash into the car infront fo us,
+                //  could also flag to try to change lanes.
+                //  ref_vel = 29.5; //  mph
+                too_close = true;
+                if (lane > 0) {
+                  lane = 0;
+                }
+              }
+
+              if (too_close) {
+                ref_vel -= .224;
+              } else if (ref_vel < 49.5) {
+                ref_vel += .224;
+              }
+            }
+          }
           // End
 
           // Create a list of widely spaced (x, y) waypoints, evenly spaced at 30m
