@@ -772,6 +772,14 @@ lapacke_mangling.h
 
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/Eigen-3.3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 
+/mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/helpers.h
+math.h
+-
+string
+-
+vector
+-
+
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/json.hpp
 algorithm
 -
@@ -829,17 +837,13 @@ vector
 -
 
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/main.cpp
-fstream
--
-math.h
--
 uWS/uWS.h
 -
-chrono
+fstream
 -
 iostream
 -
-thread
+string
 -
 vector
 -
@@ -847,10 +851,12 @@ Eigen-3.3/Eigen/Core
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/Eigen-3.3/Eigen/Core
 Eigen-3.3/Eigen/QR
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/Eigen-3.3/Eigen/QR
-json.hpp
-/mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/json.hpp
+helpers.h
+/mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/helpers.h
 spline.h
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/spline.h
+json.hpp
+/mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/json.hpp
 
 /mnt/c/Users/Hasee/Desktop/Github/Learn/UdacitySelfDrivingCarEngineer/T2-Lesson10Project-CarND-Path-Planning-Project-master/src/spline.h
 cstdio

@@ -9,6 +9,8 @@
 #include "spline.h"
 #include "json.hpp"
 
+using namespace std;
+
 // for convenience
 using nlohmann::json;
 using std::string;
@@ -30,12 +32,12 @@ int main()
   // The max s value before wrapping around the track back to 0
   double max_s = 6945.554;
 
-  std::ifstream in_map_(map_file_.c_str(), std::ifstream::in);
+  ifstream in_map_(map_file_.c_str(), ifstream::in);
 
   string line;
   while (getline(in_map_, line))
   {
-    std::istringstream iss(line);
+    istringstream iss(line);
     double x;
     double y;
     float s;
@@ -99,9 +101,6 @@ int main()
           //   of the road.
           auto sensor_fusion = j[1]["sensor_fusion"];
 
-          // vector<double> next_x_vals;
-          // vector<double> next_y_vals;
-
           /**
            * TODO: define a path made up of (x,y) points that the car will visit
            *   sequentially every .02 seconds
@@ -110,44 +109,109 @@ int main()
           int prev_size = previous_path_x.size();
 
           // Sensor Fusion Start
-          if (prev_size > 0) {
+          if (prev_size > 0)
+          {
             car_s = end_path_s;
           }
 
           bool too_close = false;
+          bool left_too_close = false;
+          bool right_too_close = false;
+
+          // Performance Constants
+          const double MAX_SPEED = 49.5;
+          const double MAX_ACC = .224;
 
           //  Find ref_v to use
-          for (int i = 0; i < sensor_fusion.size(); i++) {
+          for (int i = 0; i < sensor_fusion.size(); i++)
+          {
+            // Other car's lane
+            int car_lane = -1;
             //  Car is in my lane
             float d = sensor_fusion[i][6];
-            if (d < (2 + 4 * lane + 2) && d > (2 + 4 * lane - 2)) { //  if the car is at 4-8 meters (left lane + our lane + right lane)
-              double vx = sensor_fusion[i][3];
-              double vy = sensor_fusion[i][4];
-              double check_speed = sqrt(vx * vx + vy * vy);
-              double check_car_s = sensor_fusion[i][5];
+            if (d > 0 && d <= 4)
+            {
+              //  Left lane
+              car_lane = 0;
+            }
+            else if (d > 4 && d <= 8)
+            {
+              //  Middle lane
+              car_lane = 1;
+            }
+            else if (d > 8)
+            {
+              //  Right lane
+              car_lane = 2;
+            }
+            double vx = sensor_fusion[i][3];
+            double vy = sensor_fusion[i][4];
+            double check_speed = sqrt(vx * vx + vy * vy);
+            double check_car_s = sensor_fusion[i][5];
 
-              check_car_s += ((double) prev_size * .02 * check_speed);  //  if using previous points can project a value out
+            check_car_s += ((double)prev_size * .02 * check_speed); //  if using previous points can project a value out
 
-              //  Check s values greater than mine and s gap
-              if ((check_car_s > car_s) && ((check_car_s - car_s) < 30)) {
+            //  Check s values greater than mine and s gap
+            if ((check_car_s > car_s) && ((check_car_s - car_s) < 30) && (car_lane == lane))
+            {
 
-                //  Do some logic here, lower reference velocity, so we don't crash into the car infront fo us,
-                //  could also flag to try to change lanes.
-                //  ref_vel = 29.5; //  mph
-                too_close = true;
-                if (lane > 0) {
-                  lane = 0;
-                }
-              }
+              //  Do some logic here, lower reference velocity, so we don't crash into the car infront fo us,
+              //  could also flag to try to change lanes.
+              too_close = true;
+            }
 
-              if (too_close) {
-                ref_vel -= .224;
-              } else if (ref_vel < 49.5) {
-                ref_vel += .224;
-              }
+            else if ((check_car_s > car_s) && ((check_car_s - car_s) < 30) && (car_lane == lane - 1))
+            {
+              //  At our left front
+              left_too_close = true;
+            }
+            else if ((check_car_s <= car_s) && ((car_s - check_car_s) < 15) && (car_lane == lane - 1))
+            {
+              //  At our left back
+              left_too_close = true;
+            }
+
+            else if ((check_car_s > car_s) && ((check_car_s - car_s) < 30) && (car_lane == lane + 1))
+            {
+              //  At our right front
+              right_too_close = true;
+            }
+            else if ((check_car_s <= car_s) && ((car_s - check_car_s) < 15) && (car_lane == lane + 1))
+            {
+              //  At our right back
+              right_too_close = true;
             }
           }
-          // End
+
+          //  Change Lane
+          if (too_close)
+          {
+            if (lane == 1 && !left_too_close) // We are in middle lane
+            {
+              lane--;
+            }
+            else if (lane == 1 && !right_too_close)
+            {
+              lane++;
+            }
+
+            else if (lane == 0 && !right_too_close) //  We are in left lane
+            {
+              lane++;
+            }
+            else if (lane == 2 && !left_too_close) //  We are in right lane
+            {
+              lane--;
+            }
+            else
+            {
+              ref_vel -= MAX_ACC;
+            }
+          }
+          else if (ref_vel < MAX_SPEED)
+          {
+            ref_vel += MAX_ACC;
+          }
 
           // Create a list of widely spaced (x, y) waypoints, evenly spaced at 30m
           // Later we will interpolate these points with a pline and fill it in with more points that control speed
@@ -242,9 +306,8 @@ int main()
 
           //  Fill up the rest of our path planner after filling it with previous points, here we will always output 50 points
 
-          for (int i = 1; i <= 50 - previous_path_x.size(); i++)
+          for (int i = 1; i < 50 - prev_size; i++)
           {
-
             double N = (target_dist / (.02 * ref_vel / 2.24));
             double x_point = x_add_on + (target_x) / N;
             double y_point = s(x_point);
