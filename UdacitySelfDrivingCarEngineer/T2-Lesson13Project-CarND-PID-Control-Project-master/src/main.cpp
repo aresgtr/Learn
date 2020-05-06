@@ -100,7 +100,7 @@ int main()
           //  Throttle control
           double throttle = 0.4;
 
-          if (fullspeed == false) //  For twiddle
+          if (fullspeed == false) //  For twiddle tuning
           {
             if (speed >= 20)
             {
@@ -109,11 +109,11 @@ int main()
           }
           else
           {
-            if (speed >= 40)
+            if (speed >= 40)  //  Speed limit to 40MPH
             {
               throttle = 0.0;
             }
-            if (abs(cte) > 1.0 && speed > 20)
+            if (abs(cte) > 1.0 && speed > 20) //  If the car is off the center by 1, reduce speed
             {
               throttle = -0.15;
             }
