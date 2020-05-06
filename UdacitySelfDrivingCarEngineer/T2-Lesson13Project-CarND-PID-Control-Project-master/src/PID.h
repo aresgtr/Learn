@@ -31,6 +31,10 @@ class PID {
    */
   double TotalError();
 
+  double GetKp();
+  double GetKd();
+  double GetKi();
+
  private:
   /**
    * PID Errors
@@ -38,6 +42,13 @@ class PID {
   double p_error;
   double i_error;
   double d_error;
+
+  double best_error;
+  int update_counter_p;
+  int update_counter_d;
+  int update_counter_i;
+
+  int update_switch;
 
   /**
    * PID Coefficients

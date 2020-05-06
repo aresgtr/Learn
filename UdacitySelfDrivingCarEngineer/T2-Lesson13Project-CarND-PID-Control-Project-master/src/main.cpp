@@ -17,20 +17,24 @@ double rad2deg(double x) { return x * 180 / pi(); }
 // Checks if the SocketIO event has JSON data.
 // If there is data the JSON object in string format will be returned,
 // else the empty string "" will be returned.
-string hasData(string s) {
+string hasData(string s)
+{
   auto found_null = s.find("null");
   auto b1 = s.find_first_of("[");
   auto b2 = s.find_last_of("]");
-  if (found_null != string::npos) {
+  if (found_null != string::npos)
+  {
     return "";
   }
-  else if (b1 != string::npos && b2 != string::npos) {
+  else if (b1 != string::npos && b2 != string::npos)
+  {
     return s.substr(b1, b2 - b1 + 1);
   }
   return "";
 }
 
-int main() {
+int main()
+{
   uWS::Hub h;
 
   PID pid;
@@ -39,24 +43,25 @@ int main() {
    */
   double prev_cte = 0.0;
   double int_cte = 0.0;
-  Kp = 0.2;
-  Kd = 3.0;
-  Ki = 0.0;
+  pid.Init(0.2, 0.0, 3);
 
-  h.onMessage([&pid, &prev_cte, &int_cte, &Kp, &Kd, &Ki](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
-                     uWS::OpCode opCode) {
+  h.onMessage([&pid, &prev_cte, &int_cte](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
+                                          uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
-    if (length && length > 2 && data[0] == '4' && data[1] == '2') {
+    if (length && length > 2 && data[0] == '4' && data[1] == '2')
+    {
       auto s = hasData(string(data).substr(0, length));
 
-      if (s != "") {
+      if (s != "")
+      {
         auto j = json::parse(s);
 
         string event = j[0].get<string>();
 
-        if (event == "telemetry") {
+        if (event == "telemetry")
+        {
           // j[1] is the data JSON object
           double cte = std::stod(j[1]["cte"].get<string>());
           double speed = std::stod(j[1]["speed"].get<string>());
@@ -68,53 +73,95 @@ int main() {
            * NOTE: Feel free to play around with the throttle and speed.
            *   Maybe use another PID controller to control the speed!
            */
+
+          //  Twiddle parameters for PID
+          bool fullspeed = false;
+          double tol = 0.001; //  Need fine tune
+          if (pid.TotalError() > tol)
+          {
+            pid.UpdateError(cte);
+          }
+          else
+          {
+            fullspeed = true;
+          }
+
+          double Kp = pid.GetKp();
+          double Ki = pid.GetKi();
+          double Kd = pid.GetKd();
+
+          //  PID Controller
           double diff_cte = cte - prev_cte;
           prev_cte = cte;
           int_cte += cte;
-          
+
           steer_value = -Kp * cte - Kd * diff_cte - Ki * int_cte;
 
-          double throttle = 0.3;
-          if (speed >= 30) {
-            throttle = 0;
+          //  Throttle control
+          double throttle = 0.4;
+
+          if (fullspeed == false) //  For twiddle
+          {
+            if (speed >= 20)
+            {
+              throttle = 0;
+            }
+          }
+          else
+          {
+            if (speed >= 40)
+            {
+              throttle = 0.0;
+            }
+            if (abs(cte) > 1.0 && speed > 20)
+            {
+              throttle = -0.15;
+            }
           }
           
+
           // DEBUG
-          std::cout << "CTE: " << cte << " Steering Value: " << steer_value 
-                    << std::endl;
+          // std::cout << "CTE: " << cte << " Steering Value: " << steer_value
+          //           << std::endl;
+          std::cout << "Kp: " << Kp << " | Kd:" << Kd << " | Ki:" << Ki << " | TotalError: " << pid.TotalError() << " | CTE: " << cte <<  std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = throttle;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
-          std::cout << msg << std::endl;
+          // std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
-        }  // end "telemetry" if
-      } else {
+        } // end "telemetry" if
+      }
+      else
+      {
         // Manual driving
         string msg = "42[\"manual\",{}]";
         ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
       }
-    }  // end websocket message if
+    } // end websocket message if
   }); // end h.onMessage
 
   h.onConnection([&h](uWS::WebSocket<uWS::SERVER> ws, uWS::HttpRequest req) {
     std::cout << "Connected!!!" << std::endl;
   });
 
-  h.onDisconnection([&h](uWS::WebSocket<uWS::SERVER> ws, int code, 
+  h.onDisconnection([&h](uWS::WebSocket<uWS::SERVER> ws, int code,
                          char *message, size_t length) {
     ws.close();
     std::cout << "Disconnected" << std::endl;
   });
 
   int port = 4567;
-  if (h.listen(port)) {
+  if (h.listen(port))
+  {
     std::cout << "Listening to port " << port << std::endl;
-  } else {
+  }
+  else
+  {
     std::cerr << "Failed to listen to port" << std::endl;
     return -1;
   }
-  
+
   h.run();
 }
