@@ -20,7 +20,7 @@ class Todo(db.Model):
         return f'<Todo {self.id} {self.description}>'
 
 
-# db.create_all()
+db.create_all()
 
 
 @app.route('/todos/create', methods=['GET'])
