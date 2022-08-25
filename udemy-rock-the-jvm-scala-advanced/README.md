@@ -5,4 +5,6 @@
 ## Section 4: Functional Concurrent Programming
 ## Section 5: Implicits
 [32. Enter Implicits](src/main/scala/lectures/part4implicits/L32ImplicitsIntro.scala)
+
+[33. Organizing Implicits](src/main/scala/lectures/part4implicits/L33OrganizingImplicits.scala)
 ## Section 6: Mastering the Type System
