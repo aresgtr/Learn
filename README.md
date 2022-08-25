@@ -12,4 +12,6 @@ This is the repo that stores my coding practice.
 
 [udemy-rock-the-jvm-scala-beginners](udemy-rock-the-jvm-scala-beginners/) Udemy: [Scala & Functional Programing Essentials | Rock the JVM](https://www.udemy.com/course/rock-the-jvm-scala-for-beginners/)
 
+[udemy-rock-the-jvm-scala-advanced](udemy-rock-the-jvm-scala-advanced/) Udemy: [Advanced Scala and Functional Programming | Rock the JVM](https://www.udemy.com/course/advanced-scala/)
+
 [Docker Cheatsheet](/docker_cheatsheet.md)
