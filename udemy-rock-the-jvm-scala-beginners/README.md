@@ -10,3 +10,5 @@
 [36. Pattern Matching](src/main/scala/lectures/part4pattern_matching/L36PatternMatching.scala)
 
 [37. ALL the Patterns!](src/main/scala/lectures/part4pattern_matching/L37AllThePatterns.scala)
+
+[38. Patterns Everywhere](src/main/scala/lectures/part4pattern_matching/L38PatternsEverywhere.scala)
