@@ -3,6 +3,8 @@
 ## Section 2: The Absolute Scala Basics
 ## Section 3: Object-Oriented Programming in Scala
 [10. Object-Oriented Basics (11. exercise)](src/main/scala/lectures/part2oop/L10OOBasics.scala)
+
+[12. Syntactic Sugar: Method Notations (13. exercise)](src/main/scala/lectures/part2oop/L12MethodNotations.scala)
 ## Section 4: Functinal Programming in Scala
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
