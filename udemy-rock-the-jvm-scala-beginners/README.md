@@ -5,6 +5,8 @@
 [10. Object-Oriented Basics (11. exercise)](src/main/scala/lectures/part2oop/L10OOBasics.scala)
 
 [12. Syntactic Sugar: Method Notations (13. exercise)](src/main/scala/lectures/part2oop/L12MethodNotations.scala)
+
+[14. Scala Objects](src/main/scala/lectures/part2oop/L14Objects.scala)
 ## Section 4: Functinal Programming in Scala
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
