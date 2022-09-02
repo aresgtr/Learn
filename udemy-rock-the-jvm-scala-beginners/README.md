@@ -9,6 +9,8 @@
 [14. Scala Objects](src/main/scala/lectures/part2oop/L14Objects.scala)
 
 [15. Inheritance](src/main/scala/lectures/part2oop/L15Inheritance.scala)
+
+[16. Inheritance, Continued: Abstract Classes and Traits](src/main/scala/lectures/part2oop/L16AbstractDataTypes.scala)
 ## Section 4: Functinal Programming in Scala
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
