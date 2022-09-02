@@ -1,6 +1,6 @@
 package lectures.part2oop
 
-abstract class L17MyList { // immutable
+abstract class MyList { // immutable
   /*
     head = first element of the list
     tail = remainder of the list
@@ -10,27 +10,27 @@ abstract class L17MyList { // immutable
    */
 
   def head: Int
-  def tail: L17MyList
+  def tail: MyList
   def isEmpty: Boolean
-  def add(element: Int): L17MyList
+  def add(element: Int): MyList
   def printElements: String
   // polymorphic call
   override def toString: String = "[" + printElements + "]"
 }
 
-object Empty extends L17MyList {
+object Empty extends MyList {
   override def head: Int = throw new NoSuchElementException
-  override def tail: L17MyList = throw new NoSuchElementException
+  override def tail: MyList = throw new NoSuchElementException
   override def isEmpty: Boolean = true
-  override def add(element: Int): L17MyList = new Cons(element, Empty)
+  override def add(element: Int): MyList = new Cons(element, Empty)
   override def printElements: String = ""
 }
 
-class Cons(h: Int, t: L17MyList) extends L17MyList {
+class Cons(h: Int, t: MyList) extends MyList {
   override def head: Int = h
-  override def tail: L17MyList = t
+  override def tail: MyList = t
   override def isEmpty: Boolean = false
-  override def add(element: Int): L17MyList = new Cons(element, this)
+  override def add(element: Int): MyList = new Cons(element, this)
   override def printElements: String =
     if (t.isEmpty) "" + h
     else h + " " + t.printElements
