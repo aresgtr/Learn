@@ -1,7 +1,5 @@
 package exercise
 
-import lectures.part2oop.Generics.MyList
-
 abstract class MyList[+A] {
   /*
     head = first element of the list
