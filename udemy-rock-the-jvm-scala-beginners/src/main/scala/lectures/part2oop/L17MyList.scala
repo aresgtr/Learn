@@ -1,6 +1,6 @@
 package lectures.part2oop
 
-abstract class L17MyList {  // immutable
+abstract class L17MyList { // immutable
   /*
     head = first element of the list
     tail = remainder of the list
@@ -13,7 +13,7 @@ abstract class L17MyList {  // immutable
   def tail: L17MyList
   def isEmpty: Boolean
   def add(element: Int): L17MyList
-  def printElements: String  // protected - only accessible within this class & subclasses
+  def printElements: String
   // polymorphic call
   override def toString: String = "[" + printElements + "]"
 }
@@ -38,12 +38,12 @@ class Cons(h: Int, t: L17MyList) extends L17MyList {
 
 object ListTest extends App {
   val list = new Cons(1, Empty)
-  println(list.head)  //>> 1
+  println(list.head) //>> 1
 
   val list2 = new Cons(1, new Cons(2, new Cons(3, Empty)))
-  println(list2.tail.head)  //>> 2
-  println(list2.add(4).head)  //>> 4
-  println(list2.isEmpty)  //>> false
+  println(list2.tail.head) //>> 2
+  println(list2.add(4).head) //>> 4
+  println(list2.isEmpty) //>> false
 
   println(list2.toString) //>> [1 2 3]
 }
