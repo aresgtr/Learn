@@ -17,6 +17,8 @@
 [18. Generics (MyList v2 with generics with bounded types)](src/main/scala/lectures/part2oop/L18Generics.scala)
 
 [19. Anonymous Classes](src/main/scala/lectures/part2oop/L19AnonymousClasses.scala)
+
+[20. Object-Oriented Exercises: Expanding Our Collection (MyList v3)](src/main/scala/lectures/part2oop/L20MyList.scala)
 ## Section 4: Functinal Programming in Scala
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
