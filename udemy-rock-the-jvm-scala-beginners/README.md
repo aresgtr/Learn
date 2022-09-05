@@ -19,6 +19,8 @@
 [19. Anonymous Classes](src/main/scala/lectures/part2oop/L19AnonymousClasses.scala)
 
 [20. Object-Oriented Exercises: Expanding Our Collection (MyList v3)](src/main/scala/lectures/part2oop/L20MyList.scala)
+
+[21. Case Classes (MyList v4)](src/main/scala/lectures/part2oop/L21CaseClasses.scala)
 ## Section 4: Functinal Programming in Scala
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
