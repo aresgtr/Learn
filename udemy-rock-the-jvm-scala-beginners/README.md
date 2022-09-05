@@ -15,6 +15,8 @@
 [17. Inheritance Exercies: Implementing Our Own Collection (MyList v1)](src/main/scala/lectures/part2oop/L17MyList.scala)
 
 [18. Generics (MyList v2 with generics with bounded types)](src/main/scala/lectures/part2oop/L18Generics.scala)
+
+[19. Anonymous Classes](src/main/scala/lectures/part2oop/L19AnonymousClasses.scala)
 ## Section 4: Functinal Programming in Scala
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
