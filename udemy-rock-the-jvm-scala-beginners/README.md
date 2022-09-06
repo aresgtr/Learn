@@ -25,6 +25,8 @@
 [22. Scala 3: Enums](src/main/scala/lectures/part2oop/L22Enums.scala)
 
 [23. Exceptions](src/main/scala/lectures/part2oop/L23Exceptions.scala)
+
+[24. Packaging and Imports](src/main/scala/lectures/part2oop/L24PackagingAndImports.scala), [Package Object](src/main/scala/lectures/part2oop/package.scala)
 ## Section 4: Functinal Programming in Scala
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
