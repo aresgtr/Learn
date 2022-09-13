@@ -30,6 +30,8 @@
 ## Section 4: Functinal Programming in Scala
 [25. What's a Function, Really? (MyList v5)](src/main/scala/lectures/part3fp/L25WhatsAFunction.scala)
 
+[26. Anonymous Function (MyList v6)](src/main/scala/lectures/part3fp/L26AnonymousFunctions.scala)
+
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
 [35. Handling Failure](src/main/scala/lectures/part3fp/L35HandlingFailure.scala)
