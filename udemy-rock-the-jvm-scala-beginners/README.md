@@ -34,6 +34,8 @@
 
 [27. Higher-Order-Functions and Curries](src/main/scala/lectures/part3fp/L27HOFsCurries.scala)
 
+[28. HOFs and Curries (Exercise) (MyList v7)](src/main/scala/lectures/part3fp/L28HOFsCurriesExercise.scala)
+
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
 [35. Handling Failure](src/main/scala/lectures/part3fp/L35HandlingFailure.scala)
