@@ -36,6 +36,8 @@
 
 [28. HOFs and Curries (Exercise) (MyList v7)](src/main/scala/lectures/part3fp/L28HOFsCurriesExercise.scala)
 
+[29. map, flatMap, filter and for-comprehensions](src/main/scala/lectures/part3fp/L29MapFlatmapFilterFor.scala)
+
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
 [35. Handling Failure](src/main/scala/lectures/part3fp/L35HandlingFailure.scala)
