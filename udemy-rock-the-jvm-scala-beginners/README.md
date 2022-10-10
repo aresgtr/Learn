@@ -38,6 +38,8 @@
 
 [29. map, flatMap, filter and for-comprehensions](src/main/scala/lectures/part3fp/L29MapFlatmapFilterFor.scala)
 
+[30. A Collections Overview](src/main/scala/lectures/part3fp/L30ACollectionsOverview.md)
+
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
 [35. Handling Failure](src/main/scala/lectures/part3fp/L35HandlingFailure.scala)
