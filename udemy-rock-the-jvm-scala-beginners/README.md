@@ -53,3 +53,5 @@
 [37. ALL the Patterns!](src/main/scala/lectures/part4pattern_matching/L37AllThePatterns.scala)
 
 [38. Patterns Everywhere](src/main/scala/lectures/part4pattern_matching/L38PatternsEverywhere.scala)
+
+[39. Scala 3: Braceless Syntax](src/main/scala/lectures/part4pattern_matching/L39BracelessSyntax.scala)
