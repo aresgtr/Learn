@@ -42,6 +42,8 @@
 
 [31. Sequences: List, Array, Vector](src/main/scala/lectures/part3fp/L31Sequences.scala)
 
+[32. Tuples and Maps (33. exercise)](src/main/scala/lectures/part3fp/L32TuplesAndMaps.scala)
+
 [34. Options](src/main/scala/lectures/part3fp/L34Options.scala)
 
 [35. Handling Failure](src/main/scala/lectures/part3fp/L35HandlingFailure.scala)
