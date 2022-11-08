@@ -69,7 +69,7 @@ object L04Recap extends App {
   case class Person(name: String, age: Int)
 
   // exceptions and try/catch/finally
-  val throwsException = throw RuntimeException  // type Nothing
+  val throwsException = throw new RuntimeException  // type Nothing
   val aPotentialFailure = try {
     throw new RuntimeException
   } catch {
