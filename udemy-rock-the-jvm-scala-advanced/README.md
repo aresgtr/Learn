@@ -1,6 +1,7 @@
 # Advanced Scala and Functional Programming | Rock the JVM
 ## Section 1: Welcome
 ## Section 2: A Taste of Advanced Scala
+[4. Recap: The Scala Basics](src/main/scala/lectures/part1as/L04Recap.scala)
 ## Section 3: Advanced Functional Programming
 ## Section 4: Functional Concurrent Programming
 ## Section 5: Implicits
