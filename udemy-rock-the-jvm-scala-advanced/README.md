@@ -2,6 +2,8 @@
 ## Section 1: Welcome
 ## Section 2: A Taste of Advanced Scala
 [4. Recap: The Scala Basics](src/main/scala/lectures/part1as/L04Recap.scala)
+
+[5. Dark Syntax Sugar](src/main/scala/lectures/part1as/L05DarkSugars.scala)
 ## Section 3: Advanced Functional Programming
 ## Section 4: Functional Concurrent Programming
 ## Section 5: Implicits
