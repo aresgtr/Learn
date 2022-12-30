@@ -5,7 +5,7 @@
 
 [5. Dark Syntax Sugar](src/main/scala/lectures/part1as/L05DarkSugars.scala)
 
-[6. Advanced Pattern Matching](src/main/scala/lectures/part1as/L06AdvancedPatternMatching.scala)
+[6. Advanced Pattern Matching (7. Advanced Pattern MAtching, Part 2)](src/main/scala/lectures/part1as/L06AdvancedPatternMatching.scala)
 ## Section 3: Advanced Functional Programming
 ## Section 4: Functional Concurrent Programming
 ## Section 5: Implicits
