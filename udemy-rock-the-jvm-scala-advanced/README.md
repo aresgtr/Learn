@@ -7,6 +7,7 @@
 
 [6. Advanced Pattern Matching (7. Advanced Pattern MAtching, Part 2)](src/main/scala/lectures/part1as/L06AdvancedPatternMatching.scala)
 ## Section 3: Advanced Functional Programming
+[9. Partial Functions](src/main/scala/lectures/part2afp/L9PartialFunctions.md)
 ## Section 4: Functional Concurrent Programming
 ## Section 5: Implicits
 [32. Enter Implicits](src/main/scala/lectures/part4implicits/L32ImplicitsIntro.scala)
