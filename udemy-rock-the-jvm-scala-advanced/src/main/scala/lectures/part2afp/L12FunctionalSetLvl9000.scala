@@ -2,7 +2,7 @@ package lectures.part2afp
 
 import scala.annotation.tailrec
 
-class L11EnhancingFunctionalSet extends App {
+object L12FunctionalSetLvl9000 extends App {
 
   trait MySet[A] extends (A => Boolean) {
     /*
@@ -56,32 +56,38 @@ class L11EnhancingFunctionalSet extends App {
     def &(anotherSet: MySet[A]): MySet[A] = this
 
     // part 3
-    def unary_! : MySet[A] = new AllInclusiveSet[A]
+    def unary_! : MySet[A] = new PropertyBasedSet[A](x => true)
   }
 
-  // Will be replaced by PropertyBasedSet
-  class AllInclusiveSet[A] extends MySet[A] {
-    override def contains(elem: A): Boolean = true
-    override def +(elem: A): MySet[A] = this
-    override def ++(anotherSet: MySet[A]): MySet[A] = this
+  // It is more flexible in defining properties for a potentially infinite functional set.
+  // denotes all the elements of Type A satisfy the property
+  // { x in A | property(x) } in math terms
+  class PropertyBasedSet[A](property: A => Boolean) extends MySet[A] {
+    override def contains(elem: A): Boolean = property(elem)
 
-    // naturals = AllInclusiveSet[Int] = all the natural numbers
-    // naturals.map(x => x % 3) => ???
-    // The answer is [0 1 2]
-    override def map[B](f: A => B): MySet[B] = ???
-    override def flatMap[B](f: A => MySet[B]): MySet[B] = ???
-    override def foreach(f: A => Unit): Unit = ???
+    // { x in A | property(x) } + element = { x in A | property(x) or x == element}
+    override def +(elem: A): MySet[A] =
+      new PropertyBasedSet[A](x => property(x) || x == elem)
 
-    // idea of Property-Based Set
-    // means, all the elements of Type A that satisfy this predicate, which could be an infinite number of those elements
-    // However, this does not make sense here, so we create the class PropertyBasedSet
-    override def filter(predicate: A => Boolean): MySet[A] = ???
+    // { x in A | property(x) } ++ set = { x in A | property(x) or set contains x }
+    override def ++(anotherSet: MySet[A]): MySet[A] = // union
+      new PropertyBasedSet[A](x => property(x) || anotherSet(x))
 
-    override def -(elem: A): MySet[A] = ???
-    override def --(anotherSet: MySet[A]): MySet[A] = filter(!anotherSet)
-    override def &(anotherSet: MySet[A]): MySet[A] = filter(anotherSet)
+    // cannot really map and flatmap a property-based set
+    // all intergers => (_ % 3) => [0 1 2]
+    // If you map an infinite set with a function, you will not know whether the resulting set is finite or not.
+    // So you won't be able to tell if an element is in the set or not.
+    override def map[B](f: A => B): MySet[B] = politelyFail
+    override def flatMap[B](f: A => MySet[B]): MySet[B] = politelyFail
+    override def foreach(f: A => Unit): Unit = politelyFail
 
-    override def unary_! : MySet[A] = new EmptySet[A]
+    override def filter(predicate: A => Boolean): MySet[A] = new PropertyBasedSet[A](x => property(x) && predicate(x))
+    override def -(elem: A): MySet[A] = filter(x => x != elem)
+    override def --(anotherSet: MySet[A]): MySet[A] = filter(!anotherSet) // difference
+    override def &(anotherSet: MySet[A]): MySet[A] = filter(anotherSet)   // intersection
+    override def unary_! : MySet[A] = new PropertyBasedSet[A](x => !property(x))
+
+    def politelyFail = throw new IllegalArgumentException("Really deep rabbit hole!")
   }
 
   class NonEmptySet[A](head: A, tail: MySet[A]) extends MySet[A] {
@@ -121,13 +127,16 @@ class L11EnhancingFunctionalSet extends App {
       if (head == elem) tail
       else tail - elem + head // recursively calling the method and then add the head back
 
-//    def --(anotherSet: MySet[A]): MySet[A] = filter(x => !anotherSet.contains(x))
-//    def --(anotherSet: MySet[A]): MySet[A] = filter(x => !anotherSet(x))
+    //    def --(anotherSet: MySet[A]): MySet[A] = filter(x => !anotherSet.contains(x))
+    //    def --(anotherSet: MySet[A]): MySet[A] = filter(x => !anotherSet(x))
     // The above 2 lines are equivalent. We can even use unary operator to make it nicer.
     def --(anotherSet: MySet[A]): MySet[A] = filter(!anotherSet)
 
-//    def &(anotherSet: MySet[A]): MySet[A] = filter(x => anotherSet.contains(x))
+    //    def &(anotherSet: MySet[A]): MySet[A] = filter(x => anotherSet.contains(x))
     def &(anotherSet: MySet[A]): MySet[A] = filter(anotherSet) // equivalent to above. intersection = filtering!
+
+    // new operator
+    def unary_! : MySet[A] = new PropertyBasedSet[A](x => !this.contains(x))
   }
 
   // Companion object just for convenience of building sets
@@ -148,4 +157,18 @@ class L11EnhancingFunctionalSet extends App {
       buildSet(values.toSeq, new EmptySet[A])
     }
   }
+
+  // Playground
+  val s = MySet(1, 2, 3, 4)
+
+  val negative = !s // s.unary_! = all the naturals not equal to 1, 2, 3, 4
+
+  println(negative(2))  //>> false
+  println(negative(5))  //>> true
+
+  val negativeEven = negative.filter(_ % 2 == 0)
+  println(negativeEven(5))  //>> false
+
+  val negativeEven5 = negativeEven + 5  // all the even numbers > 4 + 5
+  println(negativeEven5(5)) //>> true
 }
