@@ -63,7 +63,7 @@ Which prints
 Some(56)
 None
 ```
-### "or else" if you want to chain multiple partial functions
+### "orElse" if you want to chain multiple partial functions (打补丁)
 ```scala
 val pfChain = aPartialFunction.orElse[Int, Int] {
   case 45 => 67
@@ -78,16 +78,17 @@ Which prints
 67
 ```
 
-### PF extend normal function
+### Basically, Partial Functions extend normal functions
+We can supply a partial function literal from Int to Int, because PFs are a subtype of total functions.
 ```scala
 val aTotalFunction: Int => Int = {
   case 1 => 99
 }
 ```
-### Higher-Order Functions accept PFs
+#### As a side effect of above, Higher-Order Functions accept PFs
 ```scala
 val aMappedList = List(1, 2, 3).map {
-  case 1 => 2
+  case 1 => 42
   case 2 => 78
   case 3 => 1000
 }

@@ -19,4 +19,7 @@
 [32. Enter Implicits](src/main/scala/lectures/part4implicits/L32ImplicitsIntro.scala)
 
 [33. Organizing Implicits](src/main/scala/lectures/part4implicits/L33OrganizingImplicits.scala)
+
+[34. Type Classes, Part 1](src/main/scala/lectures/part4implicits/L34TypeClasses.scala)
+
 ## Section 6: Mastering the Type System
