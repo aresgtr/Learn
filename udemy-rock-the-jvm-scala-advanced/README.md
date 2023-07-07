@@ -14,6 +14,8 @@
 [11. Enhancing a Functional Set (MySet not completed)](src/main/scala/lectures/part2afp/L11EnhancingFunctionalSet.scala)
 
 [12. A Functional Set, level 9000: A Potentially Infinite Set (MySet v1)](src/main/scala/lectures/part2afp/L12FunctionalSetLvl9000.scala)
+
+[13. Moar Functional Collections!](src/main/scala/lectures/part2afp/L13MoarFunctionalCollections.md)
 ## Section 4: Functional Concurrent Programming
 ## Section 5: Implicits
 [32. Enter Implicits](src/main/scala/lectures/part4implicits/L32ImplicitsIntro.scala)
