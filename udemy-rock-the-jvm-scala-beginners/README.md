@@ -1,6 +1,7 @@
 # Scala & Functional Programming Essentials | Rock the JVM
 ## Section 1: Welcome
 ## Section 2: The Absolute Scala Basics
+[7. Call-by-Name and Call-by-Value](src/main/scala/lectures/part1basics/L7CBNvsCBV.md)
 ## Section 3: Object-Oriented Programming in Scala
 [10. Object-Oriented Basics (11. exercise)](src/main/scala/lectures/part2oop/L10OOBasics.scala)
 
