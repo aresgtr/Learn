@@ -1,6 +1,6 @@
-This is the repo that stores my coding practice.
+This is the repo that stores my study notes.
 
-这个repo是用来存放我的编程练习的。
+这个repo是用来存放我的学习笔记的。
 
 [JavaMasterclassUdemy](JavaMasterclassUdemy/) Udemy: Java Programming Masterclass for Software Developers
 
@@ -10,8 +10,6 @@ This is the repo that stores my coding practice.
 
 [MyPythonPrograms](MyPythonPrograms/) is for storing my personal Python projects.
 
-[udemy-rock-the-jvm-scala-beginners](udemy-rock-the-jvm-scala-beginners/) Udemy: [Scala & Functional Programing Essentials | Rock the JVM](https://www.udemy.com/course/rock-the-jvm-scala-for-beginners/)
-
-[udemy-rock-the-jvm-scala-advanced](udemy-rock-the-jvm-scala-advanced/) Udemy: [Advanced Scala and Functional Programming | Rock the JVM](https://www.udemy.com/course/advanced-scala/)
+[Scala](scala.md)
 
 [Docker Cheatsheet](/docker_cheatsheet.md)
