@@ -20,6 +20,8 @@
 [14. Currying and Partially Applied Functions](src/main/scala/lectures/part2afp/L14CurriesPAF.md)
 
 [15. Lazy Evaluation](src/main/scala/lectures/part2afp/L15LazyEvaluation.md)
+
+[16. Lazy Evaluation Exercise: A Potentially Infinite Stream (MyStream v0)](src/main/scala/lectures/part2afp/L16LazyEvaluationExercise.scala)
 ## Section 4: Functional Concurrent Programming
 ## Section 5: Implicits
 [32. Enter Implicits](src/main/scala/lectures/part4implicits/L32ImplicitsIntro.scala)
