@@ -21,7 +21,7 @@
 
 [15. Lazy Evaluation](src/main/scala/lectures/part2afp/L15LazyEvaluation.md)
 
-[16. Lazy Evaluation Exercise: A Potentially Infinite Stream (MyStream v0)](src/main/scala/lectures/part2afp/L16LazyEvaluationExercise.scala)
+[16. Lazy Evaluation Exercise: A Potentially Infinite Stream (17. Infinite Streams Proficiency: More Exercises) (MyStream v0)](src/main/scala/lectures/part2afp/L16LazyEvaluationExercise.scala)
 ## Section 4: Functional Concurrent Programming
 ## Section 5: Implicits
 [32. Enter Implicits](src/main/scala/lectures/part4implicits/L32ImplicitsIntro.scala)

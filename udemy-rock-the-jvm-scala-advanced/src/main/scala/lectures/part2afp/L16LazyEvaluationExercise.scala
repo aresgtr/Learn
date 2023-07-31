@@ -18,7 +18,7 @@ object L16LazyEvaluationExercise extends App {
     def tail: MyStream[A]
 
     def #::[B >: A](element: B): MyStream[B]  // prepend operator
-    def ++[B >: A](anotherStream: MyStream[B]): MyStream[B] // concatenate 2 streams
+    def ++[B >: A](anotherStream: => MyStream[B]): MyStream[B] // concatenate 2 streams
 
     def foreach(f: A => Unit): Unit
     def map[B](f: A => B): MyStream[B]
@@ -47,7 +47,7 @@ object L16LazyEvaluationExercise extends App {
     def tail: MyStream[Nothing] = throw new NoSuchElementException
 
     def #::[B >: Nothing](element: B): MyStream[B] = new Cons(element, this)  // prepend operator
-    def ++[B >: Nothing](anotherStream: MyStream[B]): MyStream[B] = anotherStream // concatenate 2 streams
+    def ++[B >: Nothing](anotherStream: => MyStream[B]): MyStream[B] = anotherStream // concatenate 2 streams
 
     def foreach(f: Nothing => Unit): Unit = ()
     def map[B](f: Nothing => B): MyStream[B] = this
@@ -67,7 +67,7 @@ object L16LazyEvaluationExercise extends App {
       val prepend = 1 #:: s = new Cons(1, s)  // when the prepend operator acts.
      */
     def #::[B >: A](element: B): MyStream[B] = new Cons(element, this)  // prepend operator
-    def ++[B >: A](anotherStream: MyStream[B]): MyStream[B] = new Cons(head, tail ++ anotherStream) // concatenate 2 streams
+    def ++[B >: A](anotherStream: => MyStream[B]): MyStream[B] = new Cons(head, tail ++ anotherStream) // concatenate 2 streams
 
     def foreach(f: A => Unit): Unit = {
       f(head)
@@ -111,5 +111,45 @@ object L16LazyEvaluationExercise extends App {
 
   // map, flatMap
   println(startFrom0.map(_ * 2).take(10).toList())  //>> List(0, 2, 4, 6, 8, 10, 12, 14, 16, 18)
-  println(startFrom0.flatMap(x => new Cons(x, new Cons(x + 1, EmptyStream))).take(10).toList()) // fail with StackOverflow, will fix in next lecture
+
+  // This could potentially fail with StackOverflow. To fix it, the ++ operator needs Call-by-Name.
+  // So that we can delay the evaluation of tail.flatMap(f) until needed.
+  println(startFrom0.flatMap(x => new Cons(x, new Cons(x + 1, EmptyStream))).take(10).toList()) //>> List(0, 1, 1, 2, 2, 3, 3, 4, 4, 5)
+
+  println(startFrom0.filter(_ < 10).take(10).toList())  //>> List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+  /*
+    Exercises on steams
+    1 - stream of Fibonacci numbers
+    2 - stream of PRIME numbers with Eratosthenes' sieve
+      [ 2 3 4 ... ]
+      filter out all numbers divisible by 2
+      [ 2 3 5 7 9 11 ...] keep 2, since 2 is prime
+      filter out all numbers divisible by 3
+      [ 2 3 5 7 11 13 17 ...]
+      filter out all numbers divisible by the next number, 5
+      ...
+   */
+
+  /*
+    [ first, [ ...
+    [ first, fibo(second, first + second)
+   */
+  def fibonacci(first: Int, second: Int) : MyStream[Int] =
+    new Cons(first, fibonacci(second, first + second))
+
+  println(fibonacci(1, 1).take(10).toList())  //>> List(1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
+
+  /*
+    [ 2 3 4 5 6 7 8 9 10 11 12 ...
+    [ 2 3 5 7 9 11 13 ...
+    [ 2 eratosthenes applied to (numbers filtered by n % 2 != 0)
+    [ 2 3 eratosthenes applied to [ 5 7 9 11 ... ] filtered by n % 3 != 0
+   */
+  def eratosthenes(numbers: MyStream[Int]): MyStream[Int] =
+    if (numbers.isEmpty) numbers
+    else new Cons(numbers.head, eratosthenes(numbers.tail.filter( n => n % numbers.head != 0)))
+
+  // MyStream of all the natural numbers from 2
+  println(eratosthenes(MyStream.from(2)(_ + 1)).take(10).toList())  //>> List(2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
 }
