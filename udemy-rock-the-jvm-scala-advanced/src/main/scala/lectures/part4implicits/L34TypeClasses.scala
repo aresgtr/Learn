@@ -99,4 +99,59 @@ object L34TypeClasses extends App {
   object FullEquality extends Equal[User] {
     override def apply(a: User, b: User): Boolean = a.name == b.name && a.email == b.email
   }
+
+
+  /**
+   * L35. Part 2
+   */
+  object HTMLSerializer {
+    def serialize[T](value: T)(implicit serializer: HTMLSerializer[T]): String =
+      serializer.serialize(value)
+
+    // benefit: access to the entire type class interface
+    def apply[T](implicit serializer: HTMLSerializer[T]) = serializer
+  }
+
+  object IntSerializer extends HTMLSerializer[Int] {
+    override def serialize(value: Int): String = s"<div style: color=blue>$value</div>"
+  }
+  println(HTMLSerializer.serialize(42)(IntSerializer))  //>> <div style: color=blue>42</div>
+
+  // Why not to let the compiler figure out the serializer for me?
+  implicit object ImplicitIntSerializer extends HTMLSerializer[Int] {
+    override def serialize(value: Int): String = s"<div style: color=blue>$value</div>"
+  }
+  println(HTMLSerializer.serialize(42))  //>> <div style: color=blue>42</div>
+
+  // The compiler then can fetch whatever serializer for us.
+  implicit object ImplicitUserSerializer extends HTMLSerializer[User] {
+    override def serialize(user: User): String = s"<div>${user.name} (${user.age} yo) <a href=${user.email}/> </div>"
+  }
+  println(HTMLSerializer.serialize(john)) //>> <div>John (32 yo) <a href=john@rockthejvm.com/> </div>
+
+  // benefit: access to the entire type class interface
+  println(HTMLSerializer[User].serialize(john)) //>> <div>John (32 yo) <a href=john@rockthejvm.com/> </div>
+
+
+  /*
+    Exercise: implement the Type Class pattern for the Equality Type Class
+   */
+  object Equal {  // companion
+    def apply[T](a: T, b: T)(implicit equalizer: Equal[T]): Boolean =
+      equalizer.apply(a, b)
+  }
+
+  // Then we need to make one of the type class instance implicit
+  implicit object ImplicitNameEquality extends Equal[User] {
+    override def apply(a: User, b: User): Boolean = a.name == b.name
+  }
+
+  val anotherJohn = User("John", 45, "anotherJohn@rtjvm.com")
+  println(Equal.apply(john, anotherJohn)) //>> true
+
+  /**
+   *  This is called AD-HOC Polymorphism:
+   *    depending on the actual type of the values being compared,
+   *    the compiler takes care to fetch the correct type class instance for our types.
+   */
 }
