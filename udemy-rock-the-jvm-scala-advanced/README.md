@@ -34,4 +34,5 @@
 
 [34. Type Classes, Part 1 (35. Type Classes, Part 2)](src/main/scala/lectures/part4implicits/L34TypeClasses.scala)
 
+[36. Pimp My Library! (Enrich existing types with Implicits)](src/main/scala/lectures/part4implicits/L36PimpMyLibrary.scala)
 ## Section 6: Mastering the Type System
