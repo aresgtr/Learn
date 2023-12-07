@@ -27,7 +27,25 @@
 
 [19. Monads: Exercise](src/main/scala/lectures/part2afp/L19Monads.scala)
 ## Section 4: Functional Concurrent Programming
+
+[21. Intro to Parallel Programming on the JVM](src/main/scala/lectures/part3concurrency/L21Intro.md)
+
+[22. Concurrency Problems on the JVM](src/main/scala/lectures/part3concurrency/L22.JVMConcurrencyProblems.md)
+
+[23. JVM Thread Communication](src/main/scala/lectures/part3concurrency/L23ThreadCommunication.md)
+
+[24. Producer-Consumer, Level 2](src/main/scala/lectures/part3concurrency/L24ProducerConsumerLv2.md)
+
+[25. Producer-Consumer, Level 3 + Exercises](src/main/scala/lectures/part3concurrency/L25ProducerConsumerLv3.md)
+
+[26. JVM Thread Communication Exercises](src/main/scala/lectures/part3concurrency/L26ThreadCommunicationEx.md)
+
+[27. Futures and Promises (28, 29)](src/main/scala/lectures/part3concurrency/L27FuturesPromises.md)
+
+[30. Futures, Part 4 + Exercises](src/main/scala/lectures/part3concurrency/L30FuturesEx.md)
+
 ## Section 5: Implicits
+
 [32. Enter Implicits](src/main/scala/lectures/part4implicits/L32ImplicitsIntro.scala)
 
 [33. Organizing Implicits](src/main/scala/lectures/part4implicits/L33OrganizingImplicits.scala)
