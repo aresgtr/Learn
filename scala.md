@@ -8,3 +8,7 @@
 [udemy-rock-the-jvm-scala-advanced](udemy-rock-the-jvm-scala-advanced/)
 
 - Udemy link: [Advanced Scala and Functional Programming | Rock the JVM](https://www.udemy.com/course/advanced-scala/)
+
+[udemy-akka-essentials](udemy-akka-essentials/)
+
+- Udemy link: [Akka Essentials with Scala | Rock the JVM](https://www.udemy.com/course/akka-essentials/)
