@@ -8,6 +8,8 @@
 
 [7. The Akka Actor Model to the Rescue](src/main/scala/part2actors/L7Akka.md)
 
+[8. Actors, Messages and Behaviors](src/main/scala/part2actors/L8ActorsIntro.scala)
+
 ## Section 4: Testing Akka Actors
 
 ## Section 5: Fault Tolerance
