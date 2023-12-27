@@ -2,6 +2,8 @@
 
 ## Section 1: Welcome
 
+Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
+
 ## Section 2: Scala and Parallel Programming Recap
 
 ## Section 3: Akka Actors
