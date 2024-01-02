@@ -16,6 +16,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [11. How Actors Actually Work](src/main/scala/part2actors/L11HowActorsWork.md)
 
+[12. Changing Actor Behavior (changing state)](src/main/scala/part2actors/L12ChangingActorsBehavior.scala)
+
 ## Section 4: Testing Akka Actors
 
 ## Section 5: Fault Tolerance
