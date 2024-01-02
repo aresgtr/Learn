@@ -4,7 +4,7 @@ ThisBuild / scalaVersion := "2.13.8"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "udemy-rock-the-jvm-scala-advanced"
+    name := "udemy-akka-essentials"
   )
 
 val akkaVersion = "2.8.0"
