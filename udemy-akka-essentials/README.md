@@ -14,6 +14,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [9. Actors, Messages and Behaviors (part 2) + 10. Exercise](src/main/scala/part2actors/L9ActorCapabilities.scala)
 
+[11. How Actors Actually Work](src/main/scala/part2actors/L11HowActorsWork.md)
+
 ## Section 4: Testing Akka Actors
 
 ## Section 5: Fault Tolerance
