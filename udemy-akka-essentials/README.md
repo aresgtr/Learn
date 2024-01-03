@@ -22,6 +22,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [15. Child Actors (create actors, hierarchies, paths & selections, encapsulation dangers](src/main/scala/part2actors/L15ChildActors.scala)
 
+[17. Actor Logging](src/main/scala/part2actors/L17ActorLogging.scala)
+
 ## Section 4: Testing Akka Actors
 
 ## Section 5: Fault Tolerance
