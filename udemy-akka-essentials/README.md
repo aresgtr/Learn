@@ -20,6 +20,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [13. Changing Actor Behavior (part 2, stacked state)](src/main/scala/part2actors/L13ChangingBehaviorP2.scala)
 
+[15. Child Actors (create actors, hierarchies, paths & selections, encapsulation dangers](src/main/scala/part2actors/L15ChildActors.scala)
+
 ## Section 4: Testing Akka Actors
 
 ## Section 5: Fault Tolerance
