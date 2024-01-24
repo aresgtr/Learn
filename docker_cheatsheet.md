@@ -1,6 +1,12 @@
 # Docker Cheat Sheet
 
 ## Docker Commands
+
+Start Service
+```bash
+sudo service docker start
+```
+
 Download image
 ```bash
 docker pull $image_name
@@ -56,4 +62,12 @@ docker exec -it $container_name /bin/bash
 
 # To exit the terminal
 exit
+```
+
+Forcefully Remove Containers and Images
+```bash
+# remove containers
+docker rm -f $(docker ps -qa)
+# remove images
+docker rmi -f $(docker images -aq)
 ```
