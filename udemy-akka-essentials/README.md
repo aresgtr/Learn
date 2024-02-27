@@ -26,6 +26,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 ## Section 4: Testing Akka Actors
 
+[19. Intro to TestKit](src/main/scala/part3testing/L19BasicSpec.scala)
+
 ## Section 5: Fault Tolerance
 
 ## Section 6: Akka Infrastructure
