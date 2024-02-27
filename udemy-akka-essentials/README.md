@@ -28,6 +28,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [19. Intro to TestKit](src/main/scala/part3testing/L19BasicSpec.scala)
 
+[20. TestProbes](src/main/scala/part3testing/L20TestProbeSpec.scala)
+
 ## Section 5: Fault Tolerance
 
 ## Section 6: Akka Infrastructure
