@@ -32,6 +32,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [21. Timed Assertions](src/main/scala/part3testing/L21TimedAssertionsSpec.scala)
 
+[22. Intercepting Logs](src/main/scala/part3testing/L22InterceptingLogsSpec.scala)
+
 ## Section 5: Fault Tolerance
 
 ## Section 6: Akka Infrastructure
