@@ -30,6 +30,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [20. TestProbes](src/main/scala/part3testing/L20TestProbeSpec.scala)
 
+[21. Timed Assertions](src/main/scala/part3testing/L21TimedAssertionsSpec.scala)
+
 ## Section 5: Fault Tolerance
 
 ## Section 6: Akka Infrastructure
