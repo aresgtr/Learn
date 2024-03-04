@@ -34,6 +34,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [22. Intercepting Logs](src/main/scala/part3testing/L22InterceptingLogsSpec.scala)
 
+[23. Synchronous Testing](src/main/scala/part3testing/L23SynchronizedTestingSpec.scala)
+
 ## Section 5: Fault Tolerance
 
 ## Section 6: Akka Infrastructure
