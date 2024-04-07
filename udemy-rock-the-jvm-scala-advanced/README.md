@@ -58,4 +58,6 @@
 
 [38. A Type Class End-to-End example: JSON Serialization](src/main/scala/lectures/part4implicits/L38JSONSerialization.scala)
 
+[39. A Type Class Use Case: The Magnet Pattern](src/main/scala/lectures/part4implicits/L39MagnetPattern.scala)
+
 ## Section 6: Mastering the Type System
