@@ -56,4 +56,6 @@
 
 [37. Type Classes, Part 3](src/main/scala/lectures/part4implicits/L37TypeClassesP3.scala)
 
+[38. A Type Class End-to-End example: JSON Serialization](src/main/scala/lectures/part4implicits/L38JSONSerialization.scala)
+
 ## Section 6: Mastering the Type System
