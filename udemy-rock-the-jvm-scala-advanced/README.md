@@ -1,5 +1,8 @@
 # Advanced Scala and Functional Programming | Rock the JVM
 ## Section 1: Welcome
+
+Daniel's code: https://github.com/rockthejvm/udemy-scala-advanced
+
 ## Section 2: A Taste of Advanced Scala
 [4. Recap: The Scala Basics](src/main/scala/lectures/part1as/L04Recap.scala)
 
@@ -59,5 +62,7 @@
 [38. A Type Class End-to-End example: JSON Serialization](src/main/scala/lectures/part4implicits/L38JSONSerialization.scala)
 
 [39. A Type Class Use Case: The Magnet Pattern](src/main/scala/lectures/part4implicits/L39MagnetPattern.scala)
+
+[40. Scala 3: Given Instances and Using Clauses](src/main/scala/lectures/part4implicits/L40Givens.scala)
 
 ## Section 6: Mastering the Type System
