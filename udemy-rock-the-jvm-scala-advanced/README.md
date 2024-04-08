@@ -65,4 +65,6 @@ Daniel's code: https://github.com/rockthejvm/udemy-scala-advanced
 
 [40. Scala 3: Given Instances and Using Clauses](src/main/scala/lectures/part4implicits/L40Givens.scala)
 
+[41. Scala 3: Extension Methods](src/main/scala/lectures/part4implicits/L41ExtensionMethods.scala)
+
 ## Section 6: Mastering the Type System
