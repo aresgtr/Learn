@@ -74,3 +74,5 @@ Daniel's code: https://github.com/rockthejvm/udemy-scala-advanced
 [44. Variance + Exercise](src/main/scala/lectures/part5ts/L44Variance.scala)
 
 [46. Type Members](src/main/scala/lectures/part5ts/L46TypeMembers.scala)
+
+[47. Inner Types and Path-Dependent Types](src/main/scala/lectures/part5ts/L47PathDependentTypes.scala)
