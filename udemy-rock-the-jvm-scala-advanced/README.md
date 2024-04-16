@@ -72,3 +72,5 @@ Daniel's code: https://github.com/rockthejvm/udemy-scala-advanced
 [43. Advanced Inheritance](src/main/scala/lectures/part5ts/L43RockingInheritance.md)
 
 [44. Variance + Exercise](src/main/scala/lectures/part5ts/L44Variance.scala)
+
+[46. Type Members](src/main/scala/lectures/part5ts/L46TypeMembers.scala)
