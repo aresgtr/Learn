@@ -93,6 +93,6 @@ trait Cold {
 
   // Why there is no red?
 ```
-<img height="300" src="./img/IMG_1877.HEIC" width="600"/>
+<img src="./img/IMG_1879.JPG" width="600"/>
 
-<img height="300" src="./img/IMG_1878.HEIC" width="600"/>
+<img src="./img/IMG_1880.JPG" width="600"/>
