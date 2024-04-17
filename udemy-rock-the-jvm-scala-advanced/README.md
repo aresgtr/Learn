@@ -76,3 +76,5 @@ Daniel's code: https://github.com/rockthejvm/udemy-scala-advanced
 [46. Type Members](src/main/scala/lectures/part5ts/L46TypeMembers.scala)
 
 [47. Inner Types and Path-Dependent Types](src/main/scala/lectures/part5ts/L47PathDependentTypes.scala)
+
+[48. Self Types](src/main/scala/lectures/part5ts/L48SelfTypes.scala)
