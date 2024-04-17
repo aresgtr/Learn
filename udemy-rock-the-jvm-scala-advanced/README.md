@@ -80,3 +80,5 @@ Daniel's code: https://github.com/rockthejvm/udemy-scala-advanced
 [48. Self Types](src/main/scala/lectures/part5ts/L48SelfTypes.scala)
 
 [49. Recursive Types and F-Bounded Polymorphism](src/main/scala/lectures/part5ts/L49FBoundedPolymorphism.scala)
+
+[50. Higher-Kinded Types](src/main/scala/lectures/part5ts/L50HigerKindedTypes.scala)
