@@ -78,3 +78,5 @@ Daniel's code: https://github.com/rockthejvm/udemy-scala-advanced
 [47. Inner Types and Path-Dependent Types](src/main/scala/lectures/part5ts/L47PathDependentTypes.scala)
 
 [48. Self Types](src/main/scala/lectures/part5ts/L48SelfTypes.scala)
+
+[49. Recursive Types and F-Bounded Polymorphism](src/main/scala/lectures/part5ts/L49FBoundedPolymorphism.scala)
