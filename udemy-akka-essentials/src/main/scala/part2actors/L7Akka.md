@@ -1,10 +1,13 @@
 # The Akka Actor Model to the Rescue
 
-With traditional objects:
+Actors inspired the object oriented paradigm back in the 1970s, but somehow the computer programming history took a
+different turn and created the classes and objects we know today.
+
+With __traditional__ objects:
 - we store their state as data
 - we call their methods
 
-With Actors:
+With __Actors__:
 - We store their state as data
 - We send messages to them, asynchronously
 
@@ -32,11 +35,11 @@ Actors are objects we can't access directly, but only send messages to.
 
 ## Some Natural Principles
 
-Every interaction happens via sending and receiving messages.
+1. Every interaction happens via sending and receiving messages.
 
-Messages are asynchronous by nature.
-- it takes time for a message to travel.
-- sending and receiving may not happen at the same time...
-- ...or even in the same context.
+2. Messages are asynchronous by nature.
+   - it takes time for a message to travel.
+   - sending and receiving may not happen at the same time...
+   - ...or even in the same context.
 
-I can't poke into my friend's brain! 👉👩
+3. I can't poke into my friend's brain! 👉👩
