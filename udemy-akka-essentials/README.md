@@ -12,7 +12,9 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [8. Actors, Messages and Behaviors](src/main/scala/part2actors/L8ActorsIntro.scala)
 
-[9. Actors, Messages and Behaviors (part 2) + 10. Exercise](src/main/scala/part2actors/L9ActorCapabilities.scala)
+[9. Actors, Messages and Behaviors (part 2)](src/main/scala/part2actors/L9ActorCapabilities.scala)
+
+[10. Actors, Messages and Behaviors - Exercise](src/main/scala/part2actors/L10Exercise.scala)
 
 [11. How Actors Actually Work](src/main/scala/part2actors/L11HowActorsWork.md)
 
