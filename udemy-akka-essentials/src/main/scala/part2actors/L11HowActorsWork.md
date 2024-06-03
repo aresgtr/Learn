@@ -9,6 +9,7 @@
 <img height="301" src="./images/L11_1.jpg" width="539"/>
 
 ⬆️ An actor is just a data structure, it needs a thread to run.
+- "message handler" - the "receive" method
 
 <img height="300" src="./images/L11_2.jpg" width="600"/>
 
@@ -26,13 +27,13 @@
 
 ## Guarantees
 
-Only one thread operates on an actor at any time
+1️⃣ Only one thread operates on an actor at any time
 - actors are effectively single-threaded
 - <ins>no locks needed!</ins>
 - additionally, the thread never release the actor in the middle of processing messages
   - processing messages is atomic
 
-Message delivery guarantees
+2️⃣ Message delivery guarantees
 - at most once delivery
 - <ins>for any sender-receiver pair, the message order is maintained</ins> (explain ⬇️)
 
