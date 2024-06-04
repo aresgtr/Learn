@@ -22,6 +22,8 @@ Daniel's code: https://github.com/rockthejvm/udemy-akka-essentials
 
 [13. Changing Actor Behavior (part 2, stacked state)](src/main/scala/part2actors/L13ChangingBehaviorP2.scala)
 
+[14. Changing Actor Behavior - Exercises](src/main/scala/part2actors/L14ChangingBehaviorExercise.scala)
+
 [15. Child Actors (create actors, hierarchies, paths & selections, encapsulation dangers](src/main/scala/part2actors/L15ChildActors.scala)
 
 [17. Actor Logging](src/main/scala/part2actors/L17ActorLogging.scala)
