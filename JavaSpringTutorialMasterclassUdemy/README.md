@@ -15,6 +15,10 @@
 
 [16. Maven Lifecycle Plugin and Goals](/016_maven-lifecycle.md)
 
+[17. Fix our Maven Project](/014_hello-maven/pom.xml)
+
+- We updated pom by specifying the `maven-compiler-plugin`
+
 ## Section 4: New Spring 5 - Logging with SLF4J & Logback
 
 ## Section 5: New Spring 5 - Multi module Spring Project
