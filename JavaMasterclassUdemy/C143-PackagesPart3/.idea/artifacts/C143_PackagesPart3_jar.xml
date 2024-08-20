@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="C143-PackagesPart3:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/C143_PackagesPart3_jar</output-path>
-    <root id="archive" name="C143-PackagesPart3.jar">
-      <element id="module-output" name="C143-PackagesPart3" />
-    </root>
-  </artifact>
-</component>
