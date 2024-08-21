@@ -13,15 +13,15 @@
 
 - In this lesson we closed the project, removed, and re-imported by IntelliJ
 
-[16. Maven Lifecycle Plugin and Goals](/016_maven-lifecycle.md)
+[16. Maven Lifecycle Plugin and Goals](016_maven-lifecycle.md)
 
-[17. Fix our Maven Project](/014_hello-maven/pom.xml)
+[17. Fix our Maven Project](014_hello-maven/pom.xml)
 
 - We updated pom by specifying the `maven-compiler-plugin`
 
 ## Section 4: New Spring 5 - Logging with SLF4J & Logback
 
-[18. What is Logging?](/018_logging.md)
+[18. What is Logging?](018_logging.md)
 
 ## Section 5: New Spring 5 - Multi module Spring Project
 
