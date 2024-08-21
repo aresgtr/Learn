@@ -21,6 +21,8 @@
 
 ## Section 4: New Spring 5 - Logging with SLF4J & Logback
 
+[18. What is Logging?](/018_logging.md)
+
 ## Section 5: New Spring 5 - Multi module Spring Project
 
 ## Section 6: New Spring 5 - Lombok Introduction
