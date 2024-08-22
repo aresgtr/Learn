@@ -23,6 +23,10 @@
 
 [18. What is Logging?](018_logging.md)
 
+19\. Using Logging with Logback
+- Add Logback to [pom.xml](014_hello-maven/pom.xml)
+- Create [class](014_hello-maven/src/main/java/academy/learnprogramming/L19Logback.java) for demonstration
+
 ## Section 5: New Spring 5 - Multi module Spring Project
 
 ## Section 6: New Spring 5 - Lombok Introduction
