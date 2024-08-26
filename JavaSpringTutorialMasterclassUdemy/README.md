@@ -27,6 +27,10 @@
 - Add Logback to [pom.xml](014_hello-maven/pom.xml)
 - Create [class](014_hello-maven/src/main/java/academy/learnprogramming/L19Logback.java) for demonstration
 
+20\. Logback Configuration
+- [Notes](020_logback_config.md)
+- Create [logback.xml](014_hello-maven/src/main/resources/logback.xml)
+
 ## Section 5: New Spring 5 - Multi module Spring Project
 
 ## Section 6: New Spring 5 - Lombok Introduction
