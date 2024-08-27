@@ -12,21 +12,23 @@
     </modules>
     <packaging>pom</packaging><!--L.22: pom is a container of submodules-->
 
-    <properties>
+    <properties><!--L.23: Instead of specifying version numbers all over the place, we use this-->
         <logback.version>1.2.3</logback.version>
         <spring.version>5.0.5.RELEASE</spring.version>
+        <java.version>10</java.version>
     </properties>
 
+    <dependencyManagement>
         <dependencies>
 
-            <!-- Logging -->
+            <!-- Logging --><!--Copied from the previous project-->
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
+                <version>${logback.version}</version><!--L.23: Set by <properties>-->
             </dependency>
 
-            <!-- Spring context -->
+            <!-- Spring context --><!--Added by L.23-->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
@@ -34,20 +36,21 @@
             </dependency>
 
         </dependencies>
+    </dependencyManagement>
 
-    <build>
+    <build><!--Copied from the previous project-->
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
+                <groupId>org.apache.maven.plugins</groupId><!--L17. Fix our Maven Project-->
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.7.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <target>${java.version}</target>
+                    <source>${java.version}</source>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>

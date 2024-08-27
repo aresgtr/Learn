@@ -40,6 +40,10 @@
     - Create `core` module as sub-module
     - Note that Intellij automatically added the hierarchy in the main module's pom as well as sub-module (core)'s [pom.xml](022-guess-the-number-game/core/pom.xml)
 
+23\. Project Setup
+- Update pom.xml in both main module & sub-module
+- Create [Main](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java) class in the core module to see if everything is working
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC
