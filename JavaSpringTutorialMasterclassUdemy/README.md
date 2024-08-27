@@ -33,6 +33,13 @@
 
 ## Section 5: New Spring 5 - Multi module Spring Project
 
+22\. Create a Multi Module Project
+- Create a new project `022-guess-the-number-game`
+    - Remove src in the main module, since codes will be in sub-modules
+    - Specify ```<packaging>pom</packaging>``` in the main module's [pom.xml](022-guess-the-number-game/pom.xml)
+    - Create `core` module as sub-module
+    - Note that Intellij automatically added the hierarchy in the main module's pom as well as sub-module (core)'s [pom.xml](022-guess-the-number-game/core/pom.xml)
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC

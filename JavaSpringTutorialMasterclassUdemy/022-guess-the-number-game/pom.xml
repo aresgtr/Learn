@@ -7,10 +7,10 @@
     <groupId>academy.learnprogramming</groupId>
     <artifactId>022-guess-the-number-game</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
+    <modules><!--L.22: automatically added by Intellij when we created "core" submodule-->
         <module>core</module>
     </modules>
-    <packaging>pom</packaging>
+    <packaging>pom</packaging><!--L.22: pom is a container of submodules-->
 
     <properties>
         <logback.version>1.2.3</logback.version>
