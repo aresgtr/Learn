@@ -44,6 +44,14 @@
 - Update pom.xml in both main module & sub-module
 - Create [Main](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java) class in the core module to see if everything is working
 
+24\. Using a Spring Container
+- [IOC Container Documentation](https://docs.spring.io/spring-framework/reference/core/beans.html)
+    - Following the doc's container overview, we copy and create [beans.xml](022-guess-the-number-game/core/src/main/resources/beans.xml)
+    - We add `<bean id="numberGenerator" ...` based on later steps
+- Create NumberGenerator [Interface](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/NumberGenerator.java) and [Implementation](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/NumberGeneratorImpl.java)
+- Update [Main](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java) class to test the container
+- Optional: We can see more detailed logging inside the container by editing sub-module's [logback.xml](022-guess-the-number-game/core/src/main/resources/logback.xml)
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC
