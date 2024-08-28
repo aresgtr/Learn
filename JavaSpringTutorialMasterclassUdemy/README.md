@@ -61,6 +61,9 @@
 - Add constructor to [GameImpl](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java) using _Constructor Based Dependency Injection_
 - Add the game to [beans.xml](022-guess-the-number-game/core/src/main/resources/beans.xml)
 
+27\. Setter Based Dependency Injection
+- We updated GameImpl and beans.xml
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC

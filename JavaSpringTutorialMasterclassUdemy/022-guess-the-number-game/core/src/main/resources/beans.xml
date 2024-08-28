@@ -7,7 +7,9 @@
     <bean id="numberGenerator" class="academy.learnprogramming.NumberGeneratorImpl"/>
 
     <bean id="game" class="academy.learnprogramming.GameImpl">
-        <constructor-arg ref="numberGenerator"/><!--L.26: Constructor Based Dependency Injection-->
+        <!--constructor-arg ref="numberGenerator"/--><!--📖 L.26: Constructor Based Dependency Injection-->
+        <property name="numberGenerator" ref="numberGenerator"/><!--📖 L.27: Setter Based Dependency Injection-->
+        <!--⬆️ "name" is the property in the class (the field), and "ref" is the reference to the other bean"-->
     </bean>
 
 </beans>
