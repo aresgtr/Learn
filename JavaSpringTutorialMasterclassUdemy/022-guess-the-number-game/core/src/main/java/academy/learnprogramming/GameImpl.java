@@ -18,6 +18,11 @@ public class GameImpl implements Game {
     private int remainingGuesses;
     private boolean validNumberRange = true;
 
+    // == constructors ==
+    public GameImpl(NumberGenerator numberGenerator) {  // L.26: Constructor Based Dependency Injection
+        this.numberGenerator = numberGenerator;
+    }
+
     // == public methods ==
     @Override
     public void reset() {

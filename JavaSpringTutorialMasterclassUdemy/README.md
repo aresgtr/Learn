@@ -56,6 +56,11 @@
 - Create [Game Interface](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/Game.java)
 - Create [Game Implementation](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java)
 
+26\. Constructor Based Dependency Injection
+- Update [Main](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java) to include the game
+- Add constructor to [GameImpl](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java) using _Constructor Based Dependency Injection_
+- Add the game to [beans.xml](022-guess-the-number-game/core/src/main/resources/beans.xml)
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC

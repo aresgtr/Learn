@@ -22,7 +22,7 @@ public class Main {
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(CONFIG_LOCATION);
         // ⬆️ defining the actual IOC container; coding to the interface (Java best practice)
 
-        // get the bean from the container (again we code to the interface)
+        // get the number generator bean from the context (container) (again we code to the interface)
         NumberGenerator numberGenerator = context.getBean("numberGenerator", NumberGenerator.class);
 
         // call method next() to get a random number
@@ -31,6 +31,13 @@ public class Main {
         // log generated number
         log.info("number = {}", number);
         // ⬆️ Parameterized Logging: slf4j will automatically replace "{}" with the arguments after comma
+
+        /* 📖 L.26 */
+        // get game bean from context (container)
+        Game game = context.getBean(Game.class);
+
+        // call reset method
+        game.reset();
 
         // close context (container)
         context.close();

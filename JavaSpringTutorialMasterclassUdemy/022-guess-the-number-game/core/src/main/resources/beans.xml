@@ -6,4 +6,8 @@
 
     <bean id="numberGenerator" class="academy.learnprogramming.NumberGeneratorImpl"/>
 
+    <bean id="game" class="academy.learnprogramming.GameImpl">
+        <constructor-arg ref="numberGenerator"/><!--L.26: Constructor Based Dependency Injection-->
+    </bean>
+
 </beans>
