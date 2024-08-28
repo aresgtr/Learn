@@ -52,6 +52,10 @@
 - Update [Main](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java) class to test the container
 - Optional: We can see more detailed logging inside the container by editing sub-module's [logback.xml](022-guess-the-number-game/core/src/main/resources/logback.xml)
 
+25\. Implementing the Game
+- Create [Game Interface](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/Game.java)
+- Create [Game Implementation](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java)
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC
