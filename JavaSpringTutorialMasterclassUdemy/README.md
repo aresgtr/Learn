@@ -64,6 +64,8 @@
 27\. Setter Based Dependency Injection
 - We updated GameImpl and beans.xml
 
+[28. Setter or Constructor](028_setter_or_constructor.md)
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC
