@@ -37,7 +37,7 @@ public class Main {
         Game game = context.getBean(Game.class);
 
         // call reset method
-        game.reset();
+//        game.reset(); // 📖 L.29 - we can configure the container to call it automatically (see beans.xml)
 
         // close context (container)
         context.close();

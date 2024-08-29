@@ -66,6 +66,13 @@
 
 [28. Setter or Constructor](028_setter_or_constructor.md)
 
+29\. Using Bean Lifecycle Callbacks
+- We are using `@PostConstruct` and `@PreDestroy` annotations <= best practice for receiving lifecycle callbacks in a Spring application
+- Add Annotation API to the root [pom.xml](022-guess-the-number-game/pom.xml) and Core's [pom.xml](022-guess-the-number-game/core/pom.xml)
+- Add `init-method` to [beans.xml](022-guess-the-number-game/core/src/main/resources/beans.xml) to initialize container automatically
+- Remove `reset()` in [Main](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java) since it will initialize automatically
+- Add annotations to [GameImpl](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java)
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC
