@@ -2,6 +2,7 @@ package academy.learnprogramming;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -12,6 +13,7 @@ public class GameImpl implements Game {
     private static final Logger log = LoggerFactory.getLogger(GameImpl.class);
 
     // == fields ==
+    @Autowired  // 📖 L31: Autowiring Beans - we wire the dependency of NumberGenerator
     private NumberGenerator numberGenerator;
     private int guessCount = 10;
     private int number;
@@ -40,16 +42,17 @@ public class GameImpl implements Game {
 
     // == constructors ==
     /* 📖 L.26: Constructor Based Dependency Injection */
-//    public GameImpl(NumberGenerator numberGenerator) {  // L.26: Constructor Based Dependency Injection
+//    public GameImpl(NumberGenerator numberGenerator) {
 //        this.numberGenerator = numberGenerator;
 //    }
 
     // == public methods ==
 
     /* 📖 L.27: Setter Based Dependency Injection */
-    public void setNumberGenerator(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-    }
+//    public void setNumberGenerator(NumberGenerator numberGenerator) {
+//        this.numberGenerator = numberGenerator;
+//    }
+    /* 👆 DIs are removed by L.31 because we are using Autowiring with instance variables */
 
     @Override
     public int getNumber() {

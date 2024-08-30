@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-		https://www.springframework.org/schema/beans/spring-beans.xsd">
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/> <!-- ⬅️⬆️ "context" are added for 📖 L.31: Autowiring Beans-->
 
     <bean id="numberGenerator" class="academy.learnprogramming.NumberGeneratorImpl"/>
 
     <bean id="game" class="academy.learnprogramming.GameImpl" init-method="reset">
                                                 <!--📖 L.29 ⬆️ "init-method" added to call the container automatically-->
 
-        <!--constructor-arg ref="numberGenerator"/--><!--📖 L.26: Constructor Based Dependency Injection-->
-        <property name="numberGenerator" ref="numberGenerator"/><!--📖 L.27: Setter Based Dependency Injection-->
+        <!--📖 L.26: Constructor Based Dependency Injection-->
+        <!--constructor-arg ref="numberGenerator"/-->
+
+        <!--📖 L.27: Setter Based Dependency Injection-->
+        <!--property name="numberGenerator" ref="numberGenerator"/-->
         <!--⬆️ "name" is the property in the class (the field), and "ref" is the reference to the other bean"-->
+        <!--We remove these DI methods 👆 by L.31 because we are using Autowiring with instance variables-->
+
     </bean>
 
-    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+    <!--bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/-->
+    <!--⬆️ Removed by L.31 since <context:annotation-config/> includes this functions-->
 
 </beans>

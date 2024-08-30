@@ -73,6 +73,21 @@
 - Remove `reset()` in [Main](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java) since it will initialize automatically
 - Add annotations to [GameImpl](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java)
 
+30\. XML or Annotation Configuration
+- T.B.D.
+- Udemy [link](https://www.udemy.com/course/java-spring-framework-masterclass/learn/lecture/10336420)
+
+31\. Autowiring Beans
+- Update [beans.xml](/022-guess-the-number-game/core/src/main/resources/beans.xml)
+    - Add `<context:annotation-config/>`
+        - Note we update the `<beans xmlns:context... xsi:schemaLocation...` and remove `CommonAnnotationBeanPostProcessor`
+        - This tag activates the Spring infrastructure for various annotations
+            - e.g. `@Autowire`, `@PostConstruct`, `@PreDestroy`, etc.
+- Update [GameImpl](022-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java)
+    - Remove DI
+    - Add `@Autowired` annotation
+- By using Autowiring, we don't need a constructor or setter and we don't need the new keyword, since everything is managed by the Spring container
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC
