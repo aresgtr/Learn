@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--context:annotation-config/--> <!-- ⬅️⬆️ "context" are added for 📖 L.31: Autowiring Beans-->
+    <!-- 👆 Removed by 📖 L.32. Instead, we use components scanning 👇 -->
+    <context:component-scan base-package="academy.learnprogramming"/>
+
+    <!--bean id="numberGenerator" class="academy.learnprogramming.NumberGeneratorImpl"/-->
+    <!-- 👆👇 Removed by 📖 L.32 since we can scan components automatically-->
+    <!--bean id="game" class="academy.learnprogramming.GameImpl" init-method="reset"-->
+                                                <!--📖 L.29 ⬆️ "init-method" added to call the container automatically-->
+    <!--/bean-->
+
+</beans>

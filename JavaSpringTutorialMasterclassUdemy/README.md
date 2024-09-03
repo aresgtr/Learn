@@ -88,6 +88,14 @@
     - Add `@Autowired` annotation
 - By using Autowiring, we don't need a constructor or setter and we don't need the new keyword, since everything is managed by the Spring container
 
+32\. Beans as Components
+
+_We create a new snapshot of the project [032-guess-the-number-game](032-guess-the-number-game/) since there are major changes_
+- Update [beans.xml](032-guess-the-number-game/core/src/main/resources/beans.xml) to enable component scanning
+- Add `@Component` annotation to [GameImpl](032-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java) and [NumberGeneratorImpl](/032-guess-the-number-game/core/src/main/java/academy/learnprogramming/NumberGeneratorImpl.java)
+- Remove the bean name in [Main](032-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java) in `context.getBean(...)` because the bean name is now auto-assigned
+    - Some workarounds: we can manually assign bean name in the `@Component("name")` annotation, but too many hard-coded strings can be problematic. We will see better approaches later.
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC
