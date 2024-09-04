@@ -109,6 +109,11 @@ _We create a new snapshot of the project [033-guess-the-number-game](033-guess-t
     - ⬆️ Note the annotation of the class is equivalent to the previous [beans.xml](032-guess-the-number-game/core/src/main/resources/beans.xml) in Lesson 32
     - Add `@Bean` annotations so we no longer need `@Component` annotations in [GameImpl](033-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java) and [NumberGeneratorImpl](033-guess-the-number-game/core/src/main/java/academy/learnprogramming/NumberGeneratorImpl.java)
 
+34\. Message Generator Challenge
+- Implement [MessageGenerator](033-guess-the-number-game/core/src/main/java/academy/learnprogramming/MessageGenerator.java) Interface
+- Implement [MessageGeneratorImpl](033-guess-the-number-game/core/src/main/java/academy/learnprogramming/MessageGeneratorImpl.java)
+- Add to [AppConfig.java](033-guess-the-number-game/core/src/main/java/academy/learnprogramming/AppConfig.java)
+- Add to [Main](033-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java)
 
 ## Section 6: New Spring 5 - Lombok Introduction
 

@@ -36,6 +36,11 @@ public class Main {
         // get game bean from context (container)
         Game game = context.getBean(Game.class);
 
+        /* 📖 L.34: Message Generator Challenge */
+        MessageGenerator messageGenerator = context.getBean(MessageGenerator.class);
+        log.info("getMainMessage = {}", messageGenerator.getMainMessage());
+        log.info("getResultMessage = {}", messageGenerator.getResultMessage());
+
         // call reset method
 //        game.reset(); // 📖 L.29 - we can configure the container to call it automatically (see beans.xml)
 
