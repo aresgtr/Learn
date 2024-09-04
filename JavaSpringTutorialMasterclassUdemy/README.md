@@ -96,6 +96,20 @@ _We create a new snapshot of the project [032-guess-the-number-game](032-guess-t
 - Remove the bean name in [Main](032-guess-the-number-game/core/src/main/java/academy/learnprogramming/Main.java) in `context.getBean(...)` because the bean name is now auto-assigned
     - Some workarounds: we can manually assign bean name in the `@Component("name")` annotation, but too many hard-coded strings can be problematic. We will see better approaches later.
 
+33\. Using Java Annotation Configuration
+
+_We create a new snapshot of the project [033-guess-the-number-game](033-guess-the-number-game/) since there are major changes_
+- Remove beans.xml
+- Create [AppConfig.java](033-guess-the-number-game/core/src/main/java/academy/learnprogramming/AppConfig.java)
+    - ```java
+        @Configuration
+        @ComponentScan(basePackages = "academy.learnprogramming")
+        public class AppConfig { ...
+      ```
+    - ⬆️ Note the annotation of the class is equivalent to the previous [beans.xml](032-guess-the-number-game/core/src/main/resources/beans.xml) in Lesson 32
+    - Add `@Bean` annotations so we no longer need `@Component` annotations in [GameImpl](033-guess-the-number-game/core/src/main/java/academy/learnprogramming/GameImpl.java) and [NumberGeneratorImpl](033-guess-the-number-game/core/src/main/java/academy/learnprogramming/NumberGeneratorImpl.java)
+
+
 ## Section 6: New Spring 5 - Lombok Introduction
 
 ## Section 7: New Spring 5 - Spring MVC
