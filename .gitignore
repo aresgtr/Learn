@@ -486,3 +486,7 @@ bin/
 
 # general
 *.class
+
+# Git
+.gitignore
+.gitattributes
