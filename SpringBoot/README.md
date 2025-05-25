@@ -4,6 +4,6 @@
 
 > ### 6 Spring Boot Full Stack Projects for Beginners & Resume
 > [Youtube Link](https://www.youtube.com/watch?v=SDZk34mh7wM)
-> 1. Todo List App
+> 1. [Todo List App](todoapp/)
 > 2. Chat App
-> 3. [Voting App](votingapp/README.md)
+> 3. [Voting App](votingapp/)
